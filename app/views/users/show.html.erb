@@ -1,0 +1,15 @@
+<% if signed_in? %>
+  <%= current_user.email %>
+  <%= button_to "Sign out", sign_out_path, method: :delete %>
+
+  <ul>
+  <% current_user.needs.all.each do |need| %>
+    <li><%= need.title %></li>
+  <% end %>
+  </ul>
+
+<% else %>
+  <%= link_to "Sign in", sign_in_path %>
+<% end %>
+
+

@@ -11,7 +11,6 @@ require 'yaml'
 needs_data = YAML.load_file('needs.yml')
 needs_data.each do |group, needs|
   needs.each do |need|
-    puts need
     Need.create(group: group, title: need)
   end
 end
