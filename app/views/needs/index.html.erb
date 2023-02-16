@@ -1,5 +1,3 @@
-<ul>
-<% @needs.each do |need| %>
-  <li><%= need.title %></li>
-<% end %>
-</ul>
+<div class="container" id="needs-container">
+  <%= render "form", need: @need %>
+</div>

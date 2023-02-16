@@ -9,8 +9,9 @@
 require 'yaml'
 
 needs_data = YAML.load_file('needs.yml')
-needs_data.each do |group, needs|
+
+needs_data.each do |category, needs|
   needs.each do |need|
-    Need.create(group: group, title: need)
+    Need.find_or_create_by(category: category, title: need)
   end
 end

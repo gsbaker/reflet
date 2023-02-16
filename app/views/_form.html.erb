@@ -1,0 +1,6 @@
+<%= form_with(model: @need, method: :patch) do |form| %>
+  <%= form.label :status %>
+  <%= form.text_field :status, class: "form-control" %>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>
