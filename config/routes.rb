@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root "users#show"
-  get "/needs", to: "needs#index"
   
   resources :passwords,
     controller: 'clearance/passwords',
@@ -10,12 +9,13 @@ Rails.application.routes.draw do
     controller: 'clearance/sessions',
     only: [:create]
 
-  resources :users,
-    only: Clearance.configuration.user_actions do
+  resources :needs
+  resources :users, only: Clearance.configuration.user_actions do
       resource :password,
         controller: 'clearance/passwords',
         only: [:edit, :update]
-    end
+      resources :needs, controller: 'needs', only: [:index]
+  end
 
   get '/sign_in' => 'clearance/sessions#new', as: 'sign_in'
   delete '/sign_out' => 'clearance/sessions#destroy', as: 'sign_out'

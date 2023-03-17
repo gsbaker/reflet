@@ -1,6 +1,19 @@
-<% if signed_in? %>
-  <%= current_user.email %>
-  <%= button_to "Sign out", sign_out_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in", sign_in_path %>
-<% end %>
+<nav class="navbar container d-flex justify-content-between p-2 mb-3">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag "logo-lg.png", height: 25 %>
+    <% end %>
+    <% if signed_in? %>
+        <div class="d-flex align-items-center">
+          <div class="me-2">
+            <%= current_user.email %>
+          </div>
+          <div>
+            <%= button_to "Sign out", sign_out_path, method: :delete, class: "btn btn-link text-decoration-none" %>
+          </div>
+        </div>
+    <% else %>
+      <div>
+        <%= link_to "Sign in", sign_in_path %>
+      </div>
+    <% end %>
+</nav>

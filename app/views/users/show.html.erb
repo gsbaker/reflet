@@ -1,19 +1,5 @@
-<% if @individual_needs %>
-  <ul>
-    <% @individual_needs.each do |need| %>
-      <li><%= need.title %> (<%= need.group %>)</li>
-    <% end %>
-  </ul>
-<% else %>
-  Discover individual needs
-<% end %>
-
-<% if @social_needs %>
-  <ul>
-    <% @social_needs.each do |need| %>
-      <li><%= need.title %> (<%= need.group %>)</li>
-    <% end %>
-  </ul>
-<% else %>
-  Discover social needs
-<% end %>
+<ul class="container">
+  <% @needs.each do |n| %>
+    <li><%= n.title %> (<%= n.category %>)</li>
+  <% end %>
+</ul>
