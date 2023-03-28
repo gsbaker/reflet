@@ -1,5 +1,8 @@
-<ul class="container">
-  <% @needs.each do |n| %>
-    <li><%= n.title %> (<%= n.category %>)</li>
-  <% end %>
-</ul>
+<div class="container">
+  <h1><%= @user.name %></h1>
+
+  <h2>Your Details</h2>
+
+  <h4>Email</h4>
+  <p><%= @user.email %></p>
+</div>

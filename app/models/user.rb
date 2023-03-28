@@ -1,4 +1,10 @@
 class User < ApplicationRecord
   include Clearance::User
-  has_many :need_statuses, dependent: :destroy
+  has_many :ratings, dependent: :destroy
+
+  validates :name, presence: true
+
+  def blank_slate?
+    ratings.unknown.count == ratings.count
+  end
 end

@@ -1,0 +1,54 @@
+<div class="container">
+
+  <% if @user.blank_slate? %>
+    <%= render 'blank_slate' %>
+
+  <% else %>
+    <h1><%= current_user.name %></h1>
+
+    <div class="my-4">
+      <h5>
+        <%= link_to "Rate your needs", ratings_path, class: 'r-btn' %>
+      </h5>
+    </div>
+
+    <div class="vstack gap-3">
+      <div>
+        <h2>Your unmet needs</h2>
+
+        <div class="r-card p-5 bg-rare">
+          <div class="d-flex flex-wrap hstack gap-3">
+            <% @user.ratings.rare.each do |r| %>
+              <div><%= r.need.title %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Your needs that might need attention</h2>
+
+        <div class="r-card p-5 bg-sometimes">
+          <div class="d-flex flex-wrap hstack gap-3">
+            <% @user.ratings.sometimes.each do |r| %>
+              <div><%= r.need.title %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Your needs that are satisfied</h2>
+
+        <div class="r-card p-5 bg-consistent">
+          <div class="d-flex flex-wrap hstack gap-3">
+            <% @user.ratings.consistent.each do |r| %>
+              <div><%= r.need.title %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

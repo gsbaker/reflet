@@ -1,9 +1,16 @@
-<div class="text-field">
-  <%= form.label :email, class: "form-label" %>
-  <%= form.email_field :email, class: "form-control" %>
-</div>
+<div class="vstack gap-3">
+  <div class="text-field">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "r-input" %>
+  </div>
 
-<div class="password-field">
-  <%= form.label :password, class: "form-label" %>
-  <%= form.password_field :password, class: "form-control" %>
+  <div class="text-field">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "r-input" %>
+  </div>
+
+  <div class="password-field">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "r-input" %>
+  </div>
 </div>

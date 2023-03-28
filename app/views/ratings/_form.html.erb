@@ -1,0 +1,5 @@
+<h1><%= rating.need.title %></h1>
+<%= form_with model: rating do |f| %>
+  <%= f.collection_radio_buttons :status, Rating.statuses.except(:unknown), :first, :last %>
+  <%= f.submit %>
+<% end %>

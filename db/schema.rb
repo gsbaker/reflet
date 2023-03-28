@@ -10,23 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_144841) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_162007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "need_statuses", force: :cascade do |t|
-    t.bigint "need_id"
-    t.bigint "user_id"
-    t.integer "status", default: 0
-    t.index ["need_id"], name: "index_need_statuses_on_need_id"
-    t.index ["user_id"], name: "index_need_statuses_on_user_id"
-  end
 
   create_table "needs", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "need_id"
+    t.bigint "user_id"
+    t.integer "status", default: 0
+    t.index ["need_id"], name: "index_ratings_on_need_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,6 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_144841) do
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
+    t.string "name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token", unique: true
