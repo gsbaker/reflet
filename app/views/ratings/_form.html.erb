@@ -1,5 +1,16 @@
 <h1><%= rating.need.title %></h1>
+<div class="vstack gap-3">
 <%= form_with model: rating do |f| %>
-  <%= f.collection_radio_buttons :status, Rating.statuses.except(:unknown), :first, :last %>
-  <%= f.submit %>
+  <div class="govuk-radios" data-module="govuk-radios">
+    <%= f.collection_radio_buttons :status, Rating.statuses.except(:unknown), :first, :first do |b| %>
+      <div class="govuk-radios__item">
+        <%= b.radio_button(class: "govuk-radios__input") %>
+        <%= b.label(class: "govuk-radios__label") %>
+      </div>
+    <% end %>
+  </div>
+  <div class="mt-3">
+  <%= f.submit class: "r-btn" %>
+  </div>
+</div>
 <% end %>
