@@ -1,19 +1,26 @@
-<h1>Log in</h1>
+<div class="container-small">
+  <h1>Sign in</h1>
 
-<%= form_with model: @user, url: session_path do |form| %>
-  <div>
-    <%= form.label :email %>
-    <%= form.email_field :email %>
-  </div>
+  <%= form_with model: @user, url: session_path do |form| %>
+    <div class="v-stack">
+    <div>
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "input__text" %>
+    </div>
 
-  <div>
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+    <div>
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "input__text" %>
+    </div>
 
-  <div>
-    <%= form.submit "Log in" %>
-  </div>
-<% end %>
+    <div>
+      <%= form.submit "Continue", class: "btn" %>
+    </div>
 
-<%= link_to "Forgot your password?", new_password_reset_path %>
+    <div>
+      <%= link_to "Forgot your password?", new_password_reset_path %>
+    </div>
+    </div>
+  <% end %>
+
+</div>
