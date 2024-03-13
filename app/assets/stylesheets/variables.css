@@ -1,0 +1,7 @@
+:root {
+  --bg-color: #eee;
+  --accent-blue: #c2e7ff;
+  --font-stack: "Playfair Display", "Times New Roman", serif;
+  --container-width: 800px;
+  --container-width__small: 400px;
+}

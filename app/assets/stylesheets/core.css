@@ -1,0 +1,19 @@
+body {
+  font-family: var(--font-stack);
+  background-color: var(--bg-color);
+}
+
+a {
+  text-decoration: underline;
+  color: #000;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.container-small {
+  max-width: var(--container-width__small);
+  margin: 0 auto;
+}
