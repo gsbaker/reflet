@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "yaml"
+
+needs = YAML.load_file("db/seeds/needs.yml")
+
+needs.each do |need|
+  Need.find_or_create_by!(title: need["title"], category: need["category"])
+end

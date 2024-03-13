@@ -1,0 +1,106 @@
+--- # needs
+
+- title: "Acceptance"
+  category: "Social"
+
+- title: "Accountability"
+  category: "Social"
+
+- title: "Affection"
+  category: "Social"
+
+- title: "Appreciation"
+  category: "Social"
+
+- title: "Authenticity"
+  category: "Social"
+
+- title: "Autonomy"
+  category: "Individual"
+
+- title: "Compassion"
+  category: "Social"
+
+- title: "Creativity"
+  category: "Individual"
+
+- title: "Curiosity"
+  category: "Individual"
+
+- title: "Empathy"
+  category: "Social"
+
+- title: "Encouragement"
+  category: "Social"
+
+- title: "Fairness"
+  category: "Social"
+
+- title: "Flexibility"
+  category: "Individual"
+
+- title: "Forgiveness"
+  category: "Social"
+
+- title: "Friendship"
+  category: "Social"
+
+- title: "Honesty"
+  category: "Social"
+
+- title: "Inspiration"
+  category: "Individual"
+
+- title: "Intimacy"
+  category: "Social"
+
+- title: "Kindness"
+  category: "Social"
+
+- title: "Love"
+  category: "Social"
+
+- title: "Loyalty"
+  category: "Social"
+
+- title: "Meaning"
+  category: "Individual"
+
+- title: "Openness"
+  category: "Social"
+
+- title: "Passion"
+  category: "Individual"
+
+- title: "Patience"
+  category: "Social"
+
+- title: "Purpose"
+  category: "Individual"
+
+- title: "Respect"
+  category: "Social"
+
+- title: "Responsibility"
+  category: "Individual"
+
+- title: "Security"
+  category: "Individual"
+
+- title: "Support"
+  category: "Social"
+
+- title: "Transparency"
+  category: "Social"
+
+- title: "Trust"
+  category: "Social"
+
+- title: "Understanding"
+  category: "Social"
+
+- title: "Validation"
+  category: "Social"
+
+- title: "Vulnerability"
+  category: "Social"
