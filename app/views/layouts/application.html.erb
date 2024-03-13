@@ -9,7 +9,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+          rel="stylesheet">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -20,11 +21,7 @@
     <div><%= alert %></div>
 
     <% if user_signed_in? %>
-      <%= link_to "Edit Password", edit_password_path %>
-      <%= button_to "Log out", session_path, method: :delete %>
-    <%# <% else %1> %>
-    <%#   <%= link_to "Sign up", new_registration_path %1> %>
-    <%#   <%= link_to "Log in", new_session_path %1> %>
+      <%= render "shared/navbar" %>
     <% end %>
 
     <%= yield %>
