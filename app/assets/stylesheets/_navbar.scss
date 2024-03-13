@@ -1,0 +1,14 @@
+.nav__align-right {
+  display: flex;
+  flex-direction: row-reverse;
+
+  h3 {
+    margin: 0 20px;
+  }
+
+  a {
+    &:hover {
+      background-color: yellow;
+    }
+  }
+}
