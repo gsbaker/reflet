@@ -1,0 +1,16 @@
+<%= form_with model: @rating do |form| %>
+  <h1><%= @rating.need.title %></h1>
+
+  <% Rating::AVAILABLE_RATINGS.each do |available_rating| %>
+    <div>
+      <%= form.radio_button :title, available_rating %>
+      <%= form.label available_rating %>
+    </div>
+  <% end %>
+
+  <%= form.submit "Submit", class: "btn" %>
+<% end %>
+
+<div>
+  <%= link_to "Back to reports", reports_path %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_13_123827) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_161027) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_123827) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "report_id", null: false
+    t.bigint "need_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+    t.index ["need_id"], name: "index_ratings_on_need_id"
+    t.index ["report_id"], name: "index_ratings_on_report_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reports_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -28,4 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_13_123827) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ratings", "needs"
+  add_foreign_key "ratings", "reports"
+  add_foreign_key "reports", "users"
 end
