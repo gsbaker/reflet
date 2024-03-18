@@ -4,7 +4,7 @@
       <%= link_to "Dashboard", root_path %>
     </li>
     <li>
-      <%= link_to current_user.email, users_path %>
+      <%= link_to current_user.display_name, users_path %>
     </li>
     <li>
       <%= button_to "Log out", session_path, method: :delete %>
