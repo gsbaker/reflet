@@ -1,0 +1,14 @@
+<h2><%= report %></h2>
+
+<% unless report.completed? %>
+  <p>This report isn't finished yet.</p>
+
+  <p><%= link_to "Continue", report_path(report), class: "btn" %></p>
+<% end %>
+
+<% Rating::RATINGS.each do |rating_title| %>
+  <h3><%= rating_title %></h3>
+  <% report.ratings.where(title: rating_title).each do |rating| %>
+    <p><%= rating.need %></p>
+  <% end %>
+<% end %>

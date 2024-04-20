@@ -3,16 +3,5 @@
 <%= turbo_frame_tag "rating-form" do %>
   <h2><%= @rating.need %></h2>
 
-  <%= form_with model: @rating, local: false do |f| %>
-    <%= f.hidden_field :report_id, value: @report.id %>
-
-    <% Rating::RATINGS.each do |rating| %>
-      <div>
-        <%= f.radio_button :title, rating %>
-        <%= f.label rating %>
-      </div>
-    <% end %>
-
-    <%= f.submit %>
-  <% end %>
+  <%= render "ratings/form" %>
 <% end %>
