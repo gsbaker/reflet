@@ -1,4 +1,19 @@
 <div class="container">
-  <h1>Dashboard</h1>
-  <%= link_to "Create report", new_report_path %>
+  <div class="action-header">
+    <div>
+      <h1>Dashboard</h1>
+    </div>
+
+    <% if current_user.can_create_report? %>
+      <div>
+        <%= form_with model: @report do |f| %>
+          <%= f.submit "Create report", class: "btn" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user.latest_report %>
+    <%= render "latest_report", report: current_user.latest_report %>
+  <% end %>
 </div>

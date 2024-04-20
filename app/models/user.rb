@@ -20,4 +20,12 @@ class User < ApplicationRecord
   def display_name
     "#{forename} #{surname}"
   end
+
+  def latest_report
+    reports.order(created_at: :desc).first
+  end
+
+  def can_create_report?
+    latest_report.completed?
+  end
 end

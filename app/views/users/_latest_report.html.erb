@@ -1,0 +1,5 @@
+<% if report.started? %>
+  <%= render "reports/summary", report: %>
+<% else %>
+  <%= render "reports/continue", report: %>
+<% end %>
