@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= @report %></h1>
 
-<%= render @report %>
+<%= turbo_frame_tag "rating-form" do %>
+  <h2><%= @rating.need %></h2>
 
-<div>
-  <%= link_to "Edit this report", edit_report_path(@report) %> |
-  <%= link_to "Back to reports", reports_path %>
+  <%= form_with model: @rating, local: false do |f| %>
+    <%= f.hidden_field :report_id, value: @report.id %>
 
-  <%= button_to "Destroy this report", @report, method: :delete %>
-</div>
+    <% Rating::RATINGS.each do |rating| %>
+      <div>
+        <%= f.radio_button :title, rating %>
+        <%= f.label rating %>
+      </div>
+    <% end %>
+
+    <%= f.submit %>
+  <% end %>
+<% end %>

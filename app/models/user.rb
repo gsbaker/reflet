@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def latest_report
-    reports.order(created_at: :desc).first
+    reports.latest.first
   end
 
   def can_create_report?

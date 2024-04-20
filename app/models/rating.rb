@@ -5,10 +5,6 @@ class Rating < ApplicationRecord
   scope :rated, -> { where.not(title: nil) }
   scope :unrated, -> { where(title: nil) }
 
-  AVAILABLE_RATINGS = [nil, "Rarely Met", "Sometimes Met", "Consistently Met"].freeze
-  validates :title, inclusion: { in: AVAILABLE_RATINGS }
-
-  def available_ratings
-    AVAILABLE_RATINGS
-  end
+  RATINGS = ["Rarely Met", "Sometimes Met", "Consistently Met"].freeze
+  validates :title, inclusion: { in: RATINGS }, allow_nil: true
 end
