@@ -1,0 +1,4 @@
+.report-summary {
+  display: flex;
+  flex-wrap: wrap;
+}

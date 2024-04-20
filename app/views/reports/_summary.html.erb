@@ -8,7 +8,9 @@
 
 <% Rating::RATINGS.each do |rating_title| %>
   <h3><%= rating_title %></h3>
-  <% report.ratings.where(title: rating_title).each do |rating| %>
-    <p><%= rating.need %></p>
-  <% end %>
+  <div class="card report-summary">
+    <% report.ratings.where(title: rating_title).each do |rating| %>
+      <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
+    <% end %>
+  </div>
 <% end %>
