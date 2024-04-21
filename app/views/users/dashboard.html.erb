@@ -7,7 +7,7 @@
     <% if current_user.can_create_report? %>
       <div>
         <%= form_with model: @report do |f| %>
-          <%= f.submit "Create report", class: "btn" %>
+          <%= f.submit "New report", class: "btn" %>
         <% end %>
       </div>
     <% end %>

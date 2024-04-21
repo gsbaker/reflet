@@ -6,11 +6,4 @@
   <p><%= link_to "Continue", report_path(report), class: "btn" %></p>
 <% end %>
 
-<% Rating::RATINGS.each do |rating_title| %>
-  <h3><%= rating_title %></h3>
-  <div class="card report-summary">
-    <% report.ratings.where(title: rating_title).each do |rating| %>
-      <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
-    <% end %>
-  </div>
-<% end %>
+<%= render "reports/report", report: %>

@@ -1,7 +1,11 @@
 <h1><%= @report %></h1>
 
-<%= turbo_frame_tag "rating-form" do %>
-  <h2><%= @rating.need %></h2>
+<% if @report.completed? %>
+  <%= render "report", report: @report %>
+<% else %>
+  <%= turbo_frame_tag "rating-form" do %>
+    <h2><%= @rating.need %></h2>
 
-  <%= render "ratings/form" %>
+    <%= render "ratings/form" %>
+  <% end %>
 <% end %>
