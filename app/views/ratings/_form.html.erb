@@ -13,12 +13,15 @@
 
   <%= f.hidden_field :report_id, value: @report.id %>
 
+  <div class="vstack">
   <% Rating::RATINGS.each do |rating| %>
-    <div>
-      <%= f.radio_button :title, rating %>
-      <%= f.label rating %>
-    </div>
+    <%= f.label :title, rating, for: "rating_#{rating.parameterize}", class: "reflet-radio" do %>
+      <%= rating %>
+      <%= f.radio_button :title, rating, id: "rating_#{rating.parameterize}" %>
+      <span class="checkmark"></span>
+    <% end %>
   <% end %>
+  </div>
 
   <%= f.submit %>
 <% end %>
