@@ -1,9 +1,7 @@
 <h2><%= report %></h2>
 
 <% unless report.completed? %>
-  <p>This report isn't finished yet.</p>
-
-  <p><%= link_to "Continue", report_path(report), class: "btn" %></p>
+  <p>This report isn't finished yet. <%= link_to "Continue", report_path(report) %></p>
 <% end %>
 
 <%= render "reports/report", report: %>

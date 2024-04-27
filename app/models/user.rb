@@ -26,6 +26,16 @@ class User < ApplicationRecord
   end
 
   def can_create_report?
-    latest_report.completed?
+    return true unless latest_report
+
+    latest_report.completed? && latest_report.created_at < 1.week.ago
+  end
+
+  def new_report_available_in
+    return false unless latest_report&.completed?
+
+    new_report_date = latest_report.updated_at.to_date + 1.week
+
+    "#{(new_report_date - Date.today).to_i} days"
   end
 end

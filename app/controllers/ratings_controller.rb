@@ -5,6 +5,10 @@ class RatingsController < ApplicationController
   def update
     respond_to do |format|
       if @rating.update(rating_params)
+        if @rating.report.completed?
+          redirect_to report_path(@rating.report) and return
+        end
+
         format.html { redirect_to rating_url(@rating), notice: "Rating was successfully updated." }
         format.turbo_stream { redirect_to report_path(@rating.report) }
       else

@@ -7,7 +7,17 @@
     <p>
       <%= link_to report, report %>
     </p>
+
+    <% if report.started? %>
+      <p>You won't be able to start a new report until you've completed this one.</p>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "New report", new_report_path %>
+<% if current_user.can_create_report? %>
+  <%= link_to "New report", new_report_path %>
+<% else %>
+  <% if current_user.latest_report %>
+    <p>You can create a new report in <%= current_user.new_report_available_in %></p>
+  <% end %>
+<% end %>
