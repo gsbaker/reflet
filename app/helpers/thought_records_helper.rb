@@ -1,0 +1,2 @@
+module ThoughtRecordsHelper
+end

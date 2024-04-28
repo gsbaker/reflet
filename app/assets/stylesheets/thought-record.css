@@ -1,0 +1,23 @@
+.thought-record-fieldset {
+  margin-bottom: 20px;
+  padding: 0;
+  border: 1px solid black;
+
+  .thought-record-field {
+    border-bottom: 1px solid black;
+    padding: 30px 20px;
+
+    .description {
+      font-style: italic;
+    }
+
+  }
+
+  .thought-record-field:first-child {
+    padding-top: 20px;
+  }
+
+  .thought-record-field:last-child {
+    border-bottom: none;
+  }
+}

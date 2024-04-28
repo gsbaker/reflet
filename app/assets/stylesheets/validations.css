@@ -1,0 +1,11 @@
+.validation-error {
+  background-color: var(--accent-red);
+  border: 1px solid var(--text-red);
+  color: var(--text-red);
+  padding: 5px 20px;
+  margin-bottom: 10px;
+
+  .validation-title {
+    font-weight: bold;
+  }
+}
