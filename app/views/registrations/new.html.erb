@@ -8,12 +8,22 @@
   </div>
 
 <%= form_with model: @user, url: registration_path do |form| %>
-  <div class="v-stack">
+  <div class="vstack">
     <% if form.object.errors.any? %>
       <% form.object.errors.full_messages.each do |message| %>
         <div><%= message %></div>
       <% end %>
     <% end %>
+
+    <div>
+      <%= form.label :forename, "First name" %>
+      <%= form.text_field :forename %>
+    </div>
+
+    <div>
+      <%= form.label :surname, "Last name" %>
+      <%= form.text_field :surname %>
+    </div>
 
     <div>
       <%= form.label :email %>
