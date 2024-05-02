@@ -4,8 +4,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   normalizes :email, with: ->(email) { email.downcase }
 
-  validates :forename, presence: true
-  validates :surname, presence: true
+  validates :name, presence: true
 
   generates_token_for :password_reset, expires_in: 15.minutes do
     password_salt&.last(10)
@@ -17,8 +16,8 @@ class User < ApplicationRecord
 
   has_many :reports
 
-  def display_name
-    "#{forename} #{surname}"
+  def to_s
+    name
   end
 
   def latest_report

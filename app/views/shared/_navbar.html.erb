@@ -12,7 +12,7 @@
   </ul>
   <ul>
     <li>
-      <%= link_to current_user.display_name, users_path %>
+      <%= link_to current_user, user_path(current_user) %>
     </li>
     <li>
       <%= button_to "Log out", session_path, method: :delete %>
