@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Needs Records</h1>
+
+<div id="needs_records">
+  <% @needs_records.each do |needs_record| %>
+    <p>
+      <%= link_to needs_record, needs_record %>
+    </p>
+
+    <% if needs_record.started? %>
+      <p>You won't be able to start a new needs record until you've completed this one.</p>
+    <% end %>
+  <% end %>
+</div>
+
+<% if current_user.can_create_needs_record? %>
+  <%= link_to "New needs_record", new_needs_record_path %>
+<% else %>
+  <% if current_user.new_needs_record_available_in %>
+    <p>You can create a new needs record in <%= current_user.new_needs_record_available_in %></p>
+  <% end %>
+<% end %>

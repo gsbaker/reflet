@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_194140) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_03_153324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,22 +59,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_194140) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "needs_records", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status", null: false
+    t.datetime "completed_at"
+    t.index ["user_id"], name: "index_needs_records_on_user_id"
+  end
+
   create_table "ratings", force: :cascade do |t|
-    t.bigint "report_id", null: false
+    t.bigint "needs_record_id", null: false
     t.bigint "need_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.index ["need_id"], name: "index_ratings_on_need_id"
-    t.index ["report_id"], name: "index_ratings_on_report_id"
-  end
-
-  create_table "reports", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "status", null: false
-    t.index ["user_id"], name: "index_reports_on_user_id"
+    t.index ["needs_record_id"], name: "index_ratings_on_needs_record_id"
   end
 
   create_table "thought_records", force: :cascade do |t|
@@ -93,7 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_194140) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "needs_records", "users"
   add_foreign_key "ratings", "needs"
-  add_foreign_key "ratings", "reports"
-  add_foreign_key "reports", "users"
+  add_foreign_key "ratings", "needs_records"
 end

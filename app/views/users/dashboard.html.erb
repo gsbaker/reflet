@@ -4,16 +4,14 @@
       <h1>Dashboard</h1>
     </div>
 
-    <% if current_user.can_create_report? %>
+    <% if current_user.can_create_needs_record? %>
       <div>
-        <%= form_with model: @report do |f| %>
-          <%= f.submit "New report", class: "btn" %>
-        <% end %>
+        <%= render "needs_records/form" %>
       </div>
     <% end %>
   </div>
 
-  <% if current_user.latest_report %>
-    <%= render "latest_report", report: current_user.latest_report %>
+  <% if current_user.latest_needs_record %>
+    <%= render "latest_needs_record", needs_record: current_user.latest_needs_record %>
   <% end %>
 </div>

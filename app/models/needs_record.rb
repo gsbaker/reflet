@@ -1,4 +1,6 @@
-class Report < ApplicationRecord
+class NeedsRecord < ApplicationRecord
+  include ActiveModel::Dirty
+
   belongs_to :user
   has_many :ratings
 
@@ -13,8 +15,10 @@ class Report < ApplicationRecord
     initialize_status
   end
 
+  before_save :update_completed_at
+
   def to_s
-    "Report #{created_at.strftime('%Y-%m-%d')} (#{status.downcase})"
+    "Needs #{created_at.strftime('%Y-%m-%d')} (#{status.downcase})"
   end
 
   def not_started?
@@ -39,5 +43,9 @@ class Report < ApplicationRecord
 
   def initialize_status
     self.status ||= "Not started"
+  end
+
+  def update_completed_at
+    self.completed_at = Time.current if completed?
   end
 end

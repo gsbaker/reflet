@@ -1,4 +1,4 @@
-module ReportsHelper
+module NeedsRecordsHelper
   def need_color_class(rating)
     color_classes = {
       "Rarely Met" => "need--rare",

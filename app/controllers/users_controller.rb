@@ -2,6 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
 
   def dashboard
-    @report = current_user.reports.build
+    @needs_record = current_user.needs_records.build
   end
 end

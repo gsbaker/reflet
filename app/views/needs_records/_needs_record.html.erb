@@ -1,0 +1,10 @@
+<% Rating::RATINGS.each do |rating_title| %>
+  <% if needs_record.ratings.where(title: rating_title).present? %>
+    <h3><%= rating_title %></h3>
+    <div class="card needs-record-summary">
+      <% needs_record.ratings.where(title: rating_title).each do |rating| %>
+        <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

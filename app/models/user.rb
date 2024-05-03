@@ -14,27 +14,27 @@ class User < ApplicationRecord
     email
   end
 
-  has_many :reports
+  has_many :needs_records
 
   def to_s
     name
   end
 
-  def latest_report
-    reports.latest.first
+  def latest_needs_record
+    needs_records.latest.first
   end
 
-  def can_create_report?
-    return true unless latest_report
+  def can_create_needs_record?
+    return true unless latest_needs_record
 
-    latest_report.completed? && latest_report.created_at < 1.week.ago
+    latest_needs_record.completed? && latest_needs_record.created_at < 1.week.ago
   end
 
-  def new_report_available_in
-    return false unless latest_report&.completed?
+  def new_needs_record_available_in
+    return false unless latest_needs_record&.completed?
 
-    new_report_date = latest_report.updated_at.to_date + 1.week
+    new_needs_record_date = latest_needs_record.completed_at.to_date + 1.week
 
-    "#{(new_report_date - Date.today).to_i} days"
+    "#{(new_needs_record_date - Date.today).to_i} days"
   end
 end

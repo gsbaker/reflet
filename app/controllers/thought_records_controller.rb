@@ -58,13 +58,23 @@ class ThoughtRecordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_thought_record
-      @thought_record = ThoughtRecord.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def thought_record_params
-      params.require(:thought_record).permit(:situation, :feelings, :thoughts, :evidence_for, :evidence_against, :alternative_thoughts, :alternative_feelings)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_thought_record
+    @thought_record = ThoughtRecord.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def thought_record_params
+    params.require(:thought_record).permit(
+      :title,
+      :situation,
+      :feelings,
+      :thoughts,
+      :evidence_for,
+      :evidence_against,
+      :alternative_thoughts,
+      :alternative_feelings
+    )
+  end
 end

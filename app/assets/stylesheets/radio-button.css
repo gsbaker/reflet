@@ -4,7 +4,8 @@
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 400;
   user-select: none;
 }
 

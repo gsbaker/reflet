@@ -1,0 +1,7 @@
+<h2><%= needs_record %></h2>
+
+<% unless needs_record.completed? %>
+  <p>This needs_record isn't finished yet. <%= link_to "Continue", needs_record_path(needs_record) %></p>
+<% end %>
+
+<%= render "needs_records/needs_record", needs_record: %>

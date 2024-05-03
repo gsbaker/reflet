@@ -1,5 +1,5 @@
 class Rating < ApplicationRecord
-  belongs_to :report, dependent: :destroy
+  belongs_to :needs_record, dependent: :destroy
   belongs_to :need, dependent: :destroy
 
   scope :rated, -> { where.not(title: nil) }
@@ -8,15 +8,15 @@ class Rating < ApplicationRecord
   RATINGS = ["Rarely Met", "Sometimes Met", "Consistently Met"].freeze
   validates :title, inclusion: { in: RATINGS }, allow_nil: true
 
-  after_save :update_report_status
+  after_save :update_needs_record_status
 
   private
 
-  def update_report_status
-    if report.status == "Not started"
-      report.update status: "Started"
-    elsif report.status == "Started" && report.completed?
-      report.update status: "Completed"
+  def update_needs_record_status
+    if needs_record.status == "Not started"
+      needs_record.update status: "Started"
+    elsif needs_record.status == "Started" && needs_record.completed?
+      needs_record.update status: "Completed"
     end
   end
 end

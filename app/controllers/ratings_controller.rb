@@ -3,18 +3,10 @@ class RatingsController < ApplicationController
 
   # PATCH/PUT /ratings/1 or /ratings/1.json
   def update
-    respond_to do |format|
-      if @rating.update(rating_params)
-        if @rating.report.completed?
-          redirect_to report_path(@rating.report) and return
-        end
-
-        format.html { redirect_to rating_url(@rating), notice: "Rating was successfully updated." }
-        format.turbo_stream { redirect_to report_path(@rating.report) }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
-      end
+    if @rating.update(rating_params)
+      redirect_to needs_record_path(@rating.needs_record)
+    else
+      render "needs_records/show", status: :unprocessable_entity
     end
   end
 
@@ -25,6 +17,6 @@ class RatingsController < ApplicationController
   end
 
   def rating_params
-    params.require(:rating).permit(:report_id, :need_id, :title)
+    params.require(:rating).permit(:needs_record_id, :need_id, :title)
   end
 end
