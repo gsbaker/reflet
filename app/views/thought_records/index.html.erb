@@ -1,14 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Thought records</h1>
+<h1>Thought Records</h1>
 
-<div id="thought_records">
+<ul id="thought_records">
   <% @thought_records.each do |thought_record| %>
-    <%= render thought_record %>
-    <p>
-      <%= link_to "Show this thought record", thought_record %>
-    </p>
+    <li><%= link_to thought_record, thought_record %></li>
   <% end %>
-</div>
+</ul>
 
 <%= link_to "New thought record", new_thought_record_path %>

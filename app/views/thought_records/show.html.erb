@@ -1,10 +1,16 @@
+<p><strong>Thought Record</strong></p>
+
 <p style="color: green"><%= notice %></p>
 
 <%= render @thought_record %>
 
-<div>
+<div class="vstack">
+  <div>
   <%= link_to "Edit this thought record", edit_thought_record_path(@thought_record) %> |
   <%= link_to "Back to thought records", thought_records_path %>
+  </div>
 
-  <%= button_to "Destroy this thought record", @thought_record, method: :delete %>
+  <div>
+  <%= button_to "Delete", @thought_record, method: :delete %>
+  </div>
 </div>

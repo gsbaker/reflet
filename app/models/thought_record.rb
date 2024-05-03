@@ -14,4 +14,8 @@ class ThoughtRecord < ApplicationRecord
   validates :evidence_against, presence: true
 
   validates :title, presence: true
+
+  def to_s
+    title
+  end
 end

@@ -1,37 +1,39 @@
 <div id="<%= dom_id thought_record %>">
+  <p>Last updated: <%= thought_record.updated_at.strftime("%B %d, %Y") %></p>
+  <h1><%= thought_record %></h1>
+
+  <h2>Situation</h2>
   <p>
-    <strong>Situation:</strong>
     <%= thought_record.situation %>
   </p>
 
+  <h2>Feelings</h2>
   <p>
-    <strong>Feelings:</strong>
     <%= thought_record.feelings %>
   </p>
 
+  <h2>Thoughts</h2>
   <p>
-    <strong>Thoughts:</strong>
     <%= thought_record.thoughts %>
   </p>
 
+  <h2>Evidence for</h2>
   <p>
-    <strong>Evidence for:</strong>
     <%= thought_record.evidence_for %>
   </p>
 
+  <h2>Evidence against</h2>
   <p>
-    <strong>Evidence against:</strong>
     <%= thought_record.evidence_against %>
   </p>
 
-  <p>
-    <strong>Alternative thoughts:</strong>
-    <%= thought_record.alternative_thoughts %>
-  </p>
+  <% if thought_record.alternative_thoughts.present? %>
+    <h2>Alternative thoughts</h2>
+    <p><%= thought_record.alternative_thoughts %></p>
+  <% end %>
 
-  <p>
-    <strong>Alternative feelings:</strong>
-    <%= thought_record.alternative_feelings %>
-  </p>
-
+  <% if thought_record.alternative_feelings.present? %>
+    <h2>Alternative feelings</h2>
+    <p><%= thought_record.alternative_feelings %></p>
+  <% end %>
 </div>
