@@ -1,0 +1,7 @@
+<h1><%= @user %></h1>
+
+<p>Email: <%= @user.email %></p>
+
+<p>Account created: <%= @user.created_at.strftime("%B %d, %Y") %></p>
+
+<p><%= link_to "Edit your account", edit_user_path(@user) %></p>

@@ -15,6 +15,8 @@ class ThoughtRecord < ApplicationRecord
 
   validates :title, presence: true
 
+  belongs_to :user
+
   def to_s
     title
   end

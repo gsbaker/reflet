@@ -15,6 +15,7 @@ class User < ApplicationRecord
   end
 
   has_many :needs_records
+  has_many :thought_records
 
   def to_s
     name

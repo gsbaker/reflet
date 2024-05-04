@@ -5,39 +5,36 @@
     <%= render "shared/auth_logo" %>
 
     <h1>Sign up</h1>
-  </div>
-
-<%= form_with model: @user, url: registration_path do |form| %>
-  <div class="vstack">
-    <% if form.object.errors.any? %>
-      <% form.object.errors.full_messages.each do |message| %>
-        <div><%= message %></div>
+    <%= form_with model: @user, url: registration_path, class: "vstack" do |form| %>
+      <% if form.object.errors.any? %>
+        <% form.object.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <% end %>
       <% end %>
+
+      <div>
+        <%= form.label :name, "Name" %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div>
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+      </div>
+
+      <div>
+        <%= form.label :password %>
+        <%= form.password_field :password %>
+      </div>
+
+      <div>
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation %>
+      </div>
+
+      <div>
+        <%= form.submit "Continue", class: "btn" %>
+      </div>
     <% end %>
-
-    <div>
-      <%= form.label :name, "Name" %>
-      <%= form.text_field :name %>
-    </div>
-
-    <div>
-      <%= form.label :email %>
-      <%= form.email_field :email %>
-    </div>
-
-    <div>
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
-
-    <div>
-      <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation %>
-    </div>
-
-    <div>
-      <%= form.submit "Continue", class: "btn" %>
-    </div>
   </div>
-<% end %>
 </div>

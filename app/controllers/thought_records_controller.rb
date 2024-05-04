@@ -3,7 +3,7 @@ class ThoughtRecordsController < ApplicationController
 
   # GET /thought_records or /thought_records.json
   def index
-    @thought_records = ThoughtRecord.all
+    @thought_records = current_user.thought_records
   end
 
   # GET /thought_records/1 or /thought_records/1.json
@@ -12,7 +12,7 @@ class ThoughtRecordsController < ApplicationController
 
   # GET /thought_records/new
   def new
-    @thought_record = ThoughtRecord.new
+    @thought_record = current_user.thought_records.build
   end
 
   # GET /thought_records/1/edit
@@ -21,7 +21,7 @@ class ThoughtRecordsController < ApplicationController
 
   # POST /thought_records or /thought_records.json
   def create
-    @thought_record = ThoughtRecord.new(thought_record_params)
+    @thought_record = current_user.thought_records.build(thought_record_params)
 
     respond_to do |format|
       if @thought_record.save
@@ -61,7 +61,7 @@ class ThoughtRecordsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_thought_record
-    @thought_record = ThoughtRecord.find(params[:id])
+    @thought_record = current_user.thought_records.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
