@@ -3,7 +3,7 @@ class NeedsRecordsController < ApplicationController
 
   # GET /needs_records or /needs_records.json
   def index
-    @needs_records = NeedsRecord.all
+    @needs_records = current_user.needs_records
   end
 
   # GET /needs_records/1 or /needs_records/1.json
@@ -62,7 +62,7 @@ class NeedsRecordsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_needs_record
-      @needs_record = NeedsRecord.find(params[:id])
+      @needs_record = current_user.needs_records.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

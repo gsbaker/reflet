@@ -1,0 +1,37 @@
+<%= form_with(model: therapy) do |form| %>
+  <% if therapy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(therapy.errors.count, "error") %> prohibited this therapy from being saved:</h2>
+
+      <ul>
+        <% therapy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.label :therapist_id, style: "display: block" %>
+    <%= form.text_field :therapist_id %>
+  </div>
+
+  <div>
+    <%= form.label :started_at, style: "display: block" %>
+    <%= form.datetime_field :started_at %>
+  </div>
+
+  <div>
+    <%= form.label :completed_at, style: "display: block" %>
+    <%= form.datetime_field :completed_at %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

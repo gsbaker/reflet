@@ -1,7 +1,8 @@
 class NeedsRecord < ApplicationRecord
   include ActiveModel::Dirty
 
-  belongs_to :user
+  belongs_to :individual, foreign_key: "user_id", class_name: "User"
+  has_many :needs, dependent: :destroy
   has_many :ratings
 
   scope :latest, -> { order(created_at: :desc) }
