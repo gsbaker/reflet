@@ -1,24 +1,3 @@
-# README
+# Reflet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img width="1579" alt="Screenshot 2024-09-08 at 12 52 15" src="https://github.com/user-attachments/assets/257707b7-2864-4432-b0b3-79fb01831eb5"
