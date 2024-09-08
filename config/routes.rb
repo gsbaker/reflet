@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  resources :invitations do
+    member do
+      patch :accept
+      patch :decline
+    end
+  end
+
+  resources :therapies
   resources :thought_records
-  resources :ratings
+  resources :need_ratings
   resources :needs_records
   resources :needs
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,6 +18,9 @@ Rails.application.routes.draw do
   root to: "users#dashboard"
 
   resources :users
+  resources :therapists do
+    resources :clients
+  end
 
   resource :registration
   resource :session

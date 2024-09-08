@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: %i[ show edit update destroy ]
+  before_action :set_invitation, only: %i[show edit destroy accept decline]
 
   # GET /invitations or /invitations.json
   def index
@@ -21,29 +21,13 @@ class InvitationsController < ApplicationController
 
   # POST /invitations or /invitations.json
   def create
-    @invitation = Invitation.new(invitation_params)
+    invitee = User.find_by_email(invitation_params[:email])
+    @invitation = current_user.sent_invitations.build(invitee:)
 
-    respond_to do |format|
-      if @invitation.save
-        format.html { redirect_to invitation_url(@invitation), notice: "Invitation was successfully created." }
-        format.json { render :show, status: :created, location: @invitation }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @invitation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /invitations/1 or /invitations/1.json
-  def update
-    respond_to do |format|
-      if @invitation.update(invitation_params)
-        format.html { redirect_to invitation_url(@invitation), notice: "Invitation was successfully updated." }
-        format.json { render :show, status: :ok, location: @invitation }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @invitation.errors, status: :unprocessable_entity }
-      end
+    if @invitation.save
+      redirect_to @invitation, notice: "Invitation sent to #{@invitation.invitee.email}."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -57,14 +41,28 @@ class InvitationsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_invitation
-      @invitation = Invitation.find(params[:id])
-    end
+  def accept
+    @invitation.accept
 
-    # Only allow a list of trusted parameters through.
-    def invitation_params
-      params.require(:invitation).permit(:therapist_id, :user_id, :status)
-    end
+    redirect_to therapies_path, notice: "Invitation accepted."
+  end
+
+  def decline
+    @invitation = Invitation.find(params[:id])
+    @invitation.update!(status: :declined)
+
+    redirect_to therapies_path, notice: "Invitation declined."
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invitation
+    @invitation = Invitation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def invitation_params
+    params.require(:invitation).permit(:email)
+  end
 end

@@ -1,0 +1,18 @@
+<% if @sent_invitations.present? %>
+  <h1>Invitations</h1>
+  <%= render @sent_invitations %>
+<% end %>
+
+<h1>Clients</h1>
+<%= link_to "Add new client", new_invitation_path %>
+
+<% if @clients.present? %>
+  <%= @clients.each do |client| %>
+    <div>
+      <%= client.name %>
+      <%= link_to "View", client %>
+    </div>
+  <% end %>
+<% else %>
+  <p>No clients yet.</p>
+<% end %>

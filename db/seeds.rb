@@ -15,3 +15,5 @@ needs = YAML.load_file("db/seeds/needs.yml")
 needs.each do |need|
   Need.find_or_create_by!(title: need["title"], category: need["category"])
 end
+
+load(Rails.root.join("db", "seeds", "#{Rails.env.downcase}.rb"))

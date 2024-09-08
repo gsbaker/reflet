@@ -1,10 +1,10 @@
-<h1><%= @needs_record %></h1>
-
 <%= turbo_frame_tag "needs-record" do %>
   <% if @needs_record.completed? %>
+    <h1><%= @needs_record %></h1>
     <%= render "needs_record", needs_record: @needs_record %>
   <% else %>
+    <p><%= @needs_record %></p>
     <h2><%= @rating.need %></h2>
-    <%= render "ratings/form" %>
+    <%= render "need_ratings/form" %>
   <% end %>
 <% end %>

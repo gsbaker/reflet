@@ -1,4 +1,4 @@
-<% if needs_record.not_started? %>
+<% if needs_record.in_progress? %>
   <%= render "needs_records/continue", needs_record: %>
 <% else %>
   <%= render "needs_records/summary", needs_record: %>

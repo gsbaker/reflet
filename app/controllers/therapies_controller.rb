@@ -3,7 +3,7 @@ class TherapiesController < ApplicationController
 
   # GET /therapies or /therapies.json
   def index
-    @therapies = Therapy.all
+    @therapies = current_user.therapies
   end
 
   # GET /therapies/1 or /therapies/1.json

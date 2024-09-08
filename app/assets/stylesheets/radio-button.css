@@ -2,11 +2,20 @@
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 12px;
   cursor: pointer;
   font-size: 18px;
   font-weight: 400;
   user-select: none;
+  margin: 10px;
+}
+
+.reflet-radio__border-bottom {
+  border-bottom: 1px solid var(--accent-grey);
+}
+
+.reflet-radio__group {
+  border: 1px solid var(--accent-grey);
+  border-radius: 10px;
 }
 
 /* Hide the browser's default radio button */
@@ -62,4 +71,9 @@
 	height: 15px;
 	border-radius: 50%;
 	background: black;
+}
+
+.reflet-radio__info {
+  font-size: 16px;
+  color: var(--accent-grey);
 }

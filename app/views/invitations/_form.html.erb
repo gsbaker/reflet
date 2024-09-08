@@ -1,4 +1,4 @@
-<%= form_with(model: invitation) do |form| %>
+<%= form_with(model: invitation, class: "vstack") do |form| %>
   <% if invitation.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
@@ -12,21 +12,11 @@
   <% end %>
 
   <div>
-    <%= form.label :therapist_id, style: "display: block" %>
-    <%= form.text_field :therapist_id %>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
   </div>
 
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Invite", class: "btn" %>
   </div>
 <% end %>

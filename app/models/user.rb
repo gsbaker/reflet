@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  self.inheritance_column = :type
+
   has_secure_password
 
   validates :email, presence: true, uniqueness: true
@@ -14,7 +16,14 @@ class User < ApplicationRecord
     email
   end
 
+  has_many :sent_invitations, class_name: "Invitation", foreign_key: :inviter_id
+  has_many :received_invitations, class_name: "Invitation", foreign_key: :invitee_id
+
   def to_s
     name
+  end
+
+  def pending_invitations
+    received_invitations.where(status: :sent)
   end
 end

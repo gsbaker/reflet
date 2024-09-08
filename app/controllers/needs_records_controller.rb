@@ -1,33 +1,23 @@
 class NeedsRecordsController < ApplicationController
   before_action :set_needs_record, only: %i[ show edit update destroy ]
 
-  # GET /needs_records or /needs_records.json
   def index
     @needs_records = current_user.needs_records
   end
 
-  # GET /needs_records/1 or /needs_records/1.json
   def show
-    @rating = @needs_record.ratings.unrated.first
+    @rating = @needs_record.ratings.where(status: nil).first
+
+    return unless @rating.nil? && @needs_record.in_progress?
+
+    @needs_record.update! status: :completed
   end
 
-  # GET /needs_records/new
-  def new
-    @needs_record = current_user.needs_records.build
-    @rating = @needs_record.ratings.first
-  end
-
-  # GET /needs_records/1/edit
-  def edit
-  end
-
-  # POST /needs_records or /needs_records.json
   def create
     @needs_record = current_user.needs_records.build
-
     respond_to do |format|
       if @needs_record.save
-        format.html { redirect_to needs_record_url(@needs_record), notice: "needs_record was successfully created." }
+        format.html { redirect_to needs_record_url @needs_record }
         format.json { render :show, status: :created, location: @needs_record }
       else
         format.html { render :new, status: :unprocessable_entity }

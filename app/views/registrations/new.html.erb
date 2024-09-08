@@ -33,6 +33,27 @@
       </div>
 
       <div>
+        <%= form.label :type, "Account type" %>
+
+        <div class="reflet-radio__group">
+          <div class="reflet-radio__border-bottom">
+            <%= form.label :type, for: "type_individual", class: "reflet-radio" do %>
+              Individual
+              <%= form.radio_button :type, "Individual", id: "type_individual" %>
+              <span class="checkmark"></span>
+            <% end %>
+          </div>
+
+          <%= form.label :type, for: "type_therapist", class: "reflet-radio" do %>
+            Therapist
+            <%= form.radio_button :type, "Therapist", id: "type_therapist" %>
+            <span class="checkmark"></span>
+            <div class="reflet-radio__info">£10/month</div>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
         <%= form.submit "Continue", class: "btn" %>
       </div>
     <% end %>

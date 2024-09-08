@@ -1,0 +1,22 @@
+<%= form_with model: @rating do |f| %>
+  <% if @rating.errors.any? %>
+    <div class="validation-error">
+      <% @rating.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  <% end %>
+
+<div class="vstack">
+  <% NeedRating.statuses.each do |status_key, status_value| %>
+    <%= f.label :status, status_key, for: "rating_#{status_value}", class: "reflet-radio" do %>
+      <%= status_key.humanize %>
+      <%= f.radio_button :status, status_key, id: "rating_#{status_value}", required: true %>
+      <span class="checkmark"></span>
+    <% end %>
+  <% end %>
+</div>
+
+<%= f.submit "Continue", class: "btn" %>
+
+<% end %>

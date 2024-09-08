@@ -1,0 +1,8 @@
+<% invitations.each do |invitation| %>
+  <p><%= invitation.inviter.name %></p>
+  <p>
+    <%= link_to "Accept", accept_invitation_path(invitation), data: { turbo_method: :patch } %> |
+    <%= link_to "Decline", decline_invitation_path(invitation), data: { turbo_method: :patch } %>
+  </p>
+
+<% end %>

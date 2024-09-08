@@ -1,15 +1,9 @@
 <nav>
-  <ul>
-    <li>
-      <%= link_to "Dashboard", root_path %>
-    </li>
-    <li>
-      <%= link_to "Needs Records", needs_records_path %>
-    </li>
-    <li>
-      <%= link_to "Thought Records", thought_records_path %>
-    </li>
-  </ul>
+  <% if current_user.is_a?(Individual) %>
+    <%= render "individuals/navbar" %>
+  <% elsif current_user.is_a?(Therapist) %>
+    <%= render "therapists/navbar" %>
+  <% end %>
   <ul>
     <li>
       <%= link_to current_user, user_path(current_user) %>

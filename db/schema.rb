@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_04_103000) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
+ActiveRecord::Schema[7.1].define(version: 2024_09_07_155800) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -53,13 +50,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_103000) do
   end
 
   create_table "invitations", force: :cascade do |t|
-    t.bigint "therapist_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "inviter_id", null: false
+    t.integer "invitee_id", null: false
     t.string "status", default: "sent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["therapist_id"], name: "index_invitations_on_therapist_id"
-    t.index ["user_id"], name: "index_invitations_on_user_id"
+    t.index ["invitee_id"], name: "index_invitations_on_invitee_id"
+    t.index ["inviter_id"], name: "index_invitations_on_inviter_id"
+  end
+
+  create_table "need_ratings", force: :cascade do |t|
+    t.integer "needs_record_id", null: false
+    t.integer "need_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status"
+    t.index ["need_id"], name: "index_need_ratings_on_need_id"
+    t.index ["needs_record_id"], name: "index_need_ratings_on_needs_record_id"
   end
 
   create_table "needs", force: :cascade do |t|
@@ -70,40 +77,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_103000) do
   end
 
   create_table "needs_records", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status", null: false
     t.datetime "completed_at"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_needs_records_on_user_id"
   end
 
-  create_table "ratings", force: :cascade do |t|
-    t.bigint "needs_record_id", null: false
-    t.bigint "need_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "title"
-    t.index ["need_id"], name: "index_ratings_on_need_id"
-    t.index ["needs_record_id"], name: "index_ratings_on_needs_record_id"
-  end
-
   create_table "therapies", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "therapist_id", null: false
+    t.integer "individual_id", null: false
+    t.integer "therapist_id", null: false
     t.datetime "started_at"
     t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["individual_id"], name: "index_therapies_on_individual_id"
     t.index ["therapist_id"], name: "index_therapies_on_therapist_id"
-    t.index ["user_id"], name: "index_therapies_on_user_id"
   end
 
   create_table "thought_records", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title", null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.index ["user_id"], name: "index_thought_records_on_user_id"
   end
 
@@ -118,12 +115,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_04_103000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "invitations", "users"
-  add_foreign_key "invitations", "users", column: "therapist_id"
+  add_foreign_key "invitations", "users", column: "invitee_id"
+  add_foreign_key "invitations", "users", column: "inviter_id"
+  add_foreign_key "need_ratings", "needs"
+  add_foreign_key "need_ratings", "needs_records"
   add_foreign_key "needs_records", "users"
-  add_foreign_key "ratings", "needs"
-  add_foreign_key "ratings", "needs_records"
-  add_foreign_key "therapies", "users"
+  add_foreign_key "therapies", "users", column: "individual_id"
   add_foreign_key "therapies", "users", column: "therapist_id"
   add_foreign_key "thought_records", "users"
 end

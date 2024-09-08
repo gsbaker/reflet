@@ -1,11 +1,11 @@
 module NeedsRecordsHelper
   def need_color_class(rating)
     color_classes = {
-      "Rarely Met" => "need--rare",
-      "Sometimes Met" => "need--sometimes",
-      "Consistently Met" => "need--consistent"
-    }
+      rare: "need--rare",
+      sometimes: "need--sometimes",
+      consistent: "need--consistent"
+    }.stringify_keys
 
-    color_classes[rating.title]
+    color_classes[rating.status]
   end
 end

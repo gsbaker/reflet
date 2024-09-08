@@ -1,6 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Therapies</h1>
+<h1>Therapy</h1>
+
+<% if current_user.pending_invitations.present? %>
+  <h2>Invitations</h2>
+  <%= render "invitations/received", invitations: current_user.pending_invitations %>
+<% end %>
+
+<hr>
+
+<h2>Therapies</h2>
 
 <div id="therapies">
   <% @therapies.each do |therapy| %>
@@ -8,7 +17,8 @@
     <p>
       <%= link_to "Show this therapy", therapy %>
     </p>
+    <hr>
   <% end %>
 </div>
 
-<%= link_to "New therapy", new_therapy_path %>
+<%= link_to "Connect with a therapist", new_invitation_path %>
