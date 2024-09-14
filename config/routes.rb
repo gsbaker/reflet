@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :therapies
   resources :thought_records
   resources :need_ratings
   resources :needs_records
@@ -18,8 +17,13 @@ Rails.application.routes.draw do
   root to: "users#dashboard"
 
   resources :users
-  resources :therapists do
-    resources :clients
+
+  resources :clients
+
+  resources :therapies do
+    member do
+      patch :upload_attachments
+    end
   end
 
   resource :registration

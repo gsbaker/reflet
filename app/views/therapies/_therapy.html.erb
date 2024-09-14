@@ -1,22 +1,16 @@
-<div id="<%= dom_id therapy %>">
-  <p>
-    <strong>Individual:</strong>
-    <%= therapy.individual_id %>
-  </p>
+<div id="<%= dom_id therapy %>" class="therapy-summary">
+  <%= relation(current_user, therapy) %>
 
   <p>
-    <strong>Therapist:</strong>
-    <%= therapy.therapist_id %>
+    <strong>Started:</strong>
+    <%= therapy.started_date %>
   </p>
 
-  <p>
-    <strong>Started at:</strong>
-    <%= therapy.started_at %>
-  </p>
-
-  <p>
-    <strong>Completed at:</strong>
-    <%= therapy.completed_at %>
-  </p>
+  <% if therapy.completed_at.present? %>
+    <p>
+      <strong>Completed at:</strong>
+      <%= therapy.completed_at %>
+    </p>
+  <% end %>
 
 </div>

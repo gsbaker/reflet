@@ -1,25 +1,20 @@
 class TherapiesController < ApplicationController
-  before_action :set_therapy, only: %i[ show edit update destroy ]
+  before_action :set_therapy, only: %i[ show edit update destroy upload_attachments ]
 
-  # GET /therapies or /therapies.json
   def index
     @therapies = current_user.therapies
   end
 
-  # GET /therapies/1 or /therapies/1.json
   def show
   end
 
-  # GET /therapies/new
   def new
     @therapy = Therapy.new
   end
 
-  # GET /therapies/1/edit
   def edit
   end
 
-  # POST /therapies or /therapies.json
   def create
     @therapy = Therapy.new(therapy_params)
 
@@ -34,7 +29,6 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /therapies/1 or /therapies/1.json
   def update
     respond_to do |format|
       if @therapy.update(therapy_params)
@@ -47,7 +41,23 @@ class TherapiesController < ApplicationController
     end
   end
 
-  # DELETE /therapies/1 or /therapies/1.json
+  def upload_attachments
+    @therapy.assign_attributes(therapy_params)
+
+    @therapy.attachments.each do |attachment|
+      attachment.uploaded_by_id ||= current_user.id
+    end
+
+    respond_to do |format|
+      if @therapy.save
+        format.turbo_stream { render :upload_attachments }
+        format.html { redirect_to therapy_url(@therapy) }
+      else
+        render :show, status: :unprocessable_entity
+      end
+    end
+  end
+
   def destroy
     @therapy.destroy!
 
@@ -58,13 +68,12 @@ class TherapiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_therapy
-      @therapy = Therapy.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def therapy_params
-      params.require(:therapy).permit(:user_id, :therapist_id, :started_at, :completed_at)
-    end
+  def set_therapy
+    @therapy = current_user.therapies.find(params[:id])
+  end
+
+  def therapy_params
+    params.require(:therapy).permit(:completed_at, attachments: [])
+  end
 end

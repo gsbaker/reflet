@@ -4,15 +4,15 @@
 <% end %>
 
 <h1>Clients</h1>
-<%= link_to "Add new client", new_invitation_path %>
+<div class="vstack">
+  <%= link_to "Add new client", new_invitation_path, class: "btn" %>
+  <h2>Active</h2>
+<% @clients.each do |client| %>
+  <%= link_to client.name, client_path(client) %>
+<% end %>
+</div>
 
-<% if @clients.present? %>
-  <%= @clients.each do |client| %>
-    <div>
-      <%= client.name %>
-      <%= link_to "View", client %>
-    </div>
-  <% end %>
-<% else %>
+
+<% if @clients.empty? %>
   <p>No clients yet.</p>
 <% end %>

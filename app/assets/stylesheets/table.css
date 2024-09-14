@@ -1,0 +1,48 @@
+.table-container {
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+table {
+  background-color: white;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+thead {
+  border-bottom: 1px solid lightgrey;
+
+  th {
+    text-align: left;
+  }
+
+}
+.attachments-table {
+  th:nth-child(1) {
+    width: 15%;
+  }
+
+  th:nth-child(2) {
+    width: 55%;
+  }
+
+  th:nth-child(3) {
+    width: 15%;
+  }
+
+  th:nth-child(4) {
+    width: 15%;
+  }
+}
+
+th, td {
+  padding: 10px;
+}
+
+tr {
+  &:not(:last-child) {
+    border-bottom: 1px solid lightgrey;
+  }
+}

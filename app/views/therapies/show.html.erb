@@ -1,10 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<div class="vstack">
+  <%= link_to "< Back", therapies_path, class: "btn btn--secondary" %>
 
-<%= render @therapy %>
+  <%= render @therapy %>
 
-<div>
-  <%= link_to "Edit this therapy", edit_therapy_path(@therapy) %> |
-  <%= link_to "Back to therapies", therapies_path %>
+  <%= render "attachments" %>
 
-  <%= button_to "Destroy this therapy", @therapy, method: :delete %>
+  <div class="hstack">
+    <div>
+      <%= link_to "Edit", edit_therapy_path(@therapy), class: "btn" %>
+    </div>
+    <div>
+      <%= button_to "Delete", @therapy, method: :delete, class: "btn--destructive" %>
+    </div>
+  </div>
 </div>

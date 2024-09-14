@@ -1,0 +1,33 @@
+<div class="table-container">
+  <table class="attachments-table">
+    <thead>
+      <tr>
+        <th class="screen-reader-text">File icon</th>
+        <th>File name</th>
+        <th>Uploaded on</th>
+        <th>Uploaded by</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% attachments.each do |attachment| %>
+        <tr>
+          <td>
+            <span class="screen-reader-text">
+              <%= attachment.filename.extension_with_delimiter %>
+            </span>
+            <%= attachment.filename.extension_with_delimiter %>
+          </td>
+          <td>
+            <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>
+          </td>
+          <td>
+            <%= attachment.created_at.strftime("%b %d, %Y") %>
+          </td>
+          <td>
+            <%= User.find(attachment.uploaded_by_id).name %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

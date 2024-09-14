@@ -1,0 +1,10 @@
+<div id="attachments" class="vstack">
+  <h2>Attachments</h2>
+  <%= form_with model: @therapy, url: upload_attachments_therapy_path(@therapy) do |f| %>
+    <%= render "attachments/form", f:, attachments: @therapy.attachments %>
+  <% end %>
+
+  <% if @therapy.attachments.any? %>
+    <%= render "attachments/table", attachments: @therapy.attachments %>
+  <% end %>
+</div>

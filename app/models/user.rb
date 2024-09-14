@@ -26,4 +26,12 @@ class User < ApplicationRecord
   def pending_invitations
     received_invitations.where(status: :sent)
   end
+
+  def therapist?
+    is_a?(Therapist)
+  end
+
+  def individual?
+    is_a?(Individual)
+  end
 end

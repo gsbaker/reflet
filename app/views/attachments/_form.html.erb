@@ -1,0 +1,9 @@
+<%= content_tag :div, class: "hstack" do %>
+  <% attachments.each do |attachment| %>
+    <%= f.hidden_field :attachments, multiple: true, value: attachment.signed_id %>
+  <% end %>
+
+  <%= f.file_field :attachments, multiple: true %>
+
+  <%= f.submit "Upload", class: "btn" %>
+<% end %>

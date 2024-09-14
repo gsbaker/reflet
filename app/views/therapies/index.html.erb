@@ -1,24 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Therapy</h1>
+<h1><%= "Therapy".pluralize(@therapies.count) %></h1>
 
-<% if current_user.pending_invitations.present? %>
+<% if current_user.pending_invitations.any? %>
   <h2>Invitations</h2>
   <%= render "invitations/received", invitations: current_user.pending_invitations %>
 <% end %>
 
-<hr>
-
-<h2>Therapies</h2>
-
 <div id="therapies">
   <% @therapies.each do |therapy| %>
-    <%= render therapy %>
-    <p>
-      <%= link_to "Show this therapy", therapy %>
-    </p>
-    <hr>
+    <%= link_to therapy do %>
+      <%= render therapy %>
+    <% end %>
   <% end %>
 </div>
 
-<%= link_to "Connect with a therapist", new_invitation_path %>
+<% if current_user.individual? %>
+  <%= link_to "Connect with a therapist", new_invitation_path %>
+<% end %>

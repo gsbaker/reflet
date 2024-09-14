@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:dashboard]
+  before_action :authenticate_user!
   before_action :set_user
 
   def dashboard
