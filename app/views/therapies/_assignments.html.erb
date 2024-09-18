@@ -1,0 +1,6 @@
+<h2>Assignments</h2>
+<% assignments.each do |assignment| %>
+  <% if assignment.assignable.present? %>
+    <%= assignment.assignable.try(:title) %>
+  <% end %>
+<% end %>

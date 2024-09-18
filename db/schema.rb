@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_14_174013) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_18_213632) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_14_174013) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "assignments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "therapy_id"
+    t.integer "cadence", default: 0
+    t.integer "assignable_id"
+    t.string "assignable_type"
+    t.index ["assignable_id", "assignable_type"], name: "index_assignments_on_assignable_id_and_assignable_type"
+  end
+
   create_table "invitations", force: :cascade do |t|
     t.integer "inviter_id", null: false
     t.integer "invitee_id", null: false
@@ -87,6 +97,33 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_14_174013) do
     t.index ["user_id"], name: "index_needs_records_on_user_id"
   end
 
+  create_table "questionnaires", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "completed_at"
+    t.text "description"
+    t.string "slug"
+    t.index ["slug"], name: "index_questionnaires_on_slug", unique: true
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer "questionnaire_id", null: false
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer "question_id", null: false
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "assignment_id"
+    t.index ["question_id"], name: "index_responses_on_question_id"
+  end
+
   create_table "therapies", force: :cascade do |t|
     t.integer "individual_id", null: false
     t.integer "therapist_id", null: false
@@ -118,11 +155,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_14_174013) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_attachments", "users", column: "uploaded_by_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "assignments", "therapies"
   add_foreign_key "invitations", "users", column: "invitee_id"
   add_foreign_key "invitations", "users", column: "inviter_id"
   add_foreign_key "need_ratings", "needs"
   add_foreign_key "need_ratings", "needs_records"
   add_foreign_key "needs_records", "users"
+  add_foreign_key "questions", "questionnaires"
+  add_foreign_key "responses", "assignments"
+  add_foreign_key "responses", "questions"
   add_foreign_key "therapies", "users", column: "individual_id"
   add_foreign_key "therapies", "users", column: "therapist_id"
   add_foreign_key "thought_records", "users"

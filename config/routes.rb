@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :clients
+  resources :resources, only: %i[index update]
+  resources :questionnaires, only: %i[show], param: :slug
+  resources :assignments
 
   resources :therapies do
     member do

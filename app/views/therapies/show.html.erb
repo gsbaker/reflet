@@ -5,6 +5,8 @@
 
   <%= render "attachments" %>
 
+  <%= render "assignments", assignments: @assignments if @assignments.any? %>
+
   <div class="hstack">
     <div>
       <%= link_to "Edit", edit_therapy_path(@therapy), class: "btn" %>
