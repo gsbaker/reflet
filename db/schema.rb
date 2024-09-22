@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_18_213632) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_21_160822) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_18_213632) do
     t.integer "cadence", default: 0
     t.integer "assignable_id"
     t.string "assignable_type"
+    t.datetime "completed_at"
     t.index ["assignable_id", "assignable_type"], name: "index_assignments_on_assignable_id_and_assignable_type"
   end
 
@@ -101,7 +102,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_18_213632) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "completed_at"
     t.text "description"
     t.string "slug"
     t.index ["slug"], name: "index_questionnaires_on_slug", unique: true
@@ -112,6 +112,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_18_213632) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "response_options"
     t.index ["questionnaire_id"], name: "index_questions_on_questionnaire_id"
   end
 

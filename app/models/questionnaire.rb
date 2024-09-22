@@ -1,11 +1,10 @@
 class Questionnaire < ApplicationRecord
+  include Assignable
+
   has_many :questions
   has_many :assignments, as: :assignable
 
-  validates :title, presence: true, uniqueness: true
-
   before_save :generate_slug
-  before_update :mark_completed
 
   def to_param
     slug
@@ -15,13 +14,13 @@ class Questionnaire < ApplicationRecord
     completed_at.present?
   end
 
+  def unanswered_questions(assignment)
+    questions.where.not(id: assignment.responses.select(:question_id))
+  end
+
   private
 
   def generate_slug
     self.slug = title.parameterize
-  end
-
-  def mark_completed
-    self.completed_at ||= Time.zone.now if questions.all?(&:answered?)
   end
 end

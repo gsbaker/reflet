@@ -21,10 +21,20 @@ gad7_questionnaire = Questionnaire.find_or_create_by!(
   description: "Over the last two weeks, how often have you been bothered by any of the following problems?"
 )
 
-gad7questions = YAML.load_file("db/seeds/gad7.yml")
+gad7_questions = YAML.load_file("db/seeds/gad7.yml")
 
-gad7questions.each do |question|
-  gad7_questionnaire.questions.find_or_create_by!(title: question["title"])
+gad7_response_options = {
+  0 => "Not at all",
+  1 => "Several days",
+  2 => "More than half the days",
+  3 => "Nearly every day"
+}
+
+gad7_questions.each do |question|
+  gad7_questionnaire.questions.find_or_create_by!(
+    title: question["title"],
+    response_options: gad7_response_options
+  )
 end
 
 load(Rails.root.join("db", "seeds", "#{Rails.env.downcase}.rb"))

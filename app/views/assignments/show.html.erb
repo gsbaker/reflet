@@ -1,0 +1,47 @@
+<h1><%= @questionnaire.title %></h1>
+
+<p class="large-text"><%= @questionnaire.description %></p>
+
+<% if current_user.therapist? %>
+  <% if @assignment.completed? %>
+    <p>Assignment completed</p>
+    <div class="card">
+      <% @questionnaire.questions.each do |question| %>
+        <p>
+        <strong><%= question.title %></strong><br>
+        <%= Response.find_by(question:, assignment: @assignment).content %>
+        </p>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Assignment not yet completed</p>
+    <%= button_to "Cancel assignment", assignment_path(@assignment), method: :delete, class: "btn--destructive" %>
+  <% end %>
+
+<% elsif current_user.individual? %>
+  <% if @assignment.completed? %>
+    <div class="card">
+      <% @questionnaire.questions.each do |question| %>
+        <p>
+        <strong><%= question.title %></strong><br>
+        <%= Response.find_by(question:, assignment: @assignment).content %>
+        </p>
+      <% end %>
+    </div>
+  <% else %>
+  <%= form_with model: @response do |f| %>
+    <p><%= @question.title %></p>
+    <%= f.hidden_field :question_id, value: @question.id %>
+    <%= f.hidden_field :assignment_id, value: @assignment.id %>
+
+    <% @question.response_options.each do |key, value| %>
+      <%= f.label :content, for: "response_#{key}", class: "reflet-radio" do %>
+        <%= value %>
+        <%= f.radio_button :content, value, id: "response_#{key}", required: true %>
+        <span class="checkmark"></span>
+      <% end %>
+    <% end %>
+    <%= f.submit "Next", class: "btn" %>
+  <% end %>
+<% end %>
+<% end %>

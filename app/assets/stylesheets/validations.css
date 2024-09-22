@@ -2,8 +2,9 @@
   background-color: var(--accent-red);
   border: 1px solid var(--text-red);
   color: var(--text-red);
-  padding: 5px 20px;
+  padding: 15px;
   margin-bottom: 10px;
+  border-radius: 10px;
 
   .validation-title {
     font-weight: bold;

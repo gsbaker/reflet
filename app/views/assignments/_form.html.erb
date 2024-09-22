@@ -1,0 +1,32 @@
+<% if @assignment.errors.any? %>
+  <div class="validation-error">
+    <% @assignment.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= f.hidden_field :assignable_id, value: @assignment.assignable_id %>
+<%= f.hidden_field :assignable_type, value: @assignment.assignable_type %>
+
+<p>Select a client</p>
+
+<% current_user.therapies.each do |therapy| %>
+  <%= f.label :therapy_id, for: "assignment_therapy_id_#{therapy.id}", class: "reflet-radio" do %>
+    <%= therapy.client.name %>
+    <%= f.radio_button :therapy_id, therapy.id, required: true %>
+    <span class="checkmark"></span>
+  <% end %>
+<% end %>
+
+<p>Select cadence</p>
+
+<% Assignment.cadences.keys.each do |cadence| %>
+  <%= f.label :cadence, for: "assignment_cadence_#{cadence}", class: "reflet-radio" do %>
+    <%= Assignment.humanized_cadence(cadence) %>
+    <%= f.radio_button :cadence, cadence, required: true %>
+    <span class="checkmark"></span>
+  <% end %>
+<% end %>
+
+<%= f.submit "Assign", class: "btn" %>

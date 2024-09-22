@@ -1,5 +1,8 @@
 class Assignment < ApplicationRecord
   belongs_to :therapy
+  has_one :assignee, through: :therapy, source: :client
+  has_one :assigner, through: :therapy, source: :therapist
+
   belongs_to :assignable, polymorphic: true
 
   has_many :responses
@@ -7,6 +10,12 @@ class Assignment < ApplicationRecord
   enum cadence: %i[no_repeat one_week two_weeks one_month]
 
   validates :cadence, presence: true
+  validates :assignable, presence: true
+
+  validate :validate_no_duplicate_open_assignments
+
+  scope :open, -> { where(completed_at: nil) }
+  scope :completed, -> { where.not(completed_at: nil) }
 
   after_initialize do
     self.cadence ||= :no_repeat
@@ -26,14 +35,26 @@ class Assignment < ApplicationRecord
   end
 
   def open?
-    questionnaire.present? && !completed?
+    assignable.present? && !completed?
   end
 
   def completed?
-    if assignable.is_a?(Questionnaire)
-      Assignments::QuestionnaireProgress.new(self).completed?
-    else
-      false
-    end
+    assignable.questions.count == responses.count
+  end
+
+  def mark_completed
+    return unless completed? && completed_at.nil?
+
+    update(completed_at: DateTime.current)
+  end
+
+  private
+
+  def validate_no_duplicate_open_assignments
+    existing_assignment = assignee.assignments.open.find_by(assignable:)
+
+    return unless existing_assignment.present? && existing_assignment.responses.empty?
+
+    errors.add(:base, "#{assignee.name} already has an assignment for #{assignable.title} which they haven't started")
   end
 end

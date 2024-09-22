@@ -1,35 +1,32 @@
 class AssignmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_assignment, only: %i[show update destroy]
+  before_action :set_assignment, only: %i[show destroy]
 
   def index
     @assignments = current_user.assignments
   end
 
   def show
-  end
+    return unless @assignment.assignable.is_a? Questionnaire
 
-  def create
-    @assignment = Assignment.build(assignment_params)
-
-    if @assignment.save!
-      redirect_to therapy_path(@assignment.therapy)
-    else
-      render "questionnaires/show", status: :unprocessable_entity
-    end
+    @questionnaire = @assignment.assignable
+    @question = @questionnaire.unanswered_questions(@assignment)&.first
+    @response = @assignment.responses.build if @question.present?
   end
 
   def update
+    @assignment = Assignment.find(params[:id])
   end
 
   def destroy
+    return unless current_user.therapist?
+
+    @assignment.destroy
+
+    redirect_to therapy_path(@assignment.therapy)
   end
 
   private
-
-  def assignment_params
-    params.require(:assignment).permit(:therapy_id, :assignable_id, :assignable_type, :cadence)
-  end
 
   def set_assignment
     @assignment = Assignment.find(params[:id])
