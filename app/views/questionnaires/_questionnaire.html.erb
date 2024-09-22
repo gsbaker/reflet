@@ -1,8 +1,10 @@
+<div class="card">
 <h1><%= questionnaire.title %></h1>
-<p><%= questionnaire.description %></p>
+<p class="large-text"><%= questionnaire.description %></p>
 
 <ul>
   <% questionnaire.questions.each do |question| %>
     <li><%= question.title %></li>
   <% end %>
 </ul>
+</div>

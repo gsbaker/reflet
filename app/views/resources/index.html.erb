@@ -3,5 +3,5 @@
 <h2>Questionnaires</h2>
 
 <% @questionnaires.each do |questionnaire| %>
-  <%= link_to questionnaire.title, questionnaire_path(questionnaire) %>
+  <p><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></p>
 <% end %>
