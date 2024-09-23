@@ -1,0 +1,13 @@
+<h2>Notes</h2>
+<div>
+  <%= link_to "Create note", new_therapy_note_path(@therapy) %>
+</div>
+<div>
+  <% if @therapy.notes.any? %>
+    <div class="card">
+      <% @therapy.notes.each do |note| %>
+        <p><%= link_to "Session #{note.date}", therapy_note_path(@therapy, note) %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_21_160822) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_22_105324) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -98,6 +98,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_21_160822) do
     t.index ["user_id"], name: "index_needs_records_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.integer "therapy_id", null: false
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["therapy_id"], name: "index_notes_on_therapy_id"
+  end
+
   create_table "questionnaires", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
@@ -162,6 +170,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_21_160822) do
   add_foreign_key "need_ratings", "needs"
   add_foreign_key "need_ratings", "needs_records"
   add_foreign_key "needs_records", "users"
+  add_foreign_key "notes", "therapies"
   add_foreign_key "questions", "questionnaires"
   add_foreign_key "responses", "assignments"
   add_foreign_key "responses", "questions"

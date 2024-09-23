@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     member do
       patch :upload_attachments
     end
+
+    resources :notes
   end
 
   resource :registration

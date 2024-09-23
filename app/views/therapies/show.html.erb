@@ -1,18 +1,18 @@
 <div class="vstack">
-  <%= link_to "< Back", therapies_path, class: "btn btn--secondary" %>
+  <div>
+    <p>
+    <%= link_to "Therapies", therapies_path %> &gt; <%= @therapy.client %>
+    </p>
+  </div>
 
   <%= render @therapy %>
+
+  <% if current_user.therapist? %>
+    <%= render "notes" %>
+  <% end %>
 
   <%= render "attachments" %>
 
   <%= render "assignments", assignments: @assignments if @assignments.any? %>
 
-  <div class="hstack">
-    <div>
-      <%= link_to "Edit", edit_therapy_path(@therapy), class: "btn" %>
-    </div>
-    <div>
-      <%= button_to "Delete", @therapy, method: :delete, class: "btn--destructive" %>
-    </div>
-  </div>
 </div>
