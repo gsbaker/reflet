@@ -17,6 +17,8 @@ class Assignment < ApplicationRecord
   scope :open, -> { where(completed_at: nil) }
   scope :completed, -> { where.not(completed_at: nil) }
 
+  after_create :schedule_recurring_assignment, unless: -> { no_repeat? }
+
   after_initialize do
     self.cadence ||= :no_repeat
   end
@@ -56,5 +58,20 @@ class Assignment < ApplicationRecord
     return unless existing_assignment.present? && existing_assignment.responses.empty?
 
     errors.add(:base, "#{assignee.name} already has an assignment for #{assignable.title} which they haven't started")
+  end
+
+  def schedule_recurring_assignment
+    RecurAssignmentJob.set(wait_until: next_recurs).perform_later(self)
+  end
+
+  def next_recurs
+    case cadence
+    when "one_week"
+      1.week.from_now
+    when "two_weeks"
+      2.weeks.from_now
+    when "one_month"
+      1.month.from_now
+    end
   end
 end
