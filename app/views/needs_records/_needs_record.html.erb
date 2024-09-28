@@ -1,7 +1,25 @@
-<% needs_record.ratings.map(&:status).uniq.each do |status| %>
-  <h3><%= status.humanize %></h3>
+<% if needs_record.ratings.where(status: :consistent).any? %>
+  <h3>Consistently met</h3>
   <div class="card needs-record-summary">
-    <% needs_record.ratings.where(status:).each do |rating| %>
+    <% needs_record.ratings.where(status: :consistent).each do |rating| %>
+      <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if needs_record.ratings.where(status: :sometimes).any? %>
+  <h3>Sometimes met</h3>
+  <div class="card needs-record-summary">
+    <% needs_record.ratings.where(status: :sometimes).each do |rating| %>
+      <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<% if needs_record.ratings.where(status: :rare).any? %>
+  <h3>Rarely met</h3>
+  <div class="card needs-record-summary">
+    <% needs_record.ratings.where(status: :rare).each do |rating| %>
       <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
     <% end %>
   </div>

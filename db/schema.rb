@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_22_105324) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_28_151340) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_22_105324) do
     t.datetime "updated_at", null: false
     t.datetime "completed_at"
     t.integer "status", default: 0
+    t.integer "therapy_id"
     t.index ["user_id"], name: "index_needs_records_on_user_id"
   end
 
@@ -169,6 +170,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_22_105324) do
   add_foreign_key "invitations", "users", column: "inviter_id"
   add_foreign_key "need_ratings", "needs"
   add_foreign_key "need_ratings", "needs_records"
+  add_foreign_key "needs_records", "therapies"
   add_foreign_key "needs_records", "users"
   add_foreign_key "notes", "therapies"
   add_foreign_key "questions", "questionnaires"

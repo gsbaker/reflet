@@ -7,6 +7,7 @@ class TherapiesController < ApplicationController
 
   def show
     @assignments = @therapy.assignments
+    @needs_records = @therapy.needs_records
   end
 
   def new

@@ -7,13 +7,19 @@
 }
 
 .need--rare {
-  background-color: #FFD6D6;
+  background-color: var(--accent-red);
 }
 
 .need--sometimes {
-  background-color: #FEE7D7;
+  background-color: var(--accent-orange);
 }
 
 .need--consistent {
-  background-color: #D6FFD6;
+  background-color: var(--accent-green);
+}
+
+.needs-record-summary {
+  display: flex;
+  flex-wrap: wrap;
+  background: none;
 }

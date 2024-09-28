@@ -1,5 +1,5 @@
 class NeedsRecordsController < ApplicationController
-  before_action :set_needs_record, only: %i[ show edit update destroy ]
+  before_action :set_needs_record, only: %i[ show edit update destroy unshare ]
 
   def index
     @needs_records = current_user.needs_records
@@ -30,13 +30,18 @@ class NeedsRecordsController < ApplicationController
   def update
     respond_to do |format|
       if @needs_record.update(needs_record_params)
-        format.html { redirect_to needs_record_url(@needs_record), notice: "needs_record was successfully updated." }
+        format.html { redirect_to needs_record_url(@needs_record) }
         format.json { render :show, status: :ok, location: @needs_record }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @needs_record.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def unshare
+    @needs_record.update_column :therapy_id, nil
+    render :show, status: :ok, location: @needs_record
   end
 
   # DELETE /needs_records/1 or /needs_records/1.json
@@ -57,6 +62,6 @@ class NeedsRecordsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def needs_record_params
-      params.require(:needs_record).permit(:user_id)
+      params.require(:needs_record).permit(:user_id, :therapy_id)
     end
 end

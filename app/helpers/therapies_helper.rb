@@ -11,4 +11,13 @@ module TherapiesHelper
       end
     end
   end
+
+  def path_for_needs_record(current_user, needs_record)
+    case current_user
+    when Individual
+      needs_record_path(needs_record)
+    when Therapist
+      therapy_needs_record_path(needs_record)
+    end
+  end
 end

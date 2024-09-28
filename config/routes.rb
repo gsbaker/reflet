@@ -7,8 +7,15 @@ Rails.application.routes.draw do
   end
 
   resources :thought_records
+
   resources :need_ratings
-  resources :needs_records
+
+  resources :needs_records do
+    member do
+      patch :unshare
+    end
+  end
+
   resources :needs
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -31,6 +38,7 @@ Rails.application.routes.draw do
   resources :responses, only: %i[create update]
 
   resources :therapies do
+    resources :needs_records, only: [:show], module: :therapies
     member do
       patch :upload_attachments
     end

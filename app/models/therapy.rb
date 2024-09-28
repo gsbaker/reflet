@@ -9,6 +9,7 @@ class Therapy < ApplicationRecord
 
   has_many :assignments
   has_many :notes
+  has_many :needs_records
 
   validates :started_at, presence: true
 

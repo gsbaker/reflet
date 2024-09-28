@@ -5,6 +5,7 @@ class NeedsRecord < ApplicationRecord
 
   has_many :needs, dependent: :destroy
   has_many :ratings, class_name: "NeedRating"
+  belongs_to :therapy
 
   scope :latest, -> { order(created_at: :desc) }
 

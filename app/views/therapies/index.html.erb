@@ -7,11 +7,13 @@
   <%= render "invitations/received", invitations: current_user.pending_invitations %>
 <% end %>
 
-<div id="therapies">
+<div id="therapies" class="vstack">
   <% @therapies.each do |therapy| %>
-    <%= link_to therapy do %>
-      <%= render therapy %>
-    <% end %>
+    <div>
+      <%= link_to therapy do %>
+        <%= render therapy %>
+      <% end %>
+    </div>
   <% end %>
 </div>
 
