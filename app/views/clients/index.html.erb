@@ -1,18 +1,22 @@
-<% if @sent_invitations.present? %>
-  <h1>Invitations</h1>
-  <%= render @sent_invitations %>
-<% end %>
 
 <h1>Clients</h1>
-<div class="vstack">
-  <%= link_to "Add new client", new_invitation_path, class: "btn" %>
-  <h2>Active</h2>
-<% @clients.each do |client| %>
-  <%= link_to client.name, client_path(client) %>
-<% end %>
-</div>
 
+<% if @clients.any? %>
+  <div class="vstack">
+    <%= link_to "Invite a new client", new_invitation_path, class: "btn-exp" %>
+    <h2>Active</h2>
+    <% @clients.each do |client| %>
+      <%= link_to client.name, client_path(client) %>
+    <% end %>
+    <% if @sent_invitations.present? %>
+      <div>
+        <h2>Invited</h2>
+        <p><strong>Invitations</strong></p>
+        <%= render @sent_invitations %>
+      </div>
+    <% end %>
+  </div>
 
-<% if @clients.empty? %>
+<% else %>
   <p>No clients yet.</p>
 <% end %>

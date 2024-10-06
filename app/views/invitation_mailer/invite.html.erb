@@ -1,0 +1,7 @@
+<p>Dear Sir/Madam,</p>
+
+<p>Your therapist <%= @invitation.invitee.name %> has invited you to set up an account on Reflet</p>
+
+<p>Click on the link below to create your account:</p>
+
+<p><%= link_to "Create your account", new_registrations_path(inviter_id: @invitation.inviter.id, client_email:@invitation.invitee_email) %></p>

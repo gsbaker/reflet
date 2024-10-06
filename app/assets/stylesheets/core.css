@@ -1,5 +1,21 @@
+@font-face {
+  font-family: "Palatino";
+  src: url("/fonts/Palatino.woff2") format("woff2");
+}
+
+@font-fact {
+  font-family: "Bogart Trial";
+  src: url("/fonts/Bogart-Regular-trial.woff2") format("woff2");
+}
+
+h1, h2, h3, h4 {
+  font-family: "Bogart Trial", sans-serif;
+  font-weight: 500;
+}
+
+
 body {
-  font-family: var(--font-stack);
+  font-family: Palatino, sans-serif;
   background-color: var(--bg-color);
   margin: 0;
 }

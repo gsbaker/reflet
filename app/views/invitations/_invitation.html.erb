@@ -1,16 +1,3 @@
 <div id="<%= dom_id invitation %>">
-  <p>
-    <strong>Inviter:</strong>
-    <%= invitation.inviter %>
-  </p>
-
-  <p>
-    <strong>Invitee:</strong>
-    <%= invitation.invitee %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= invitation.status %>
-  </p>
+  <p><%= invitation.email_for_invitee %> (<%= invitation.status %>)</p>
 </div>

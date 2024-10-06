@@ -21,11 +21,31 @@ class InvitationsController < ApplicationController
 
   # POST /invitations or /invitations.json
   def create
-    invitee = User.find_by_email(invitation_params[:email])
+    invitee_from_email = User.find_by_email(invitation_params[:email])
+
+    if invitee_from_email.present?
+      create_invitation_for_existing_invitee(user_from_email)
+    else
+      send_invitation_email(invitation_params[:email])
+    end
+  end
+
+  def create_invitation_for_existing_invitee(invitee)
     @invitation = current_user.sent_invitations.build(invitee:)
 
     if @invitation.save
-      redirect_to @invitation, notice: "Invitation sent to #{@invitation.invitee.email}."
+      redirect_to @invitation, notice: "Invitation sent to #{@invitation.email_for_invitee}."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def send_invitation_email(email)
+    @invitation = current_user.sent_invitations.build(invitee_email: email)
+
+    if @invitation.save
+      InvitationMailer.with(invitation: @invitation).invitation_email.deliver_later
+      redirect_to @invitation, notice: "Invitation sent to #{email}."
     else
       render :new, status: :unprocessable_entity
     end
@@ -55,6 +75,16 @@ class InvitationsController < ApplicationController
   end
 
   private
+
+  def build_invitation_from_email
+    user_from_email = User.find_by_email(invitation_params[:email])
+
+    if user_from_email.present?
+      current_user.sent_invitations.build(invitee: user_from_email)
+    else
+      current_user.sent_invitations.build(invitee_email: invitation_params[:email])
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_invitation

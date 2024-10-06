@@ -1,13 +1,15 @@
-<div class="container-small">
+<div>
   <% if current_user.is_a?(Individual) %>
     <h1>Connect with a therapist</h1>
   <% elsif current_user.is_a?(Therapist) %>
     <h1>New client</h1>
   <% end %>
 
-  <%= render "form", invitation: @invitation %>
-
-  <div>
-    <%= link_to "Back to invitations", invitations_path %>
-  </div>
+  <%= form_with model: @invitation do |f| %>
+    <%= render "form", f: %>
+  <% end %>
 </div>
+
+<p>
+  <%= link_to "Back to clients", clients_path %>
+</p>
