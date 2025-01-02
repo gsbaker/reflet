@@ -3,6 +3,7 @@ class NeedsRecordsController < ApplicationController
 
   def index
     @needs_records = current_user.needs_records
+    @needs_record = current_user.needs_records.build
   end
 
   def show

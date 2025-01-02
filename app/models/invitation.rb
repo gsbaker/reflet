@@ -7,7 +7,12 @@ class Invitation < ApplicationRecord
   validates :status, presence: true
   validates :inviter_id, presence: true
   validates :invitee_id, presence: true, unless: ->(invitation) { invitation.invitee_email.present? }
-  validates :invitee_email, presence: true, unless: ->(invitation) { invitation.invitee_id.present? }
+  validates(
+    :invitee_email,
+    presence: true,
+    format: { with: URI::MailTo::EMAIL_REGEXP },
+    unless: ->(invitation) { invitation.invitee_id.present? }
+  )
   validate :invitee_is_different_type_from_inviter, if: -> { invitee.present? }
 
   after_initialize :set_default_status, if: :new_record?

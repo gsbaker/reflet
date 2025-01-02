@@ -19,7 +19,7 @@
 
       <div>
         <%= form.label :email %>
-        <%= form.email_field :email %>
+        <%= form.email_field :email, readonly: @invitation.present? %>
       </div>
 
       <div>
@@ -31,6 +31,8 @@
         <%= form.label :password_confirmation %>
         <%= form.password_field :password_confirmation %>
       </div>
+
+      <%= hidden_field_tag :invitation_id, params[:invitation_id] %>
 
       <div>
         <%= form.label :type, "Account type" %>
@@ -46,7 +48,7 @@
 
           <%= form.label :type, for: "type_therapist", class: "reflet-radio" do %>
             Therapist
-            <%= form.radio_button :type, "Therapist", id: "type_therapist" %>
+            <%= form.radio_button :type, "Therapist", id: "type_therapist", disabled: @invitation.present? %>
             <span class="checkmark"></span>
             <div class="reflet-radio__info">£10/month</div>
           <% end %>

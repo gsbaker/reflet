@@ -44,7 +44,7 @@ class InvitationsController < ApplicationController
     @invitation = current_user.sent_invitations.build(invitee_email: email)
 
     if @invitation.save
-      InvitationMailer.with(invitation: @invitation).invitation_email.deliver_later
+      InvitationMailer.with(invitation: @invitation).invite.deliver_now
       redirect_to @invitation, notice: "Invitation sent to #{email}."
     else
       render :new, status: :unprocessable_entity

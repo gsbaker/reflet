@@ -36,4 +36,8 @@ button, .btn {
   &:hover { 
     cursor: pointer;
   }
+
+  .btn--destructive& {
+    background-color: var(--accent-red);
+  }
 }
