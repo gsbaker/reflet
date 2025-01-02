@@ -1,21 +1,8 @@
 @font-face {
-  font-family: "Palatino";
-  src: url("/fonts/Palatino.woff2") format("woff2");
+  font-family: var(--font-stack);
 }
-
-@font-fact {
-  font-family: "Bogart Trial";
-  src: url("/fonts/Bogart-Regular-trial.woff2") format("woff2");
-}
-
-h1, h2, h3, h4 {
-  font-family: "Bogart Trial", sans-serif;
-  font-weight: 500;
-}
-
 
 body {
-  font-family: Palatino, sans-serif;
   background-color: var(--bg-color);
   margin: 0;
 }
@@ -36,7 +23,7 @@ a {
 }
 
 .screen-reader-text {
-   clip: rect(0 0 0 0); 
+  clip: rect(0 0 0 0); 
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
