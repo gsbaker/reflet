@@ -9,7 +9,7 @@ class NeedsRecord < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
 
-  enum status: %i[in_progress completed]
+  enum :status, %i[in_progress completed]
 
   after_initialize do
     initialize_ratings

@@ -7,7 +7,7 @@ class Assignment < ApplicationRecord
 
   has_many :responses
 
-  enum cadence: %i[no_repeat one_week two_weeks one_month]
+  enum :cadence, %i[no_repeat one_week two_weeks one_month]
 
   validates :cadence, presence: true
   validates :assignable, presence: true

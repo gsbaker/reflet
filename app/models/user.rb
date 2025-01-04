@@ -16,8 +16,8 @@ class User < ApplicationRecord
     email
   end
 
-  has_many :sent_invitations, class_name: "Invitation", foreign_key: :inviter_id
-  has_many :received_invitations, class_name: "Invitation", foreign_key: :invitee_id
+  has_many :sent_invitations, class_name: "Invitation", foreign_key: "inviter_id"
+  has_many :received_invitations, class_name: "Invitation", foreign_key: "invitee_id"
 
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [40, 40]
