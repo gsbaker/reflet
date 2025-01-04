@@ -1,9 +1,9 @@
 <div class="vstack">
-  <div>
-    <p>
-    <%= link_to "Therapies", therapies_path %> &gt; <%= @therapy.client %>
-    </p>
-  </div>
+  <% if current_user.is_a?(Individual) %>
+    <div>
+      <p><%= link_to "Therapies", therapies_path %> &gt; <%= @therapy.client %></p>
+    </div>
+  <% end %>
 
   <%= render @therapy %>
 
