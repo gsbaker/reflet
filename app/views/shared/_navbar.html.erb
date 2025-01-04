@@ -1,4 +1,5 @@
-<nav>
+<div class="nav-container">
+<nav class="container">
   <% if current_user.is_a?(Individual) %>
     <%= render "individuals/navbar" %>
   <% elsif current_user.is_a?(Therapist) %>
@@ -13,3 +14,4 @@
     </li>
   </ul>
 </nav>
+</div>

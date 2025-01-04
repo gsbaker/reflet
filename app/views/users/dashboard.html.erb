@@ -17,37 +17,5 @@
   <% end %>
 </div>
 <% else %>
-  <div class="container">
-    <div class="action-header">
-      <div>
-        <h1>Clients</h1>
-      </div>
-      <div data-controller="modal">
-        <%= button_tag "Add new", class: "btn", data: { action: "modal#show" } %>
-        <dialog data-modal-target="dialog">
-          <div class="action-header">
-            <div>
-            <h1>New client</h1>
-            </div>
-            <div>
-              <%= button_tag data: { action: "modal#close" }, class: "btn--transparent" do %>
-                <%= image_tag "x-lg.svg", alt: "Close", width: 20, height: 20 %>
-              <% end %>
-            </div>
-          </div>
-          <%= form_with model: @invitation, method: :dialog do |f| %>
-            <%= render "invitations/form", f: %>
-          <% end %>
-        </dialog>
-      </div>
-    </div>
-  </div>
-  <div>
-    <% @therapies.each do |therapy| %>
-      <%= link_to therapy do %>
-        <%= render therapy %>
-      <% end %>
-    <% end %>
-  </div>
-  </div>
+  <%= render "therapists/dashboard" %>
 <% end %>
