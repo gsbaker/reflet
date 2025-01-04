@@ -17,6 +17,16 @@
 </div>
 
 <div>
-  <%= f.submit "Update", class: "btn" %>
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+</div>
+
+<div class="hstack">
+  <div>
+    <%= f.submit "Update", class: "btn" %>
+  </div>
+  <div>
+    <%= link_to "Cancel", user_path(@user), class: "btn btn--secondary" %>
+  </div>
 </div>
 </div>

@@ -23,3 +23,41 @@ nav {
 .nav-container {
   margin: 20px 0;
 }
+
+.nav-expand {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  a { 
+    text-decoration: none;
+  }
+  
+  * {
+    user-select: none;
+    pointer-events: none;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: 83px;
+  background-color: white;
+  border: 1px solid black;
+  border-top-color: white;
+  padding: 10px;
+  min-width: 60px;
+  text-align: center;
+}

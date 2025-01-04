@@ -14,7 +14,7 @@
   }
 
   .btn--secondary& {
-    background-color: var(--accent-green);
+    background-color: #E0E0E0;
   }
 
   .btn--destructive& {

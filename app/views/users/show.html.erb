@@ -4,4 +4,6 @@
 
 <p>Account created: <%= @user.created_at.strftime("%B %d, %Y") %></p>
 
+<p>Avatar: <%= image_tag @user.avatar.variant(:thumb) if @user.avatar.attached? %></p>
+
 <p><%= link_to "Edit your account", edit_user_path(@user) %></p>
