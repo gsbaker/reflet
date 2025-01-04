@@ -20,7 +20,9 @@
   </head>
 
   <body>
-    <div><%= notice %></div>
+    <div class="notice" data-controller="flash">
+      <%= notice %>
+    </div>
     <div><%= alert %></div>
 
     <% if user_signed_in? %>
@@ -28,6 +30,7 @@
     <% end %>
 
     <div class="container">
+      <%= turbo_frame_tag "modal" %>
       <%= yield %>
     </div>
   </body>

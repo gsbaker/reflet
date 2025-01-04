@@ -1,0 +1,17 @@
+.notice {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  z-index: 1000;
+  background-color: lightgreen; /* Light red for alerts */
+  color: darkgreen;
+  animation: fadeOut 5s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  90% { opacity: 1; } /* Keep visible for 4.5 seconds */
+  100% { opacity: 0; visibility: hidden; }
+}

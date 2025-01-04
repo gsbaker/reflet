@@ -1,15 +1,16 @@
-<div>
-  <% if current_user.is_a?(Individual) %>
-    <h1>Connect with a therapist</h1>
-  <% elsif current_user.is_a?(Therapist) %>
-    <h1>New client</h1>
-  <% end %>
-
-  <%= form_with model: @invitation do |f| %>
-    <%= render "form", f: %>
-  <% end %>
+<div class="action-header">
+  <div>
+    <% if current_user.is_a?(Individual) %>
+      <h1>Connect with a therapist</h1>
+    <% elsif current_user.is_a?(Therapist) %>
+      <h1>New client</h1>
+    <% end %>
+  </div>
+  <div>
+    <%= button_tag "Close", type: "button", data: { action: "modal#close" } %>
+  </div>
 </div>
 
-<p>
-  <%= link_to "Back to clients", clients_path %>
-</p>
+<%= form_with model: @invitation do |f| %>
+  <%= render "form", f: %>
+<% end %>

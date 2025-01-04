@@ -1,0 +1,9 @@
+dialog {
+  width: var(--container-width);
+  border-radius: 20px;
+  margin-top: 200px;
+
+  div{ 
+    max-width: 780px;
+  }
+}

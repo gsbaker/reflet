@@ -24,7 +24,7 @@ class InvitationsController < ApplicationController
     invitee_from_email = User.find_by_email(invitation_params[:email])
 
     if invitee_from_email.present?
-      create_invitation_for_existing_invitee(user_from_email)
+      create_invitation_for_existing_invitee(invitee_from_email)
     else
       send_invitation_email(invitation_params[:email])
     end
@@ -45,9 +45,9 @@ class InvitationsController < ApplicationController
 
     if @invitation.save
       InvitationMailer.with(invitation: @invitation).invite.deliver_now
-      redirect_to @invitation, notice: "Invitation sent to #{email}."
+      redirect_to root_path, notice: "Invitation sent to #{email}."
     else
-      render :new, status: :unprocessable_entity
+      head status: :unprocessable_entity
     end
   end
 

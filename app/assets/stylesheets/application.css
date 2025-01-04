@@ -3,10 +3,12 @@
 @import url("button");
 @import url("card");
 @import url("core");
+@import url("flash");
 @import url("form");
 @import url("hstack");
 @import url("info");
 @import url("logo");
+@import url("modal");
 @import url("navbar");
 @import url("needs");
 @import url("needs-record-summary");

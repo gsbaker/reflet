@@ -4,6 +4,8 @@ class UsersController < ApplicationController
 
   def dashboard
     @needs_record = @user.needs_records.build if @user.is_a?(Individual)
+    @invitation = @user.sent_invitations.build if @user.is_a?(Therapist)
+    @therapies = @user.therapies if @user.is_a?(Therapist)
   end
 
   def update

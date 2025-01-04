@@ -1,4 +1,4 @@
-button, .btn {
+.btn {
   font-family: var(--font-stack);
   background-color: var(--accent-blue);
   font-size: 1em;
@@ -20,4 +20,18 @@ button, .btn {
   .btn--destructive& {
     background-color: var(--accent-red);
   }
+
 }
+
+.btn--transparent {
+    background: none;
+    background-color: none;
+    border: none;
+    padding: 5px;
+    border: 1px solid white;
+
+    &:hover {
+      border: 1px solid grey;
+      border-radius: 5px;
+    }
+  }
