@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :therapists, controller: :users
+  resources :individuals, controller: :users
+
   resources :invitations do
     member do
       patch :accept
