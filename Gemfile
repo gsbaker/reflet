@@ -70,3 +70,5 @@ gem "sass-rails", "~> 6.0"
 gem "yaml", "~> 0.3.0"
 
 gem "foreman", "~> 0.88.1"
+
+gem "kamal", "~> 2.4"
