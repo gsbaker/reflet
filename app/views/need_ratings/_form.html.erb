@@ -7,16 +7,20 @@
     </div>
   <% end %>
 
-<div class="vstack">
-  <% NeedRating.statuses.each do |status_key, status_value| %>
-    <%= f.label :status, status_key, for: "rating_#{status_value}", class: "reflet-radio" do %>
-      <%= status_key.humanize %>
-      <%= f.radio_button :status, status_key, id: "rating_#{status_value}", required: true %>
-      <span class="checkmark"></span>
+  <div class="vstack">
+    <div>
+    <% NeedRating.statuses.each do |status_key, status_value| %>
+      <%= f.label :status, status_key, for: "rating_#{status_value}", class: "reflet-radio" do %>
+        <%= status_key.humanize %>
+        <%= f.radio_button :status, status_key, id: "rating_#{status_value}", required: true %>
+        <span class="checkmark"></span>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+    </div>
 
-<%= f.submit "Continue", class: "btn" %>
+    <div>
+      <%= f.submit "Continue", class: "btn" %>
+    </div>
+  </div>
 
 <% end %>

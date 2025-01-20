@@ -1,3 +1,5 @@
+<h1><%= needs_record %></h1>
+
 <% if needs_record.ratings.where(status: :consistent).any? %>
   <h3>Consistently met</h3>
   <div class="card needs-record-summary">

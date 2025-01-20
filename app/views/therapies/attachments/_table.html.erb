@@ -1,4 +1,4 @@
-<div class="table-container">
+<div id="attachments-table" class="table-container">
   <table class="attachments-table">
     <thead>
       <tr>
@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <% attachments.each do |attachment| %>
+      <% attachments.order(created_at: :desc).each do |attachment| %>
         <tr>
           <td>
             <span class="screen-reader-text">

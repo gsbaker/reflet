@@ -1,0 +1,36 @@
+<div class="action-header">
+  <div>
+    <h1>Assignments</h1>
+  </div>
+  <div>
+    <%= link_to "Create an assignment", new_assignment_path, class: "btn" %>
+  </div>
+</div>
+
+<% if @assignments.open.any? %>
+  <h3>Open</h3>
+  <div class="card">
+    <% @assignments.open.each do |assignment| %>
+      <%= link_to assignment_path(assignment) do %>
+        <p>
+        <strong>Title:</strong> <%= assignment.assignable.title %><br>
+        <strong>Assigned:</strong> <%= assignment.created_at.strftime("%B %d, %Y") %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @assignments.completed.any? %>
+  <h3>Completed</h3>
+  <div class="card">
+    <% @assignments.completed.each do |assignment| %>
+      <%= link_to assignment_path(assignment) do %>
+        <p>
+        <strong>Title:</strong> <%= assignment.assignable.title %><br>
+        <strong>Completed:</strong> <%= assignment.completed_at.strftime("%B %d, %Y") %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

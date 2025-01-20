@@ -44,20 +44,3 @@ trix-editor:focus {
 .trix-button--icon-strike, .trix-button--icon-heading-1, .trix-button--icon-code {
   display: none;
 }
-
-.trix-button-row {
-  .trix-button-group {
-    border: none;
-    border: 1px solid black;
-    border-radius: 10px;
-  }
-  
-  .trix-button {
-    border: none;
-  }
-
-  .trix-button:not(:last-child) {
-    border: none;
-    border-right: 1px solid black;
-  }
-}

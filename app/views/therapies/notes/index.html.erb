@@ -1,6 +1,10 @@
-<h2>Notes</h2>
-<div>
-  <%= link_to "Create note", new_therapy_note_path(@therapy) %>
+<div class="action-header">
+  <div>
+  <h1>Notes</h1>
+  </div>
+  <div>
+    <%= link_to "Create a note", new_therapy_note_path(@therapy), class: "btn" %>
+  </div>
 </div>
 <div>
   <% if @therapy.notes.any? %>

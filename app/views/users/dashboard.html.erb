@@ -1,21 +1,5 @@
 <% if current_user.is_a?(Individual) %>
-<div class="container">
-  <div class="action-header">
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-
-    <% if current_user.can_create_needs_record? %>
-      <div>
-        <%= render "needs_records/form" %>
-      </div>
-    <% end %>
-  </div>
-
-  <% if current_user.latest_needs_record %>
-    <%= render "latest_needs_record", needs_record: current_user.latest_needs_record %>
-  <% end %>
-</div>
+  <p>Dashboard yet to be implemented for individual users.</p>
 <% else %>
   <%= render "therapists/dashboard" %>
 <% end %>

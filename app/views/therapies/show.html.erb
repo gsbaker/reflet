@@ -1,20 +1,9 @@
 <div class="vstack">
-  <% if current_user.is_a?(Individual) %>
-    <div>
-      <p><%= link_to "Therapies", therapies_path %> &gt; <%= @therapy.client %></p>
-    </div>
-  <% end %>
-
   <%= render @therapy %>
 
+  <%= render "navbar" %>
+
   <% if current_user.therapist? %>
-    <%= render "notes" %>
+    <%= render template: "therapies/notes/index" %>
   <% end %>
-
-  <%= render "attachments" %>
-
-  <%= render "assignments", assignments: @assignments if @assignments.any? %>
-
-  <%= render "needs_records", needs_records: @needs_records if @needs_records.any? %>
-
 </div>

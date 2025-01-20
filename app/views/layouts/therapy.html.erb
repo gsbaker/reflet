@@ -1,0 +1,8 @@
+<% content_for :therapy do %>
+  <div class="vstack">
+    <%= render "therapies/therapy", therapy: @therapy %>
+    <%= render "therapies/navbar" %>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

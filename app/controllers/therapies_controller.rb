@@ -1,13 +1,16 @@
 class TherapiesController < ApplicationController
-  before_action :set_therapy, only: %i[ show edit update destroy upload_attachments ]
+  before_action :set_therapy, only: %i[ show edit update destroy ]
 
   def index
     @therapies = current_user.therapies
   end
 
   def show
-    @assignments = @therapy.assignments
-    @needs_records = @therapy.needs_records
+    if current_user.therapist?
+      redirect_to therapy_notes_path(@therapy)
+    else
+      redirect_to therapy_assignments_path(@therapy)
+    end
   end
 
   def new
@@ -43,23 +46,6 @@ class TherapiesController < ApplicationController
     end
   end
 
-  def upload_attachments
-    @therapy.assign_attributes(therapy_params)
-
-    @therapy.attachments.each do |attachment|
-      attachment.uploaded_by_id ||= current_user.id
-    end
-
-    respond_to do |format|
-      if @therapy.save
-        format.turbo_stream { render :upload_attachments }
-        format.html { redirect_to therapy_url(@therapy) }
-      else
-        render :show, status: :unprocessable_entity
-      end
-    end
-  end
-
   def destroy
     @therapy.destroy!
 
@@ -76,6 +62,6 @@ class TherapiesController < ApplicationController
   end
 
   def therapy_params
-    params.require(:therapy).permit(:completed_at, attachments: [])
+    params.require(:therapy).permit(:completed_at)
   end
 end

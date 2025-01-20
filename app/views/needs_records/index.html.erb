@@ -1,23 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Needs Records</h1>
+<div class="action-header">
+  <div>
+    <h1>Needs Records</h1>
+  </div>
+  <div>
+    <%= render "needs_records/form" %>
+  </div>
+</div>
 
-<div id="needs_records">
+<div id="needs_records" class="card">
   <% @needs_records.each do |needs_record| %>
-    <p>
-      <%= link_to needs_record, needs_record %>
-    </p>
-
-    <% if needs_record.in_progress? %>
-      <p>You won't be able to start a new needs record until you've completed this one.</p>
-    <% end %>
+    <p><%= link_to needs_record, needs_record %></p>
   <% end %>
 </div>
 
-<% if current_user.can_create_needs_record? %>
-  <%= render "needs_records/form" %>
-<% else %>
-  <% if current_user.new_needs_record_available_in %>
-    <p>You can create a new needs record in <%= current_user.new_needs_record_available_in %></p>
-  <% end %>
-<% end %>

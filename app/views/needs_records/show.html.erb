@@ -30,7 +30,7 @@
       <%= render "needs_record", needs_record: @needs_record %>
     </div>
   <% else %>
-    <p><%= @needs_record %></p>
+    <h1><%= @needs_record %></h1>
     <h2><%= @rating.need %></h2>
     <%= render "need_ratings/form" %>
   <% end %>

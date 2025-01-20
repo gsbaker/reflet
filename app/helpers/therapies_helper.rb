@@ -17,7 +17,11 @@ module TherapiesHelper
     when Individual
       needs_record_path(needs_record)
     when Therapist
-      therapy_needs_record_path(needs_record)
+      therapy_needs_record_path(@therapy, needs_record)
     end
+  end
+
+  def therapy_nav_link_for(url:, text:)
+    link_to text, url, class: "therapy-nav-link #{"therapy-nav-link-active" if request.fullpath.start_with?(url)}"
   end
 end

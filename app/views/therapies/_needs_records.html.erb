@@ -1,9 +1,0 @@
-<h2>Needs Records</h2>
-
-<div class="card">
-  <ul>
-    <% needs_records.each do |needs_record| %>
-      <li><%= link_to needs_record, path_for_needs_record(current_user, needs_record) %></li>
-    <% end %>
-  </ul>
-</div>

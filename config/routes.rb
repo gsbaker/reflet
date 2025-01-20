@@ -41,12 +41,13 @@ Rails.application.routes.draw do
   resources :responses, only: %i[create update]
 
   resources :therapies do
-    resources :needs_records, only: [:show], module: :therapies
-    member do
-      patch :upload_attachments
+    scope module: :therapies do
+      resources :needs_records, only: [:show]
+      resources :notes
+      resources :assignments
+      resources :attachments, only: [:index, :create]
+      resources :needs_records, only: [:index, :show]
     end
-
-    resources :notes
   end
 
   resource :registration

@@ -1,23 +1,26 @@
 <div class="nav-container">
-<nav class="container">
-  <% if current_user.is_a?(Individual) %>
-    <%= render "individuals/navbar" %>
-  <% elsif current_user.is_a?(Therapist) %>
-    <%= render "therapists/navbar" %>
-  <% end %>
-  <div data-controller="dropdown" data-action="click->dropdown#toggle">
-    <div class="nav-expand" data-dropdown-target="btn">
-      <% if current_user.avatar.attached? %>
-        <%= image_tag current_user.avatar.variant(:thumb), class: "avatar" %>
-      <% else %>
-        <%= image_tag "avatar-blank.webp", alt: "Avatar", class: "avatar" %>
+  <nav class="container navbar">
+    <div class="hstack">
+      <%= image_tag "logo-sm.png", class: "nav-logo", alt: "Reflet logo" %>
+      <% if current_user.is_a?(Individual) %>
+        <%= render "individuals/navbar" %>
+      <% elsif current_user.is_a?(Therapist) %>
+        <%= render "therapists/navbar" %>
       <% end %>
-      <%= image_tag "chevron-down.svg", alt: "Expand", width: 20, height: 20 %>
     </div>
-    <%= turbo_frame_tag "user-menu", data: { dropdown_target: "menu" }, class: "nav-dropdown hidden", target: "_top" do %>
-      <div class="menu-item"><%= link_to "Profile", user_path(current_user) %></div>
-      <div class="menu-item"><%= link_to "Logout", session_path, data: { turbo_method: :delete } %></div>
-    <% end %>
-  </div>
-</nav>
+    <div data-controller="dropdown" data-action="click->dropdown#toggle">
+      <div class="nav-expand" data-dropdown-target="btn">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar.variant(:thumb), class: "avatar" %>
+        <% else %>
+          <%= image_tag "avatar-blank.webp", alt: "Avatar", class: "avatar" %>
+        <% end %>
+        <%= image_tag "chevron-down.svg", alt: "Expand", width: 20, height: 20 %>
+      </div>
+      <%= turbo_frame_tag "user-menu", data: { dropdown_target: "menu" }, class: "nav-dropdown hidden", target: "_top" do %>
+        <div class="menu-item"><%= link_to "Profile", user_path(current_user) %></div>
+        <div class="menu-item"><%= link_to "Logout", session_path, data: { turbo_method: :delete } %></div>
+      <% end %>
+    </div>
+  </nav>
 </div>

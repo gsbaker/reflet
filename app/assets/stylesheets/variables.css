@@ -9,6 +9,7 @@
   --text-green: #002900;
   --highlight: #fd0;
   --font-stack: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Open Sans", "Arial", sans-serif;
   --container-width: 800px;
   --container-width__small: 400px;
 }

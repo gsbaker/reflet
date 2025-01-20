@@ -1,0 +1,6 @@
+<nav class="container hstack therapy-nav">
+  <%= therapy_nav_link_for url: therapy_notes_path(@therapy), text: "Notes" %>
+  <%= therapy_nav_link_for url: therapy_assignments_path(@therapy), text: "Assignments" %>
+  <%= therapy_nav_link_for url: therapy_attachments_path(@therapy), text: "Attachments" %>
+  <%= therapy_nav_link_for url: therapy_needs_records_path(@therapy), text: "Needs Records" %>
+</nav>
