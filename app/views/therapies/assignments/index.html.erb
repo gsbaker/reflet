@@ -3,7 +3,13 @@
     <h1>Assignments</h1>
   </div>
   <div>
-    <%= link_to "Create an assignment", new_assignment_path, class: "btn" %>
+    <% if current_user.therapist? %>
+      <%= render "shared/modal", btn_text: "Create an assignment", title: "Create an assignment" do %>
+        <% form_with model: @assignment, url: therapy_assignments_path(@therapy) do |f| %>
+          <%= render "form", f: %>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

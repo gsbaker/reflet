@@ -1,0 +1,28 @@
+<div class="vstack"%>
+<div>
+  <p>Select questionnaire</p>
+  <% Questionnaire.all.each do |questionnaire| %>
+    <%= f.label :assignable_id, for: "assignment_assignable_id_#{questionnaire.id}", class: "reflet-radio" do %>
+      <%= questionnaire.title %>
+      <%= f.radio_button :assignable_id, questionnaire.id, required: true %>
+      <span class="checkmark"></span>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <p>Select cadence</p>
+
+  <% Assignment.cadences.keys.each do |cadence| %>
+    <%= f.label :cadence, for: "assignment_cadence_#{cadence}", class: "reflet-radio" do %>
+      <%= Assignment.humanized_cadence(cadence) %>
+      <%= f.radio_button :cadence, cadence, required: true %>
+      <span class="checkmark"></span>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <%= f.submit "Create assignment", class: "btn" %>
+</div>
+</div>
