@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       resources :assignments
       resources :attachments, only: [:index, :create]
       resources :needs_records, only: [:index, :show]
+      resources :thought_records, only: [:index, :show]
     end
   end
 

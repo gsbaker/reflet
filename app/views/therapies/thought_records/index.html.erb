@@ -1,0 +1,10 @@
+<h1>Thought Records</h1>
+<% if @thought_records.any? %>
+  <% @thought_records.each do |thought_record| %>
+    <div class="card vstack">
+      <p><%= link_to thought_record, path_for_thought_record(current_user, thought_record) %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= @therapy.client %> hasn't shared any thought records yet.
+<% end %>
