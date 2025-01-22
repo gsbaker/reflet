@@ -74,7 +74,8 @@ class ThoughtRecordsController < ApplicationController
       :evidence_for,
       :evidence_against,
       :alternative_thoughts,
-      :alternative_feelings
+      :alternative_feelings,
+      :therapy_id
     )
   end
 end

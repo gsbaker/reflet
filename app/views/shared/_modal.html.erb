@@ -1,0 +1,16 @@
+<div data-controller="modal">
+  <%= button_tag btn_text, class: "btn", data: { action: "modal#show" } %>
+  <dialog data-modal-target="dialog">
+    <div class="action-header">
+      <div>
+        <h1><%= title %></h1>
+      </div>
+      <div>
+        <%= button_tag data: { action: "modal#close" }, class: "btn--transparent" do %>
+          <%= image_tag "x-lg.svg", alt: "Close", width: 20, height: 20 %>
+        <% end %>
+      </div>
+    </div>
+    <%= yield %>
+  </dialog>
+</div>

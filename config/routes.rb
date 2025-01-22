@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :thought_records
+  resources :thought_records do
+    member do
+      patch :unshare
+    end
+  end
 
   resources :need_ratings
 

@@ -31,7 +31,9 @@
     </div>
   <% else %>
     <h1><%= @needs_record %></h1>
-    <h2><%= @rating.need %></h2>
-    <%= render "need_ratings/form" %>
+    <div class="card">
+      <h2><%= @rating.need %></h2>
+      <%= render "need_ratings/form" %>
+    </div>
   <% end %>
 <% end %>

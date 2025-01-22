@@ -1,16 +1,25 @@
-<p><strong>Thought Record</strong></p>
-
-<p style="color: green"><%= notice %></p>
-
-<%= render @thought_record %>
-
 <div class="vstack">
-  <div>
-  <%= link_to "Edit this thought record", edit_thought_record_path(@thought_record) %> |
-  <%= link_to "Back to thought records", thought_records_path %>
+  <div class="action-header">
+    <div>
+      <h1>Thought Record</h1>
+    </div>
+    <div>
+      <div class="hstack">
+        <% if @thought_record.therapy.present? %>
+          <%= form_with model: @thought_record do |f| %>
+            <%= f.hidden_field :therapy_id, value: nil %>
+            <%= f.submit "Unshare with #{@thought_record.therapy.therapist}", class: "btn btn--secondary" %>
+          <% end %>
+        <% else %>
+          <%= render "shared/modal", btn_text: "Share", title: "Share with" do %>
+            <%= render "share" %>
+          <% end %>
+        <% end %>
+        <%= link_to "Edit", edit_thought_record_path(@thought_record), class: "btn" %>
+        <%= button_to "Delete", @thought_record, method: :delete, class: "btn btn--destructive" %>
+      </div>
+    </div>
   </div>
 
-  <div>
-  <%= button_to "Delete", @thought_record, method: :delete %>
-  </div>
+  <%= render @thought_record %>
 </div>

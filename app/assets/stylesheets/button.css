@@ -20,7 +20,6 @@
   .btn--destructive& {
     background-color: var(--accent-red);
   }
-
 }
 
 .btn--transparent {
