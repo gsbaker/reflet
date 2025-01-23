@@ -1,4 +1,4 @@
-<%= form_with model: @rating do |f| %>
+<%= form_with model: @rating, data: { controller: "ratings", action: "keydown.space@document->ratings#submit" } do |f| %>
   <% if @rating.errors.any? %>
     <div class="validation-error">
       <% @rating.errors.full_messages.each do |message| %>
@@ -8,18 +8,28 @@
   <% end %>
 
   <div class="vstack">
-    <div>
+    <div id="ratings">
     <% NeedRating.statuses.each do |status_key, status_value| %>
-      <%= f.label :status, status_key, for: "rating_#{status_value}", class: "reflet-radio" do %>
+      <div class="rating">
+        <%= f.label(
+          :status,
+          status_key,
+          for: "rating_#{status_value}",
+          class: "reflet-radio",
+          data: { action: "keydown.#{status_value + 1}@document->ratings#select", ratings_target: "rating" }
+        ) do %>
         <%= status_key.humanize %>
         <%= f.radio_button :status, status_key, id: "rating_#{status_value}", required: true %>
         <span class="checkmark"></span>
       <% end %>
+      <div class="rating-n-helper"><%= status_value + 1 %></div>
+      </div>
     <% end %>
     </div>
 
-    <div>
+    <div id="rating-submit">
       <%= f.submit "Continue", class: "btn" %>
+      <div class="rating-submit-helper">SPACE</div>
     </div>
   </div>
 

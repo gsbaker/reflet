@@ -1,6 +1,5 @@
 <%= turbo_frame_tag "needs-record", class: "vstack" do %>
   <% if @needs_record.completed? %>
-    <h1><%= @needs_record %></h1>
     <% if @needs_record.therapy.present? %>
       <div class="info">
         ⓘ  Shared with <%= link_to @needs_record.therapy.therapist.name, @needs_record.therapy, data: { turbo_frame: "_top" } %>

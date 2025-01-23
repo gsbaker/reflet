@@ -7,7 +7,7 @@ module Therapies
     end
 
     def new
-      @note = @therapy.notes.build(date: Date.today)
+      @note = @therapy.notes.build(date: Date.today, title: "Session #{Date.today}")
     end
 
     def create
@@ -27,7 +27,7 @@ module Therapies
     private
 
     def note_params
-      params.require(:note).permit(:date, :content)
+      params.require(:note).permit(:date, :content, :title)
     end
   end
 end

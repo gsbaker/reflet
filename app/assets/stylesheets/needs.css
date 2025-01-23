@@ -22,3 +22,48 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+#ratings {
+  border: 0.5px solid lightgrey;
+}
+
+.rating {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    border-bottom: 0.5px solid lightgrey;
+  }
+}
+
+.rating-n-helper {
+  font-family: var(--font-sans);
+  background-color: lightgrey;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  margin-right: 20px;
+  align-self: center;
+
+}
+
+#rating-submit {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid lightgrey;
+  padding: 5px;
+  width: auto;
+}
+
+.rating-submit-helper {
+  margin-left: 10px;
+  font-family: var(--font-sans);
+  color: white;
+  background-color: lightgrey;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+}
