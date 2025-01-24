@@ -3,6 +3,7 @@ class TherapiesController < ApplicationController
 
   def index
     @therapies = current_user.therapies
+    @invitation = current_user.sent_invitations.build
   end
 
   def show

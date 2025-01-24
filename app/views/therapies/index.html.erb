@@ -1,6 +1,16 @@
-<p style="color: green"><%= notice %></p>
-
-<h1><%= "Therapy".pluralize(@therapies.count) %></h1>
+<div class="action-header" %>
+<div>
+  <h1><%= "Therapy".pluralize(@therapies.count) %></h1>
+</div>
+<div>
+  <%= render "shared/modal", btn_text: "Connect with a therapist", title: "Invite a therapist" do %>
+    <p>Use this form to invite a therapist to join Reflet.
+    <%= form_with model: @invitation do |f| %>
+      <%= render "invitations/form", f: %>
+    <% end %>
+  <% end %>
+</div>
+</div>
 
 <% if current_user.pending_invitations.any? %>
   <h2>Invitations</h2>
@@ -16,7 +26,3 @@
     </div>
   <% end %>
 </div>
-
-<% if current_user.individual? %>
-  <%= link_to "Connect with a therapist", new_invitation_path %>
-<% end %>

@@ -45,7 +45,11 @@ class InvitationsController < ApplicationController
 
     if @invitation.save
       InvitationMailer.with(invitation: @invitation).invite.deliver_now
+      if current_user.therapist?
       redirect_to root_path, notice: "Invitation sent to #{email}."
+      else
+        redirect_to therapies_path, notice: "Invitation sent to #{email}."
+      end
     else
       head status: :unprocessable_entity
     end
