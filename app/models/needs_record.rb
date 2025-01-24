@@ -11,6 +11,8 @@ class NeedsRecord < ApplicationRecord
 
   enum :status, %i[in_progress completed]
 
+  validates :title, presence: true
+
   after_initialize do
     initialize_ratings
   end

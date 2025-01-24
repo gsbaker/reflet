@@ -9,19 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :thought_records do
-    member do
-      patch :unshare
-    end
-  end
+  resources :thought_records
 
   resources :need_ratings
 
-  resources :needs_records do
-    member do
-      patch :unshare
-    end
-  end
+  resources :needs_records
 
   resources :needs
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

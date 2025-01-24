@@ -1,9 +1,9 @@
 class NeedsRecordsController < ApplicationController
-  before_action :set_needs_record, only: %i[ show edit update destroy unshare ]
+  before_action :set_needs_record, only: %i[ show edit update destroy ]
 
   def index
     @needs_records = current_user.needs_records.select(&:persisted?)
-    @needs_record = current_user.needs_records.build
+    @needs_record = current_user.needs_records.build title: "Needs Record #{Date.today}"
   end
 
   def show
@@ -15,7 +15,7 @@ class NeedsRecordsController < ApplicationController
   end
 
   def create
-    @needs_record = current_user.needs_records.build
+    @needs_record = current_user.needs_records.build(needs_record_params)
     respond_to do |format|
       if @needs_record.save
         format.html { redirect_to needs_record_url @needs_record }
@@ -38,11 +38,6 @@ class NeedsRecordsController < ApplicationController
     end
   end
 
-  def unshare
-    @needs_record.update_column :therapy_id, nil
-    render :show, status: :ok, location: @needs_record
-  end
-
   # DELETE /needs_records/1 or /needs_records/1.json
   def destroy
     @needs_record.destroy!
@@ -61,6 +56,6 @@ class NeedsRecordsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def needs_record_params
-      params.require(:needs_record).permit(:user_id, :therapy_id)
+      params.require(:needs_record).permit(:user_id, :therapy_id, :title)
     end
 end

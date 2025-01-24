@@ -1,33 +1,6 @@
 <%= turbo_frame_tag "needs-record", class: "vstack" do %>
   <% if @needs_record.completed? %>
-    <% if @needs_record.therapy.present? %>
-      <div class="info">
-        ⓘ  Shared with <%= link_to @needs_record.therapy.therapist.name, @needs_record.therapy, data: { turbo_frame: "_top" } %>
-      <%= form_with model: @needs_record, url: unshare_needs_record_path(@needs_record) do |f| %>
-        <%= f.hidden_field :therapy_id, value: nil %>
-        <%= f.submit "Unshare" %>
-      <% end %>
-      </div>
-    <% elsif current_user.therapies.any? %>
-      <h2>Share with your therapist</h2>
-      <%= form_with model: @needs_record, class: "vstack" do |f| %>
-        <div>
-        <% current_user.therapies.each do |therapy| %>
-          <%= f.label :therapy_id, for: "therapy_#{therapy.id}", class: "reflet-radio" do %>
-            <%= therapy.therapist.name %>
-            <%= f.radio_button :therapy_id, therapy.id, id: "therapy_#{therapy.id}", required: true %>
-            <span class="checkmark"></span>
-          <% end %>
-        <% end %>
-        </div>
-        <div>
-          <%= f.submit "Share", class: "btn" %>
-        </div>
-      <% end %>
-    <% end %>
-    <div>
-      <%= render "needs_record", needs_record: @needs_record %>
-    </div>
+    <%= render "completed" %>
   <% else %>
     <h1><%= @needs_record %></h1>
     <div class="card">

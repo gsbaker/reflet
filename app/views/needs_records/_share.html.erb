@@ -1,0 +1,14 @@
+<%= form_with model: @needs_record, class: "vstack" do |f| %>
+  <div>
+    <% current_user.therapies.each do |therapy| %>
+      <%= f.label :therapy_id, for: "therapy_#{therapy.id}", class: "reflet-radio" do %>
+        <%= therapy.therapist.name %>
+        <%= f.radio_button :therapy_id, therapy.id, id: "therapy_#{therapy.id}", required: true %>
+        <span class="checkmark"></span>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.submit "Share", class: "btn" %>
+  </div>
+<% end %>

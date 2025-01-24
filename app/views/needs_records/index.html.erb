@@ -5,13 +5,18 @@
     <h1>Needs Records</h1>
   </div>
   <div>
-    <%= render "needs_records/form" %>
+    <%= render "shared/modal", btn_text: "Create a needs record", title: "New needs record" do %>
+      <%= render "needs_records/form" %>
+    <% end %>
   </div>
 </div>
 
-<div id="needs_records" class="card">
-  <% @needs_records.each do |needs_record| %>
-    <p><%= link_to needs_record, needs_record %></p>
-  <% end %>
-</div>
-
+<% if @needs_records.any? %>
+  <div id="needs_records" class="card">
+    <% @needs_records.each do |needs_record| %>
+      <p><%= link_to needs_record, needs_record %></p>
+    <% end %>
+  </div>
+<% else %>
+  <p>No needs records yet.</p>
+<% end %>

@@ -1,3 +1,9 @@
-<%= form_with model: @needs_record do |form| %>
-  <%= form.submit "Create a needs record", class: "btn" %>
+<%= form_with model: @needs_record, class: "vstack" do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.submit "Create needs record", class: "btn" %>
+  </div>
 <% end %>
