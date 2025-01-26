@@ -2,7 +2,7 @@
 service: reflet
 
 # Name of the container image.
-image: nanobite/reflet
+image: gsbaker/reflet
 
 # Deploy to these servers.
 servers:
@@ -19,7 +19,7 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: app.example.com
+  host: reflet.io
   # Proxy connects to your container on port 80 by default.
   # app_port: 3000
 
