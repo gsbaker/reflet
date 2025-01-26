@@ -72,3 +72,5 @@ gem "foreman", "~> 0.88.1"
 gem "kamal", "~> 2.4"
 
 gem "propshaft", "~> 1.1"
+
+gem "thruster", "~> 0.1.10"
