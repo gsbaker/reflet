@@ -74,3 +74,9 @@ gem "kamal", "~> 2.4"
 gem "propshaft", "~> 1.1"
 
 gem "thruster", "~> 0.1.10"
+
+gem "solid_queue", "~> 1.1"
+
+gem "solid_cache", "~> 1.0"
+
+gem "solid_cable", "~> 3.0"
