@@ -6,7 +6,6 @@ ruby "3.2.3"
 gem "rails", "~> 8.0.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
 
 gem "sqlite3", "~> 2.0"
 
@@ -65,10 +64,13 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "sass-rails", "~> 6.0"
 
 gem "yaml", "~> 0.3.0"
 
 gem "foreman", "~> 0.88.1"
 
 gem "kamal", "~> 2.4"
+
+gem "propshaft", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.3"

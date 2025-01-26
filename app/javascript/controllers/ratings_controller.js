@@ -15,6 +15,6 @@ export default class extends Controller {
   }
 
   submit() {
-    this.element.submit()
+    this.element.requestSubmit()
   }
 }

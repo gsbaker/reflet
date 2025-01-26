@@ -1,8 +1,9 @@
 input[type="date"] {
-  font-family: serif;
+  font-family: var(--font-stack);
   border: 1px solid black;
   border-radius: 10px;
   padding: 5px;
+  font-size: 1em;
 
   &:focus {
     outline: 3px solid var(--highlight);

@@ -50,7 +50,10 @@
             Therapist
             <%= form.radio_button :type, "Therapist", id: "type_therapist", disabled: @invitation.present? %>
             <span class="checkmark"></span>
-            <div class="reflet-radio__info">£10/month</div>
+            <div class="reflet-radio__info">
+              <strong>Free trial</strong> (one month), then <strong>£15/month</strong><br>
+              No credit card required
+            </div>
           <% end %>
         </div>
       </div>

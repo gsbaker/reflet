@@ -13,7 +13,7 @@
         <% if current_user.avatar.attached? %>
           <%= image_tag current_user.avatar.variant(:thumb), class: "avatar" %>
         <% else %>
-          <%= image_tag "avatar-blank.webp", alt: "Avatar", class: "avatar" %>
+          <%= image_tag "avatar.png", alt: "Avatar", class: "avatar", width: 30, height: 30 %>
         <% end %>
         <%= image_tag "chevron-down.svg", alt: "Expand", width: 20, height: 20 %>
       </div>

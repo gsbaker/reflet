@@ -20,9 +20,9 @@ class NeedsRecord < ApplicationRecord
   before_update :mark_completed, if: -> { status_changed? && completed? }
 
   def to_s
-    return "Needs Record" unless persisted?
+    return "Needs Record" if new_record?
 
-    "Needs Record #{created_at.strftime('%Y-%m-%d')} (#{status.humanize})"
+    title
   end
 
   def in_progress?
