@@ -1,4 +1,4 @@
-module Therapist
+module Therapists
   class ClientsController < ApplicationController
     before_action :authenticate_user!
 
