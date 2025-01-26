@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-george = User.find_or_initialize_by type: "Individual", name: "George Baker", email: "george@reflet.com"
-kate = User.find_or_initialize_by type: "Therapist", name: "Kate Anderson", email: "kate@reflet.com"
-individual = User.find_or_initialize_by type: "Individual", name: "Joe Client", email: "client@reflet.com"
-therapist = User.find_or_initialize_by type: "Therapist", name: "Jane Therapist", email: "therapist@reflet.com"
+george = User.find_or_initialize_by type: "Individual", name: "George Baker", email: "george@reflet.io"
+kate = User.find_or_initialize_by type: "Therapist", name: "Kate Anderson", email: "kate@reflet.io"
 
 users = [george, kate, individual, therapist]
 
