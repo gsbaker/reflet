@@ -80,3 +80,5 @@ gem "solid_queue", "~> 1.1"
 gem "solid_cache", "~> 1.0"
 
 gem "solid_cable", "~> 3.0"
+
+gem "mailpace-rails", "~> 0.4.1"
