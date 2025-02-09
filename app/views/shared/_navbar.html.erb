@@ -15,7 +15,6 @@
         <% else %>
           <%= image_tag "avatar.png", alt: "Avatar", class: "avatar", width: 30, height: 30 %>
         <% end %>
-        <%= image_tag "chevron-down.svg", alt: "Expand", width: 20, height: 20 %>
       </div>
       <%= turbo_frame_tag "user-menu", data: { dropdown_target: "menu" }, class: "nav-dropdown hidden", target: "_top" do %>
         <div class="menu-item"><%= link_to "Profile", user_path(current_user) %></div>

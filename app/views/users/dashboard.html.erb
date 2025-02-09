@@ -1,7 +1,15 @@
 <% if current_user.is_a?(Individual) %>
-  <p>Dashboard yet to be implemented for individual users.</p>
-  <%= image_tag "avatar.png", alt: "Avatar", class: "avatar-foo" %>
-  <%= image_tag "logo-sm.png", alt: "Avatar", class: "nav-logo" %>
+  <h1>How was your day?</h1>
+  <p>Good 👍</p>
+  <p>Bad 👎</p>
+  <p>Neutral 🤷</p>
+
+  <h1>Assignments</h1>
+  <% if current_user.assignments.open.any? %>
+    <p>You have open assignments.</p>
+  <% else %>
+    <p>You have no open assignments.</p>
+  <% end %>
 <% else %>
   <%= render "therapists/dashboard" %>
 <% end %>

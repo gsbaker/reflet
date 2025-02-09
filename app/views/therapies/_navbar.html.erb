@@ -1,7 +1,11 @@
-<nav class="container hstack therapy-nav">
-  <%= therapy_nav_link_for url: therapy_notes_path(@therapy), text: "Notes" %>
-  <%= therapy_nav_link_for url: therapy_assignments_path(@therapy), text: "Assignments" %>
-  <%= therapy_nav_link_for url: therapy_attachments_path(@therapy), text: "Attachments" %>
-  <%= therapy_nav_link_for url: therapy_needs_records_path(@therapy), text: "Needs Records" %>
-  <%= therapy_nav_link_for url: therapy_thought_records_path(@therapy), text: "Thought Records" %>
-</nav>
+<div class="container">
+  <nav class="therapy-nav">
+    <% if current_user.therapist? %>
+      <%= therapy_nav_link_for url: therapy_notes_path(@therapy), text: "📝 Notes" %>
+    <% end %>
+    <%= therapy_nav_link_for url: therapy_assignments_path(@therapy), text: "📃 Assignments" %>
+    <%= therapy_nav_link_for url: therapy_attachments_path(@therapy), text: "📁 Attachments" %>
+    <%= therapy_nav_link_for url: therapy_needs_records_path(@therapy), text: "🧑 Needs Records" %>
+    <%= therapy_nav_link_for url: therapy_thought_records_path(@therapy), text: "💭 Thought Records" %>
+  </nav>
+</div>

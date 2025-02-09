@@ -5,10 +5,11 @@
   --accent-red: #FFADAD;
   --accent-orange: #FEE7D7;
   --accent-grey: #707070;
+  --bg-green: #008F00;
   --text-red: #290000;
   --text-green: #002900;
   --highlight: #fd0;
-  --font-stack: "Playfair Display", "Times New Roman", serif;
+  --font-stack: "Outfit", "Helvetica", sans-serif;
   --font-sans: "Open Sans", "Arial", sans-serif;
   --container-width: 800px;
   --container-width__small: 400px;

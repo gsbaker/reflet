@@ -1,9 +1,17 @@
 .therapy-summary {
   background-color: white;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
   padding: 10px;
   width: 100%;
+}
+
+.therapy-nav {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  display: flex;
+  align-self: flex-start;
+  width: max-content;
 }
 
 .therapy-nav-link {
@@ -14,10 +22,9 @@
     margin-right: 10px;
   }
 
-  border: 1px solid black;
-  background-color: lightgrey;
 }
 
 .therapy-nav-link-active {
   background-color: white;
+  border-radius: 15px;
 }

@@ -5,10 +5,10 @@
 body {
   background-color: var(--bg-color);
   margin: 0;
+  font-family: var(--font-stack);
 }
 
 a {
-  text-decoration: underline;
   color: #000;
 }
 
@@ -20,6 +20,10 @@ a {
 .container-small {
   max-width: var(--container-width__small);
   margin: 0 auto;
+}
+
+.page-content {
+  margin-bottom: 20px;
 }
 
 .screen-reader-text {

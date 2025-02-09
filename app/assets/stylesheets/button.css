@@ -1,21 +1,27 @@
 .btn {
   font-family: var(--font-stack);
-  background-color: var(--accent-blue);
-  color: black;
+  background-color: var(--bg-green);
+  color: white;
   font-size: 1em;
-  border-radius: 20px;
-  border: 1px solid black;
-  padding: 5px 10px;
-  font-style: italic;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 15px;
   text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
   &:hover {
     cursor: pointer;
-    color: #001829;
+    background-color: #007A00;
   }
 
   .btn--secondary& {
-    background-color: #E0E0E0;
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+
+    &:hover {
+      background-color: #eee;
+    }
   }
 
   .btn--destructive& {
