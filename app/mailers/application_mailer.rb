@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "notifications@reflet.io"
+  default from: "Reflet <notifications@reflet.io>"
   layout "mailer"
 end

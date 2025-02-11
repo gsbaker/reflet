@@ -7,15 +7,12 @@ module Therapies
     def create
       @therapy.assign_attributes(therapy_params)
 
-      @therapy.attachments.each do |attachment|
-        attachment.uploaded_by_id ||= current_user.id
-      end
-
       respond_to do |format|
         if @therapy.save
-          turbo_stream.replace "attachments-table" do
-            render partial: "table", locals: { attachments: @therapy.attachments }
-          end
+          notify_sharee
+
+          format.turbo_stream
+          format.html { redirect_to therapy_attachments_path(@therapy) }
         else
           render :show, status: :unprocessable_entity
         end
@@ -26,6 +23,13 @@ module Therapies
 
     def therapy_params
       params.require(:therapy).permit(attachments: [])
+    end
+
+    def notify_sharee
+      AttachmentMailer
+        .with(shareer: current_user, sharee: @therapy.counterpart(current_user))
+        .new_attachment_email
+        .deliver_later
     end
   end
 end
