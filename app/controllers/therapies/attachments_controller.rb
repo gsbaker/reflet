@@ -29,7 +29,7 @@ module Therapies
       AttachmentMailer
         .with(shareer: current_user, sharee: @therapy.counterpart(current_user))
         .new_attachment_email
-        .deliver_later
+        .deliver_now
     end
   end
 end
