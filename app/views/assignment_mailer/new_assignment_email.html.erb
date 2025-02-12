@@ -1,0 +1,7 @@
+<p>Dear <%= @assignment.assignee %>,</p>
+
+<p><%= @assignment.assigner %> has assigned you a new task on Reflet:</p>
+
+<p><strong><%= @assignment.assignable.title %></strong></p>
+
+<p>Please <%= link_to "log in to your account", root_url %> to view the task.</p>

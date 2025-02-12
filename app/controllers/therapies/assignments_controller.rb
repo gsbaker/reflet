@@ -10,7 +10,8 @@ module Therapies
       @assignment.assignable_type = "Questionnaire"
 
       if @assignment.save!
-       redirect_to therapy_assignments_path(@therapy)
+        notify_assignee
+        redirect_to therapy_assignments_path(@therapy)
       else
         render :index, status: :unprocessable_entity
       end
@@ -20,6 +21,13 @@ module Therapies
 
     def assignment_params
       params.require(:assignment).permit(:assignable_id, :cadence)
+    end
+
+    def notify_assignee
+      AssignmentMailer
+        .with(assignment: @assignment)
+        .new_assignment_email
+        .deliver_later
     end
   end
 end
