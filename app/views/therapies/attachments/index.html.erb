@@ -1,6 +1,6 @@
 <div id="attachments" class="vstack">
   <h1>Files</h1>
-    <%= form_with model: @therapy, url: therapy_attachments_path(@therapy), method: :post do |f| %>
+    <%= form_with model: @therapy, url: therapy_attachments_path(@therapy), method: :post, id: "attachments_form" do |f| %>
       <%= render "form", f:, attachments: @attachments %>
     <% end %>
 

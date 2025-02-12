@@ -27,9 +27,9 @@ module Therapies
 
     def notify_sharee
       AttachmentMailer
-        .with(shareer: current_user, sharee: @therapy.counterpart(current_user))
+        .with(shareer: current_user, sharee: @therapy.counterpart(current_user), therapy: @therapy)
         .new_attachment_email
-        .deliver_now
+        .deliver_later
     end
   end
 end

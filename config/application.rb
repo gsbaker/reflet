@@ -23,9 +23,5 @@ module Reflet
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    config.action_mailer.default_url_options = { host: "reflet.io" }
-    config.action_mailer.delivery_method = :mailpace
-    config.action_mailer.mailpace_settings = { api_token: Rails.application.credentials.mailpace_api_token }
   end
 end

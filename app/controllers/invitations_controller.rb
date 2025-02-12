@@ -44,7 +44,7 @@ class InvitationsController < ApplicationController
     @invitation = current_user.sent_invitations.build(invitee_email: email)
 
     if @invitation.save
-      InvitationMailer.with(invitation: @invitation).invite.deliver_now
+      InvitationMailer.with(invitation: @invitation).invite.deliver_later
       if current_user.therapist?
       redirect_to root_path, notice: "Invitation sent to #{email}."
       else
