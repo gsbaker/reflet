@@ -43,6 +43,7 @@ builder:
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 #
 env:
+  SOLID_QUEUE_IN_PUMA: "true"
 #   clear:
 #     DB_HOST: 192.168.0.2
  secret:
