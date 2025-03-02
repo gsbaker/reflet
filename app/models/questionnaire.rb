@@ -1,8 +1,8 @@
 class Questionnaire < ApplicationRecord
   include Assignable
 
-  has_many :questions
-  has_many :assignments, as: :assignable
+  has_many :questions, dependent: :destroy
+  has_many :assignments, as: :assignable, dependent: :destroy
 
   before_save :generate_slug
 
@@ -21,6 +21,6 @@ class Questionnaire < ApplicationRecord
   private
 
   def generate_slug
-    self.slug = title.parameterize
+    self.slug = abbreviation.parameterize
   end
 end
