@@ -1,14 +1,11 @@
 <% if current_user.is_a?(Individual) %>
-  <h1>How was your day?</h1>
-  <p>Good 👍</p>
-  <p>Bad 👎</p>
-  <p>Neutral 🤷</p>
+  <div class="page-notice">
+    <p>👷‍ work in progress</p>
+  </div>
 
   <h1>Assignments</h1>
   <% if current_user.assignments.open.any? %>
     <p>You have open assignments.</p>
-  <% else %>
-    <p>You have no open assignments.</p>
   <% end %>
 <% else %>
   <%= render "therapists/dashboard" %>
