@@ -66,16 +66,6 @@ class ThoughtRecordsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def thought_record_params
-    params.require(:thought_record).permit(
-      :title,
-      :situation,
-      :feelings,
-      :thoughts,
-      :evidence_for,
-      :evidence_against,
-      :alternative_thoughts,
-      :alternative_feelings,
-      :therapy_id
-    )
+    params.require(:thought_record).permit(:title, :content, :therapy_id)
   end
 end

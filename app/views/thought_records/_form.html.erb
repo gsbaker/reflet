@@ -1,6 +1,9 @@
 <% if @thought_record.errors.any? %>
   <div class="validation-error">
-    <p class="validation-title"><%= pluralize(@thought_record.errors.count, "error") %> prohibited this thought record from being saved:</p>
+    <p class="validation-title">
+      <%= pluralize(@thought_record.errors.count, "error") %> prohibited this
+      thought record from being saved:
+    </p>
 
     <ul>
       <% @thought_record.errors.each do |error| %>
@@ -16,46 +19,8 @@
     <%= form.text_field :title, required: true %>
   </div>
 
-  <fieldset class="thought-record-fieldset w-100">
-    <div class="thought-record-field">
-      <%= form.label :situation, style: "display: block" %>
-      <p class="description">Who were you with? What were you doing? Where were you? When was it? </p>
-      <%= form.rich_text_area :situation, required: true %>
-    </div>
-
-    <div class="thought-record-field">
-      <%= form.label :feelings, style: "display: block" %>
-      <p class="description">Describe each feeling in one word</p>
-      <%= form.rich_text_area :feelings %>
-    </div>
-
-    <div class="thought-record-field">
-      <%= form.label :thoughts, style: "display: block" %>
-      <p class="description">What was going through your mind?</p>
-      <%= form.rich_text_area :thoughts %>
-    </div>
-
-    <div class="thought-record-field">
-      <%= form.label :evidence_for, style: "display: block" %>
-      <p class="description">What evidence supports your thoughts?</p>
-      <%= form.rich_text_area :evidence_for %>
-    </div>
-
-    <div class="thought-record-field">
-      <%= form.label :evidence_against, style: "display: block" %>
-      <p class="description">What evidence contradicts your thoughts?</p>
-      <%= form.rich_text_area :evidence_against %>
-    </div>
-
-    <div class="thought-record-field">
-      <%= form.label :alternative_thoughts, style: "display: block" %>
-      <%= form.rich_text_area :alternative_thoughts %>
-    </div>
-
-    <div class="thought-record-field">
-      <%= form.label :alternative_feelings, style: "display: block" %>
-      <%= form.rich_text_area :alternative_feelings %>
-    </div>
-  </fieldset>
-
+  <div>
+    <%= form.label :content %>
+    <%= form.rich_text_area :content, required: true %>
+  </div>
 </div>

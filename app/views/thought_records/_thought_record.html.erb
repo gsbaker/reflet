@@ -1,38 +1,5 @@
 <div id="<%= dom_id thought_record %>" class="card">
   <h1><%= thought_record %></h1>
 
-  <h2>Situation</h2>
-  <p>
-    <%= thought_record.situation %>
-  </p>
-
-  <h2>Feelings</h2>
-  <p>
-    <%= thought_record.feelings %>
-  </p>
-
-  <h2>Thoughts</h2>
-  <p>
-    <%= thought_record.thoughts %>
-  </p>
-
-  <h2>Evidence for</h2>
-  <p>
-    <%= thought_record.evidence_for %>
-  </p>
-
-  <h2>Evidence against</h2>
-  <p>
-    <%= thought_record.evidence_against %>
-  </p>
-
-  <% if thought_record.alternative_thoughts.present? %>
-    <h2>Alternative thoughts</h2>
-    <p><%= thought_record.alternative_thoughts %></p>
-  <% end %>
-
-  <% if thought_record.alternative_feelings.present? %>
-    <h2>Alternative feelings</h2>
-    <p><%= thought_record.alternative_feelings %></p>
-  <% end %>
+  <%= thought_record.content %>
 </div>

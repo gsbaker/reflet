@@ -15,17 +15,20 @@
   }
 
   .btn--secondary& {
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
+    background-color: var(--accent-grey);
+    color: white;
 
     &:hover {
-      background-color: #eee;
+      background-color: #88786D;
     }
   }
 
   .btn--destructive& {
     background-color: var(--accent-red);
+
+    &:hover {
+      background-color: #CC0000;
+    }
   }
 }
 
