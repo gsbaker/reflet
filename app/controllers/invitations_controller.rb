@@ -67,7 +67,7 @@ class InvitationsController < ApplicationController
 
   def accept
     @invitation.accept
-
+    notify_acceptee
     redirect_to therapies_path, notice: "Invitation accepted."
   end
 
@@ -80,6 +80,16 @@ class InvitationsController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_invitation
+    @invitation = Invitation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def invitation_params
+    params.require(:invitation).permit(:email)
+  end
+
   def build_invitation_from_email
     user_from_email = User.find_by_email(invitation_params[:email])
 
@@ -90,13 +100,7 @@ class InvitationsController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_invitation
-    @invitation = Invitation.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def invitation_params
-    params.require(:invitation).permit(:email)
+  def notify_acceptee
+    InvitationMailer.with(invitation: @invitation).accept.deliver_later
   end
 end

@@ -45,6 +45,8 @@ class RegistrationsController < ApplicationController
 
   def set_up_therapy
     @invitation = Invitation.find params[:invitation_id]
+    return if @invitation.nil?
+
     case @invitation.inviter.type
     when "Individual"
       @user.therapies.find_or_create_by! client: @invitation.invitee
@@ -52,6 +54,7 @@ class RegistrationsController < ApplicationController
       @user.therapies.find_or_create_by! therapist: @invitation.inviter
     end
 
-    @invitation.update! status: :accepted
+    @invitation.update! status: :accepted, invitee: @user
+    InvitationMailer.with(invitation: @invitation).accept.deliver_later
   end
 end
