@@ -24,7 +24,8 @@ response_options = {
 }
 
 gad7_questionnaire = Questionnaire.find_or_create_by!(
-  title: "Generalised Anxiety Disorder Questionnaire (GAD-7)",
+  title: "Generalised Anxiety Disorder Questionnaire",
+  abbreviation: "GAD-7",
   description: "Over the last two weeks, how often have you been bothered by any of the following problems?"
 )
 
@@ -38,7 +39,8 @@ gad7_questions.each do |question|
 end
 
 phq9_questionnaire = Questionnaire.find_or_create_by!(
-  title: "Patient Health Questionnaire (PHQ-9)",
+  title: "Patient Health Questionnaire",
+  abbreviation: "PHQ-9",
   description: "Over the last two weeks, how often have you been bothered by any of the following problems?"
 )
 

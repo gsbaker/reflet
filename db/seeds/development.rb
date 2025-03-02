@@ -3,7 +3,7 @@
 george = User.find_or_initialize_by type: "Individual", name: "George Baker", email: "george@reflet.io"
 kate = User.find_or_initialize_by type: "Therapist", name: "Kate Anderson", email: "kate@reflet.io"
 
-users = [george, kate, individual, therapist]
+users = [george, kate]
 
 users.each do |user|
   user.password = "password"
