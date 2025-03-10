@@ -11,7 +11,7 @@
 
 <p>Select a client</p>
 
-<% current_user.therapies.each do |therapy| %>
+<% current_user.therapies.includes(:client).each do |therapy| %>
   <%= f.label :therapy_id, for: "assignment_therapy_id_#{therapy.id}", class: "reflet-radio" do %>
     <%= therapy.client.name %>
     <%= f.radio_button :therapy_id, therapy.id, required: true %>

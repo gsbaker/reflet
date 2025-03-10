@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
 
   # GET /invitations or /invitations.json
   def index
-    @invitations = Invitation.all
+    @invitations = current_user.sent_invitations
   end
 
   # GET /invitations/1 or /invitations/1.json
@@ -46,7 +46,7 @@ class InvitationsController < ApplicationController
     if @invitation.save
       InvitationMailer.with(invitation: @invitation).invite.deliver_later
       if current_user.therapist?
-      redirect_to root_path, notice: "Invitation sent to #{email}."
+        redirect_to root_path, notice: "Invitation sent to #{email}."
       else
         redirect_to therapies_path, notice: "Invitation sent to #{email}."
       end

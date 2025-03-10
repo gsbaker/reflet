@@ -2,7 +2,7 @@
   --bg-color: #eee;
   --accent-blue: #c2e7ff;
   --accent-green: #ADFFAD;
-  --accent-red: #E00000;
+  --accent-red: #FFADAD;
   --accent-orange: #FEE7D7;
   --accent-grey: #707070;
   --accent-grey: #ADA199;
@@ -10,6 +10,7 @@
   --text-red: #290000;
   --text-green: #002900;
   --highlight: #fd0;
+  --bg-red: #E00000;
   --font-stack: "Outfit", "Helvetica", sans-serif;
   --font-sans: "Open Sans", "Arial", sans-serif;
   --container-width: 800px;

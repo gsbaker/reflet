@@ -2,11 +2,11 @@
   <div>
     <h1>Needs Record</h1>
   </div>
-  <% if @needs_record.therapy.present? %>
+  <% if @therapy.present? %>
     <div>
       <%= form_with model: @needs_record do |f| %>
         <%= f.hidden_field :therapy_id, value: nil %>
-        <%= f.submit "Unshare with #{@needs_record.therapy.therapist}", class: "btn btn--secondary" %>
+        <%= f.submit "Unshare with #{@therapy.therapist}", class: "btn btn--secondary" %>
       <% end %>
     </div>
   <% elsif current_user.therapies.any? %>

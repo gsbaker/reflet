@@ -1,7 +1,7 @@
 module Therapies
   class AssignmentsController < BaseController
     def index
-      @assignments = @therapy.assignments
+      @assignments = @therapy.assignments.includes(:assignable)
       @assignment = @therapy.assignments.build
     end
 

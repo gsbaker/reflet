@@ -9,13 +9,11 @@ class NeedsRecord < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
 
-  enum :status, %i[in_progress completed]
+  enum :status, [ :in_progress, :completed ]
 
   validates :title, presence: true
 
-  after_initialize do
-    initialize_ratings
-  end
+  before_create { create_ratings }
 
   before_update :mark_completed, if: -> { status_changed? && completed? }
 
@@ -25,17 +23,25 @@ class NeedsRecord < ApplicationRecord
     title
   end
 
-  def in_progress?
-    status == "in_progress"
+  def ratings_by_status
+    @ratings_by_status ||= ratings.includes(:need).group_by(&:status)
   end
 
-  def completed?
-    status == "completed"
+  def consistent_needs
+    ratings_by_status["consistent"]
+  end
+
+  def sometimes_needs
+    ratings_by_status["sometimes"]
+  end
+
+  def rare_needs
+    ratings_by_status["rare"]
   end
 
   private
 
-  def initialize_ratings
+  def create_ratings
     Need.all.each do |need|
       ratings.find_or_initialize_by need:
     end

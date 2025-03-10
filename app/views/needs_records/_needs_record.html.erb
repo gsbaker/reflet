@@ -1,27 +1,27 @@
 <div class="card">
   <h1><%= needs_record %></h1>
-  <% if needs_record.ratings.where(status: :consistent).any? %>
+  <% if needs_record.consistent_needs.present? %>
     <h3>Consistently met</h3>
     <div class="needs-record-summary">
-      <% needs_record.ratings.where(status: :consistent).each do |rating| %>
+      <% needs_record.consistent_needs.each do |rating| %>
         <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
       <% end %>
     </div>
   <% end %>
 
-  <% if needs_record.ratings.where(status: :sometimes).any? %>
+  <% if needs_record.sometimes_needs.present? %>
     <h3>Sometimes met</h3>
     <div class="needs-record-summary">
-      <% needs_record.ratings.where(status: :sometimes).each do |rating| %>
+      <% needs_record.sometimes_needs.each do |rating| %>
         <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
       <% end %>
     </div>
   <% end %>
 
-  <% if needs_record.ratings.where(status: :rare).any? %>
+  <% if needs_record.rare_needs.present? %>
     <h3>Rarely met</h3>
     <div class="needs-record-summary">
-      <% needs_record.ratings.where(status: :rare).each do |rating| %>
+      <% needs_record.rare_needs.each do |rating| %>
         <div class="need <%= need_color_class(rating) %>"><%= rating.need %></div>
       <% end %>
     </div>

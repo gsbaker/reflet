@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <%= turbo_frame_tag "user-menu", data: { dropdown_target: "menu" }, class: "nav-dropdown hidden", target: "_top" do %>
-        <div class="menu-item"><%= link_to "Profile", user_path(current_user) %></div>
+        <div class="menu-item"><%= link_to current_user, user_path(current_user) %></div>
         <div class="menu-item"><%= link_to "Logout", session_path, data: { turbo_method: :delete } %></div>
       <% end %>
     </div>

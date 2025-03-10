@@ -5,14 +5,14 @@ class UsersController < ApplicationController
   def dashboard
     @needs_record = @user.needs_records.build if @user.is_a?(Individual)
     @invitation = @user.sent_invitations.build if @user.is_a?(Therapist)
-    @therapies = @user.therapies if @user.is_a?(Therapist)
+    @therapies = @user.therapies.includes(:client) if @user.is_a?(Therapist)
   end
 
   def update
     if @user.update(user_params)
       redirect_to @user, notice: "Profile updated successfully."
     else
-      render :edit, status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 

@@ -9,9 +9,11 @@ class NeedsRecordsController < ApplicationController
   def show
     @rating = @needs_record.ratings.where(status: nil).first
 
-    return unless @rating.nil? && @needs_record.in_progress?
+    if @rating.nil? && @needs_record.in_progress?
+      @needs_record.completed!
+    end
 
-    @needs_record.update! status: :completed
+    @therapy = @needs_record.therapy if @needs_record.completed?
   end
 
   def create

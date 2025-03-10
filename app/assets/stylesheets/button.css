@@ -24,7 +24,7 @@
   }
 
   .btn--destructive& {
-    background-color: var(--accent-red);
+    background-color: var(--bg-red);
 
     &:hover {
       background-color: #CC0000;
