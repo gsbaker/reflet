@@ -1,6 +1,16 @@
 <% content_for :therapy do %>
   <div class="vstack">
-    <%= render "therapies/therapy", therapy: @therapy %>
+    <%= render "therapies/therapy", therapy: @therapy do %>
+      <% if @therapy.completed_at? %>
+        <%= form_with model: @therapy, url: mark_active_therapy_path(@therapy), method: :patch do |f| %>
+          <%= f.submit "Mark active 🟢", class: "action-link" %>
+        <% end %>
+      <% else %>
+        <%= form_with model: @therapy, url: mark_completed_therapy_path(@therapy), method: :patch do |f| %>
+          <%= f.submit "Mark completed ✅", class: "action-link" %>
+        <% end %>
+      <% end %>
+    <% end %>
     <%= render "therapies/navbar" %>
   </div>
 <% end %>

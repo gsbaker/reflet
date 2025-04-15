@@ -1,0 +1,14 @@
+.action-link {
+  background-color: #E9F1F7;
+  border: 1px solid #A0C4FF;
+  color: #162B3C;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 1em;
+
+  &:hover {
+    background-color: #A0C4FF;
+    cursor: pointer;
+  }
+}

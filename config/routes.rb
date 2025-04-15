@@ -37,6 +37,11 @@ Rails.application.routes.draw do
   resources :responses, only: %i[create update]
 
   resources :therapies do
+    member do
+      patch :mark_completed
+      patch :mark_active
+    end
+
     scope module: :therapies do
       resources :needs_records, only: [:show]
       resources :notes

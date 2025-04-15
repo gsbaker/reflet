@@ -3,11 +3,14 @@ module Therapies
     include Therapists::Restrictable
 
     def index
-      @notes = @therapy.notes
+      @notes_by_month = @therapy.notes_by_month
     end
 
     def new
-      @note = @therapy.notes.build(date: Date.today, title: "Session #{Date.today}")
+      @note = @therapy.notes.build(
+        date: Time.zone.today,
+        title: "Session #{@therapy.notes.count + 1}"
+      )
     end
 
     def create

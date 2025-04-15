@@ -6,10 +6,12 @@
     <%= therapy.started_date %>
   </p>
 
-  <% if therapy.completed_at.present? %>
+  <% if therapy.completed_at? %>
     <p>
       <strong>Completed at:</strong>
-      <%= therapy.completed_at %>
+      <%= therapy.completed_date %>
     </p>
   <% end %>
+
+  <%= yield %>
 </div>

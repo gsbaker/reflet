@@ -11,4 +11,4 @@ users.each do |user|
   user.save!
 end
 
-Therapy.find_or_create_by(client: george, therapist: kate, started_at: Time.zone.now - 1.week)
+Therapy.find_or_create_by!(client: george, therapist: kate)

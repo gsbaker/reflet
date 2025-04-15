@@ -1,5 +1,5 @@
 class TherapiesController < ApplicationController
-  before_action :set_therapy, only: %i[ show edit update destroy ]
+  before_action :set_therapy, only: %i[ show edit update destroy mark_completed mark_active ]
 
   def index
     @therapies = current_user.therapies
@@ -54,6 +54,16 @@ class TherapiesController < ApplicationController
       format.html { redirect_to therapies_url, notice: "Therapy was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def mark_completed
+    @therapy.mark_completed
+    redirect_to therapy_url(@therapy), notice: "Therapy was successfully marked as completed."
+  end
+
+  def mark_active
+    @therapy.mark_active
+    redirect_to therapy_url(@therapy), notice: "Therapy was successfully marked as active."
   end
 
   private
