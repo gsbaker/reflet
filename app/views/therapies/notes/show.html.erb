@@ -1,2 +1,8 @@
-<h1>Notes</h1>
+<div class="action-header">
+  <div><h1>Notes</h1></div>
+
+  <div>
+    <%= link_to "Edit", edit_therapy_note_path(@therapy, @note), class: "btn btn--secondary" %>
+  </div>
+</div>
 <%= render @note %>

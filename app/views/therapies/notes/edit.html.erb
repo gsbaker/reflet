@@ -1,0 +1,8 @@
+<h1>Edit note</h1>
+<div class="vstack">
+  <div>
+    <%= form_with model: @note, url: therapy_note_path(@therapy, @note) do |f| %>
+      <%= render "form", f: %>
+    <% end %>
+  </div>
+</div>

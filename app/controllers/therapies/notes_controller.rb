@@ -27,6 +27,20 @@ module Therapies
       @note = @therapy.notes.find(params[:id])
     end
 
+    def edit
+      @note = @therapy.notes.find(params[:id])
+    end
+
+    def update
+      @note = @therapy.notes.find(params[:id])
+
+      if @note.update!(note_params)
+        redirect_to therapy_path(@therapy)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
+
     private
 
     def note_params
