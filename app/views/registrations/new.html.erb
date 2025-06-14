@@ -1,14 +1,20 @@
 <%= render "header" %>
 
-<div class="container-small">
-  <div class="v-stack">
+<div class="container-small vstack">
+  <div class="text-center">
     <%= render "shared/auth_logo" %>
+  </div>
 
-    <div class="page-notice">
-      <p>ⓘ All accounts are free whilst Reflet is in build.</p>
+  <div class="card">
+    <div class="text-center">
+      <h2>Create your account</h2>
+      <% if @invitation.present? %>
+        <p class="text-secondary"><%= @invitation.inviter %> has invited you to join Reflet.</p>
+      <% else %>
+        <p class="text-secondary">It's quick and easy.</p>
+      <% end %>
     </div>
 
-    <h1>Sign up</h1>
     <%= form_with model: @user, url: registration_path, class: "vstack" do |form| %>
       <% if form.object.errors.any? %>
         <% form.object.errors.full_messages.each do |message| %>
@@ -17,23 +23,20 @@
       <% end %>
 
       <div>
-        <%= form.label :name, "Name" %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name, placeholder: "Name", required: true %>
       </div>
 
       <div>
-        <%= form.label :email %>
-        <%= form.email_field :email, readonly: @invitation.present? %>
+        <%= form.label :email, class: "registration-label" %>
+        <%= form.email_field :email, readonly: @invitation.present?, placeholder: "Email", required: true %>
       </div>
 
       <div>
-        <%= form.label :password %>
-        <%= form.password_field :password %>
+        <%= form.password_field :password, placeholder: "Password", required: true %>
       </div>
 
       <div>
-        <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation %>
+        <%= form.password_field :password_confirmation, placeholder: "Confirm password", required: true %>
       </div>
 
       <%= hidden_field_tag :invitation_id, params[:invitation_id] %>
@@ -56,14 +59,14 @@
             <span class="checkmark"></span>
             <div class="reflet-radio__info">
               <strong>Free trial</strong> (one month), then <strong>£15/month</strong><br>
-              No credit card required
+              Free whilst Reflet is in build
             </div>
           <% end %>
         </div>
       </div>
 
-      <div>
-        <%= form.submit "Continue", class: "btn" %>
+      <div class="text-center">
+        <%= form.submit "Sign up", class: "btn btn--block" %>
       </div>
     <% end %>
   </div>

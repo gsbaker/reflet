@@ -33,14 +33,21 @@
 }
 
 .btn--transparent {
-    background: none;
-    background-color: none;
-    border: none;
-    padding: 5px;
-    border: 1px solid white;
+  background: none;
+  background-color: none;
+  border: none;
+  padding: 5px;
+  border: 1px solid white;
 
-    &:hover {
-      border: 1px solid grey;
-      border-radius: 5px;
-    }
+  &:hover {
+    border: 1px solid grey;
+    border-radius: 5px;
   }
+}
+
+.btn--block {
+  width: 250px;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: inline-block;
+}

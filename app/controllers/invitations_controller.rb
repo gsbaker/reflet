@@ -41,7 +41,11 @@ class InvitationsController < ApplicationController
   end
 
   def send_invitation_email(email)
-    @invitation = current_user.sent_invitations.build(invitee_email: email)
+    if current_user.therapist?
+      contract = current_user.contracts.find_by id: invitation_params[:contract_id]
+    end
+
+    @invitation = current_user.sent_invitations.build(invitee_email: email, contract:)
 
     if @invitation.save
       InvitationMailer.with(invitation: @invitation).invite.deliver_later
@@ -87,7 +91,7 @@ class InvitationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def invitation_params
-    params.require(:invitation).permit(:email)
+    params.require(:invitation).permit(:email, :contract_id)
   end
 
   def build_invitation_from_email

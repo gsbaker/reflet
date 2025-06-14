@@ -16,6 +16,34 @@
     <%= f.text_field :email, required: true %>
   </div>
 
+  <% if current_user.contracts.any? %>
+    <div>
+      <legend>Optional: require this client to sign a contract</legend>
+        <%= f.label(
+          :contract_id,
+          nil,
+          for: "no_contract",
+          class: "reflet-radio"
+        ) do %>
+        <%= "No contract" %>
+        <%= f.radio_button :contract_id, nil, id: "no_contract", required: false %>
+        <span class="checkmark"></span>
+      <% end %>
+    <% current_user.contracts.each do |contract| %>
+        <%= f.label(
+          :contract_id,
+          contract.id,
+          for: "contract_#{contract.id}",
+          class: "reflet-radio"
+        ) do %>
+        <%= contract %>
+        <%= f.radio_button :contract_id, contract.id, id: "contract_#{contract.id}", required: false %>
+        <span class="checkmark"></span>
+      <% end %>
+    <% end %>
+    </div>
+  <% end %>
+
   <div>
     <%= f.submit "Invite", class: "btn" %>
   </div>

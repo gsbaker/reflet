@@ -2,6 +2,8 @@ class Invitation < ApplicationRecord
   belongs_to :inviter, class_name: "User"
   belongs_to :invitee, class_name: "User", optional: true
 
+  belongs_to :contract, optional: true
+
   enum :status, sent: "sent", accepted: "accepted", declined: "declined"
 
   validates :status, presence: true
