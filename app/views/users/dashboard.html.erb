@@ -1,12 +1,5 @@
-<% if current_user.is_a?(Individual) %>
-  <div class="page-notice">
-    <p>👷‍ work in progress</p>
-  </div>
-
-  <h1>Assignments</h1>
-  <% if current_user.assignments.open.any? %>
-    <p>You have open assignments.</p>
-  <% end %>
-<% else %>
+<% case current_user when Individual %>
+  <%= render "individuals/dashboard" %>
+<% when Therapist %>
   <%= render "therapists/dashboard" %>
 <% end %>
