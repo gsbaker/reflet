@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_14_154300) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_14_210515) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -77,6 +77,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_14_154300) do
     t.datetime "updated_at", null: false
     t.string "invitee_email"
     t.integer "contract_id"
+    t.datetime "contract_accepted_at"
     t.index ["invitee_id"], name: "index_invitations_on_invitee_id"
     t.index ["inviter_id"], name: "index_invitations_on_inviter_id"
   end

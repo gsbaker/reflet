@@ -16,7 +16,7 @@
     <%= f.text_field :email, required: true %>
   </div>
 
-  <% if current_user.contracts.any? %>
+  <% if current_user.therapist? && current_user.contracts.any? %>
     <div>
       <legend>Optional: require this client to sign a contract</legend>
         <%= f.label(

@@ -1,0 +1,21 @@
+<div class="vstack">
+  <h1>Contract</h1>
+  <p class="text-secondary">
+  Please review the contract below and accept it to proceed.
+  </p>
+  <div class="card">
+    <%= @invitation.contract.content %>
+  </div>
+
+  <%= form_with model: @invitation, url: accept_invitation_contract_path(@invitation, @invitation.contract), class: "w-100" do |f| %>
+    <%= f.hidden_field :contract_accepted, value: true %>
+    <div class="vstack text-center">
+      <div>
+        <%= f.submit "Accept", class: "btn btn--block" %>
+      </div>
+      <div>
+        <%= link_to "Decline", root_path, class: "btn btn--secondary btn--block" %>
+      </div>
+    </div>
+  <% end %>
+</div>

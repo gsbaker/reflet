@@ -8,6 +8,14 @@ Rails.application.routes.draw do
       patch :accept
       patch :decline
     end
+
+    scope module: :invitations do
+      resources :contracts, only: [:show] do
+        member do
+          patch :accept
+        end
+      end
+    end
   end
 
   resources :thought_records

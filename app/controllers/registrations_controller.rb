@@ -11,8 +11,12 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       set_up_therapy if params[:invitation_id].present?
-      login @user
-      redirect_to root_path
+      if @invitation.contract.present?
+        redirect_to invitation_contract_path(@invitation, @invitation.contract)
+      else
+        login @user
+        redirect_to root_path
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -46,6 +50,7 @@ class RegistrationsController < ApplicationController
   def set_up_therapy
     @invitation = Invitation.find params[:invitation_id]
     return if @invitation.nil?
+
 
     case @invitation.inviter.type
     when "Individual"

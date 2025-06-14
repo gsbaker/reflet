@@ -31,15 +31,15 @@
 <% end %>
 
 <% if current_user.therapies.any? %>
-  <% @therapies.each do |therapy| %>
-    <div class="vstack">
+  <div class="vstack">
+    <% @therapies.each do |therapy| %>
       <div>
         <%= link_to therapy do %>
           <%= render therapy %>
         <% end %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% else %>
   <div class="card">
     <h2>Time to Add Your First Client!</h2>
