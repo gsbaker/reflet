@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contracts
   resources :therapists, controller: :users
   resources :individuals, controller: :users
 

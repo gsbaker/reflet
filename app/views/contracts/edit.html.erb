@@ -1,0 +1,11 @@
+<% content_for :title, "Editing contract" %>
+
+<h1>Editing contract</h1>
+
+<%= form_with(model: @contract, class: "vstack") do |form| %>
+  <%= render "form", form:, contract: @contract %>
+  <div class="hstack">
+    <%= form.submit "Update this contract", class: "btn" %>
+    <%= link_to "Cancel", @contract, class: "btn btn--secondary" %>
+  </div>
+<% end %>

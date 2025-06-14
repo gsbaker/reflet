@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_16_151446) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_14_143959) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -60,6 +60,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_16_151446) do
     t.string "assignable_type"
     t.datetime "completed_at"
     t.index ["assignable_id", "assignable_type"], name: "index_assignments_on_assignable_id_and_assignable_type"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer "therapist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", default: "Therapy Contract", null: false
   end
 
   create_table "invitations", force: :cascade do |t|

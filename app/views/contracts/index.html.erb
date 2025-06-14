@@ -1,0 +1,35 @@
+<% content_for :title, "Contracts" %>
+
+<div class="action-header">
+  <div>
+    <h1>Contracts</h1>
+  </div>
+  <div>
+    <%= link_to "Create a contract", new_contract_path, class: "btn" %>
+  </div>
+</div>
+
+<% if @contracts.any? %>
+<div id="contracts" class="card">
+  <% @contracts.each do |contract| %>
+    <p><%= link_to contract %></p>
+  <% end %>
+</div>
+<% else %>
+  <div class="card">
+  <h2>No contracts yet!</h2>
+  <%= image_tag "illustrations/contract.svg", alt: "Illustration of a contract", class: "illustration" %>
+  <p>
+  Unlock a new level of clarity and agreement with your clients.
+  </p>
+  <p>
+  Our Contracts feature allows you to create customized agreements to attach to your therapy invitations.
+  </p>
+  <p>
+  This ensures both you and your clients are on the same page, fostering trust and a clear understanding of the therapeutic process.
+  </p>
+  <p>
+  Start creating your first contract today to streamline your client onboarding!
+  </p>
+  </div>
+<% end %>

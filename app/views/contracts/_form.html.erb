@@ -1,0 +1,20 @@
+<% if contract.errors.any? %>
+  <div class="validation-error">
+    <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+    <ul>
+      <% contract.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div>
+  <%= form.label :title %>
+  <%= form.text_field :title, required: true %>
+</div>
+
+<div>
+  <%= form.rich_textarea :content, required: true %>
+</div>

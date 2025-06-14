@@ -1,0 +1,15 @@
+<div class="vstack">
+  <div class="action-header">
+    <div>
+      <h1><%= @contract.title %></h1>
+    </div>
+    <div>
+      <div class="hstack">
+        <%= link_to "Edit", edit_contract_path(@contract), class: "btn btn--secondary" %>
+        <%= button_to "Delete", @contract, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn--destructive" %>
+      </div>
+    </div>
+  </div>
+
+<%= render @contract %>
+</div>
