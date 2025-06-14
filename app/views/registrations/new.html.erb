@@ -1,5 +1,3 @@
-<%= render "header" %>
-
 <div class="container-small vstack">
   <div class="text-center">
     <%= render "shared/auth_logo" %>
@@ -65,8 +63,13 @@
         </div>
       </div>
 
-      <div class="text-center">
-        <%= form.submit "Sign up", class: "btn btn--block" %>
+      <div class="vstack text-center">
+        <div>
+          <%= form.submit "Sign up", class: "btn btn--block" %>
+        </div>
+        <div>
+          <%= link_to "Or, sign in", new_session_path, class: "btn btn--secondary btn--block" %>
+        </div>
       </div>
     <% end %>
   </div>
