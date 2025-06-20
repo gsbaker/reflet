@@ -12,10 +12,11 @@
       <% attachments.order(created_at: :desc).each do |attachment| %>
         <tr>
           <td>
-            <span class="screen-reader-text">
-              <%= attachment.filename.extension_with_delimiter %>
-            </span>
-            <%= attachment.filename.extension_with_delimiter %>
+            <% if attachment.image? %>
+              <%= image_tag "icons/image.svg", alt: "Image file icon", class: "icon" %>
+            <% else %>
+              <%= image_tag "icons/file.svg", alt: "File icon", class: "icon" %>
+            <% end %>
           </td>
           <td>
             <%= link_to attachment.filename, rails_blob_path(attachment, disposition: "attachment") %>

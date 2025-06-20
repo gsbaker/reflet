@@ -68,3 +68,9 @@ a {
 .text-secondary {
   color: var(--text-secondary);
 }
+
+.icon {
+  height: 1em;
+  vertical-align: middle;
+  line-height: 1em;
+}

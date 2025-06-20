@@ -40,3 +40,12 @@
     <% end %>
   </div>
 <% end %>
+
+<% if @assignments.empty? %>
+  <div class="card">
+    <h2>No assignments yet!</h2>
+    <%= image_tag "illustrations/assignments.svg", alt: "Illustration of assignments", class: "illustration" %>
+    <p>There are no assignments for this therapy yet.</p>
+    <p>Therapists can create assignments on their Reflet dashboard, whilst clients can sit back and relax!</p>
+  </div>
+<% end %>

@@ -1,11 +1,11 @@
 <div class="container">
   <nav class="therapy-nav">
     <% if current_user.therapist? %>
-      <%= therapy_nav_link_for url: therapy_notes_path(@therapy), text: "📝 Notes" %>
+      <%= therapy_nav_link_for url: therapy_notes_path(@therapy), title: "Notes", icon: "note" %>
     <% end %>
-    <%= therapy_nav_link_for url: therapy_assignments_path(@therapy), text: "📃 Assignments" %>
-    <%= therapy_nav_link_for url: therapy_attachments_path(@therapy), text: "📁 Attachments" %>
-    <%= therapy_nav_link_for url: therapy_needs_records_path(@therapy), text: "🧑 Needs Records" %>
-    <%= therapy_nav_link_for url: therapy_thought_records_path(@therapy), text: "💭 Thought Records" %>
+    <%= therapy_nav_link_for url: therapy_assignments_path(@therapy), title: "Assignments", icon: "clipboard" %>
+    <%= therapy_nav_link_for url: therapy_attachments_path(@therapy), title: "Files", icon: "file" %>
+    <%= therapy_nav_link_for url: therapy_needs_records_path(@therapy), title: "Needs Records", icon: "heart" %>
+    <%= therapy_nav_link_for url: therapy_thought_records_path(@therapy), title: "Thought Records", icon: "bubble" %>
   </nav>
 </div>

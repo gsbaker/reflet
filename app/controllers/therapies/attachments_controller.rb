@@ -7,15 +7,12 @@ module Therapies
     def create
       @therapy.assign_attributes(therapy_params)
 
-      respond_to do |format|
-        if @therapy.save
-          notify_sharee
+      if @therapy.save
+        notify_sharee
 
-          format.turbo_stream
-          format.html { redirect_to therapy_attachments_path(@therapy) }
-        else
-          render :show, status: :unprocessable_entity
-        end
+        redirect_to therapy_attachments_path(@therapy)
+      else
+        render :show, status: :unprocessable_entity
       end
     end
 

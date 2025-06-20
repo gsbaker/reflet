@@ -6,5 +6,9 @@
     <% end %>
   </div>
 <% else %>
-  <p><%= @therapy.client %> hasn't shared any thought records yet.
+  <div class="card">
+    <h2>No Thought Records Yet!</h2>
+    <%= image_tag "illustrations/share.svg", alt: "Illustration of two people sharing", class: "illustration" %>
+    <p><%= @therapy.client %> has not shared any thought records yet.</p>
+  </div>
 <% end %>

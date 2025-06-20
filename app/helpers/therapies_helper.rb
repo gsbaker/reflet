@@ -21,7 +21,12 @@ module TherapiesHelper
     end
   end
 
-  def therapy_nav_link_for(url:, text:)
-    link_to text, url, class: "therapy-nav-link #{"therapy-nav-link-active" if request.fullpath.start_with?(url)}"
+  def therapy_nav_link_for(url:, title:, icon:)
+    link_to url, class: "therapy-nav-link #{"therapy-nav-link-active" if request.fullpath.start_with?(url)}" do
+      capture do
+        concat image_tag "icons/#{icon}.svg", class: "icon"
+        concat title
+      end
+    end
   end
 end

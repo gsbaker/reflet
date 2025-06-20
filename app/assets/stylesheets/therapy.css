@@ -12,6 +12,7 @@
   display: flex;
   align-self: flex-start;
   width: max-content;
+  font-weight: 500;
 }
 
 .therapy-nav-link {
@@ -20,6 +21,10 @@
 
   &:not(:last-child) {
     margin-right: 10px;
+  }
+
+  .icon {
+    margin-right: 3px;
   }
 
 }

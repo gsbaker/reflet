@@ -1,9 +1,0 @@
-<%= turbo_stream.replace "attachments-table" do %>
-  <%= render "table", attachments: @therapy.attachments %>
-<% end %>
-
-<%= turbo_stream.update "attachments_form" do %>
-  <%= fields_for @therapy do |f| %>
-    <%= render "form", f: f, attachments: @therapy.attachments %>
-  <% end %>
-<% end %>
