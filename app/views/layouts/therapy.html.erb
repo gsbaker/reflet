@@ -3,11 +3,12 @@
     <%= render "therapies/therapy", therapy: @therapy do %>
       <% if @therapy.completed_at? %>
         <%= form_with model: @therapy, url: mark_active_therapy_path(@therapy), method: :patch do |f| %>
-          <%= f.submit "Mark active 🟢", class: "action-link" %>
+          <%= f.submit "Mark active", class: "action-link" %>
         <% end %>
       <% else %>
         <%= form_with model: @therapy, url: mark_completed_therapy_path(@therapy), method: :patch do |f| %>
-          <%= f.submit "Mark completed ✅", class: "action-link" %>
+          <%= f.submit "Mark completed", class: "action-link" do %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
