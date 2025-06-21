@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user
 
   def dashboard
-    @needs_record = @user.needs_records.build if @user.is_a?(Individual)
+    @open_assignments = @user.assignments.open if @user.client?
 
     return unless @user.is_a?(Therapist)
 

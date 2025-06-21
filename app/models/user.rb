@@ -38,4 +38,6 @@ class User < ApplicationRecord
   def individual?
     is_a?(Individual)
   end
+
+  alias_method :client?, :individual?
 end

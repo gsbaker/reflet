@@ -23,6 +23,10 @@ class Assignment < ApplicationRecord
     self.cadence ||= :no_repeat
   end
 
+  def to_s
+    assignable.title
+  end
+
   def self.humanized_cadence(cadence)
     {
       no_repeat: "Doesn't repeat",

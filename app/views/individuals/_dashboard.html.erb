@@ -1,7 +1,17 @@
-<div class="vstack card">
-  <%= image_tag "illustrations/done.svg", alt: "Illustration of a woman reading in a relaxed state.", class: "illustration" %>
-  <h2>Looks like you're all caught up!</h2>
-  <p>
+<% if @open_assignments.any? %>
+  <div class="card">
+    <%= image_tag "illustrations/assignments.svg", alt: "Illustration of a person working on assignments.", class: "illustration" %>
+    <h2>Assignments</h2>
+    <% @open_assignments.each do |assignment| %>
+      <p><%= link_to assignment %></p>
+    <% end %>
+  </div>
+<% else %>
+  <div class="vstack card">
+    <%= image_tag "illustrations/done.svg", alt: "Illustration of a woman reading in a relaxed state.", class: "illustration" %>
+    <h2>Looks like you're all caught up!</h2>
+    <p>
     You have no new notifications or tasks at the moment. Feel free to explore other sections of the app or relax for a bit.
-  </p>
-</div>
+    </p>
+  </div>
+<% end %>
