@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       set_up_therapy if params[:invitation_id].present?
-      if @invitation.contract.present?
+      if @invitation&.contract.present?
         redirect_to invitation_contract_path(@invitation, @invitation.contract)
       else
         login @user

@@ -25,32 +25,40 @@
 </div>
 
 <div class="vstack">
-<% if @sent_invitations.any? %>
-  <div class="card">
-    <p><strong>Pending invites</strong> <%= image_tag "icons/email.svg", class: "icon" %></p>
-    <% @sent_invitations.each do |invitation| %>
-      <%= link_to invitation.invitee_email, invitation %><br>
-    <% end %>
-  </div>
-<% end %>
-
 <% if current_user.therapies.any? %>
   <div class="vstack">
     <% @therapies.each do |therapy| %>
       <div>
-        <%= link_to therapy do %>
+        <%= link_to therapy, class: "text-decoration-none" do %>
           <%= render therapy %>
         <% end %>
       </div>
     <% end %>
   </div>
-<% else %>
+<% end %>
+
+<% if current_user.therapies.none? && @sent_invitations.none? %>
   <div class="card">
     <h2>Time to Add Your First Client!</h2>
     <%= image_tag "illustrations/clients.svg", alt: "Illustration of clients", class: "illustration" %>
     <p>This page is where you'll connect with, manage, and support all your clients.</p>
     <p>Once you add them, you'll gain access to features designed to make your practice run smoothly.</p>
     <p>Ready to get started? Your first client is just a few steps away from being added!</p>
+  </div>
+<% end %>
+
+<% if @sent_invitations.any? %>
+  <div class="card hstack hstack--card">
+    <div>
+    <h2>Pending invitations</h2>
+    <p class="text-secondary text-small">Your client will now recieve an email inviting them to set up their account.</p>
+    <% @sent_invitations.each do |invitation| %>
+      <%= link_to invitation.invitee_email, invitation %><br>
+    <% end %>
+    </div>
+    <div>
+      <%= image_tag "illustrations/email.svg", alt: "Illustration of person receiving email", class: "illustration" %>
+    </div>
   </div>
 <% end %>
 </div>

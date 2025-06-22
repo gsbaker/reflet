@@ -20,7 +20,7 @@
 <div id="therapies" class="vstack">
   <% @therapies.each do |therapy| %>
     <div>
-      <%= link_to therapy do %>
+      <%= link_to therapy, class: "text-decoration-none" do %>
         <%= render therapy %>
       <% end %>
     </div>

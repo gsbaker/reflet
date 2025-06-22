@@ -1,17 +1,15 @@
-<div id="<%= dom_id therapy %>" class="container therapy-summary">
-  <%= relation(current_user, therapy) %>
-
-  <p>
-    <strong>Started:</strong>
-    <%= therapy.started_date %>
-  </p>
-
-  <% if therapy.completed_at? %>
-    <p>
-      <strong>Completed at:</strong>
-      <%= therapy.completed_date %>
-    </p>
-  <% end %>
+<div id="<%= dom_id therapy %>" class="container therapy-summary card">
+  <div class="hstack">
+    <div>
+      <%= image_tag avatar_path(therapy.counterpart(current_user)), class: "avatar avatar--small" %>
+    </div>
+    <div>
+      <strong><%= therapy.counterpart(current_user) %></strong><br>
+      <span class="text-small text-secondary">
+        <%= therapy.counterpart(current_user).email %>
+      </span>
+    </div>
+  </div>
 
   <%= yield %>
 </div>

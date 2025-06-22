@@ -1,3 +1,7 @@
+<% unless current_user.avatar.attached? %>
+  <p>Why not <%= link_to "add an avatar", user_path(current_user) %>?</p>
+<% end %>
+
 <% case current_user when Individual %>
   <%= render "individuals/dashboard" %>
 <% when Therapist %>
