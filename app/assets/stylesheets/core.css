@@ -69,6 +69,10 @@ a {
   color: var(--text-secondary);
 }
 
+.text-small {
+  font-size: 0.8em;
+}
+
 .icon {
   height: 1em;
   vertical-align: middle;

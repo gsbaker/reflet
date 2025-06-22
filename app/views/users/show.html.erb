@@ -2,10 +2,6 @@
 
 <p>Account created: <%= @user.created_at.strftime("%B %d, %Y") %></p>
 
-<% if @user.avatar.attached? %>
-  <p>Avatar: <%= image_tag @user.avatar.variant(:thumb) %></p>
-<% end %>
-
 <%= form_with model: @user, scope: :user do |f| %>
   <%= render "form", f: f %>
 <% end %>

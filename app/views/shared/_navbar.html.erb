@@ -10,11 +10,7 @@
     </div>
     <div data-controller="dropdown" data-action="click->dropdown#toggle">
       <div class="nav-expand" data-dropdown-target="btn">
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar.variant(:thumb), class: "avatar" %>
-        <% else %>
-          <%= image_tag "avatar.svg", alt: "Avatar", class: "avatar", width: 30, height: 30 %>
-        <% end %>
+        <%= image_tag avatar_path, class: "avatar avatar--small" %>
       </div>
       <%= turbo_frame_tag "user-menu", data: { dropdown_target: "menu" }, class: "nav-dropdown hidden", target: "_top" do %>
         <div class="menu-item"><%= link_to current_user, user_path(current_user) %></div>

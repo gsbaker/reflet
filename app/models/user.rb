@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :received_invitations, class_name: "Invitation", foreign_key: "invitee_id"
 
   has_one_attached :avatar do |attachable|
-    attachable.variant :thumb, resize_to_limit: [40, 40]
+    attachable.variant :thumb, resize_to_fill: [600, 600]
   end
 
   def to_s

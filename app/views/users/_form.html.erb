@@ -1,4 +1,4 @@
-<div class="vstack">
+<div class="card container-small vstack">
   <div>
     <% if @user.errors.any? %>
       <% @user.errors.full_messages.each do |message| %>
@@ -19,12 +19,18 @@
 
   <div>
     <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
+    <div class="hstack">
+      <div>
+        <%= image_tag avatar_path, class: "avatar avatar--large" %>
+      </div>
+      <div>
+        <%= f.file_field :avatar %>
+        <legend class="text-secondary text-small">For best results, upload a square image at least 300x300 pixels.</legend>
+      </div>
+    </div>
   </div>
 
-  <div class="hstack">
-    <div>
-      <%= f.submit "Save changes", class: "btn" %>
-    </div>
+  <div class="text-center">
+    <%= f.submit "Save changes", class: "btn btn--block" %>
   </div>
 </div>
