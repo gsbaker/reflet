@@ -30,7 +30,12 @@
     </div>
   </div>
 
-  <div class="text-center">
-    <%= f.submit "Save changes", class: "btn btn--block" %>
+  <div class="text-center vstack">
+    <div>
+      <%= f.submit "Save changes", class: "btn btn--block" %>
+    </div>
+    <div>
+      <%= link_to "Sign out", session_path, class: "btn btn--destructive btn--block", data: { turbo_method: :delete } %>
+    </div>
   </div>
 </div>
