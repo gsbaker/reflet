@@ -17,11 +17,15 @@
       <% end %>
     </div>
   <% else %>
-    <div class="card">
+    <div class="card hstack hstack--card">
+      <div>
       <h2>Your Session Notes</h2>
-      <%= image_tag "illustrations/notes.svg", alt: "Illustration of notes", class: "illustration" %>
       <p>This is where you'll find all your notes after you've created them.</p>
       <p>To get started, click the 'Create a note' button to write up notes during or following a session with a client.</p>
+      </div>
+      <div>
+      <%= image_tag "illustrations/notes.svg", alt: "Illustration of notes", class: "illustration" %>
+      </div>
     </div>
   <% end %>
 </div>

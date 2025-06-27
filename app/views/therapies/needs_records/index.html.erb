@@ -7,9 +7,17 @@
     <% end %>
   </div>
 <% else %>
-  <div class="card">
+  <div class="card hstack hstack--card">
+    <div>
     <h2>No Needs Records Yet!</h2>
+    <% if current_user.therapist? %>
+      <p><%= @therapy.client %> has not shared any needs records yet.</p>
+    <% elsif current_user.client? %>
+      <p>Share your needs records with your therapist to help them understand your current situation and provide better support.</p>
+    <% end %>
+    </div>
+    <div>
     <%= image_tag "illustrations/share.svg", alt: "Illustration of two people sharing", class: "illustration" %>
-    <p><%= @therapy.client %> has not shared any needs records yet.</p>
+    </div>
   </div>
 <% end %>

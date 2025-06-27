@@ -11,13 +11,19 @@
     <% if @attachments.any? %>
       <%= render "table", attachments: @attachments %>
     <% else %>
-      <div class="card">
-        <h2>Share & Grow: Attachments in Your Therapy Journey</h2>
-        <%= image_tag "illustrations/attachments.svg", alt: "Illustration of attachments", class: "illustration" %>
-        <p>Ready to enrich your therapy experience? Our attachments feature lets you securely share files directly within your therapy sessions.</p>
-        <p><strong>For Clients:</strong> Share journal entries, progress trackers, artwork, or anything else that helps you express yourself and your journey. 
+      <div class="card hstack hstack--card">
+        <div>
+        <h2>Upload files</h2>
+        <% if current_user.client? %>
+        <p>Share journal entries, progress trackers, artwork, or anything else that helps you express yourself and your journey.
         This can give your therapist deeper insights and make your sessions even more effective.</p>
-        <p><strong>For Therapists:</strong> Easily exchange worksheets, helpful articles, or session summaries with your clients. Providing resources directly within the app streamlines your practice and supports your clients' growth between sessions.</p>
+        <% elsif current_user.therapist? %>
+        <p>Easily exchange worksheets, helpful articles, or session summaries with your clients. Providing resources directly within the app streamlines your practice and supports your clients' growth between sessions.</p>
+        <% end %>
+        </div>
+        <div>
+        <%= image_tag "illustrations/attachments.svg", alt: "Illustration of attachments", class: "illustration" %>
+        </div>
       </div>
     <% end %>
 </div>

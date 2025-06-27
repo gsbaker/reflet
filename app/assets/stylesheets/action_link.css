@@ -1,6 +1,6 @@
 .action-link {
-  background-color: #E9F1F7;
-  border: 1px solid #A0C4FF;
+  background-color: var(--bg-blue);
+  border: 1px solid var(--text-blue);
   color: #162B3C;
   text-decoration: none;
   padding: 5px 10px;

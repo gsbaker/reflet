@@ -1,9 +1,13 @@
 <h1>Resources</h1>
 
-<div class="card">
-<%= image_tag "illustrations/form.svg", alt: "Person filling in a form", class: "illustration" %>
-<h2>Questionnaires</h2>
-<% @questionnaires.each do |questionnaire| %>
-  <p><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></p>
-<% end %>
+<div class="card hstack hstack--card">
+  <div>
+    <h2>Questionnaires</h2>
+    <% @questionnaires.each do |questionnaire| %>
+      <p><%= link_to questionnaire.title, questionnaire_path(questionnaire) %></p>
+    <% end %>
+  </div>
+  <div>
+    <%= image_tag "illustrations/form.svg", alt: "Person filling in a form", class: "illustration" %>
+  </div>
 </div>

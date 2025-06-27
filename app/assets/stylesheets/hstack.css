@@ -11,5 +11,9 @@
   .card& {
     justify-content: space-between;
     align-items: start;
+
+    p {
+      max-width: 400px;
+    }
   }
 }

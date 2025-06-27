@@ -6,9 +6,13 @@
     <% end %>
   </div>
 <% else %>
-  <div class="card">
-    <h2>No Thought Records Yet!</h2>
-    <%= image_tag "illustrations/share.svg", alt: "Illustration of two people sharing", class: "illustration" %>
-    <p><%= @therapy.client %> has not shared any thought records yet.</p>
+  <div class="card hstack hstack--card">
+    <div>
+      <h2>No Thought Records Yet!</h2>
+      <p><%= @therapy.client %> has not shared any thought records yet.</p>
+    </div>
+    <div>
+      <%= image_tag "illustrations/share.svg", alt: "Illustration of two people sharing", class: "illustration" %>
+    </div>
   </div>
 <% end %>
