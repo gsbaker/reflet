@@ -4,7 +4,7 @@ class ContractsController < ApplicationController
 
   # GET /contracts or /contracts.json
   def index
-    @contracts = Contract.all
+    @contracts = current_user.contracts.all
   end
 
   # GET /contracts/1 or /contracts/1.json
