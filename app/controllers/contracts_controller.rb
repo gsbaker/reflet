@@ -1,5 +1,6 @@
 class ContractsController < ApplicationController
   before_action :set_contract, only: %i[ show edit update destroy ]
+  before_action :redirect_non_therapists, only: [ :index, :new, :create, :edit, :destroy ]
 
   # GET /contracts or /contracts.json
   def index
