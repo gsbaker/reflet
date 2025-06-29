@@ -1,6 +1,6 @@
 module Therapies
   class NotesController < BaseController
-    include Therapists::Restrictable
+    before_action :redirect_non_therapists
 
     def index
       @notes_by_month = @therapy.notes_by_month

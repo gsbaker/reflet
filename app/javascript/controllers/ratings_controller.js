@@ -11,6 +11,8 @@ export default class extends Controller {
       this.ratingTargets[1].click()
     } else if (evt.key === "3") {
       this.ratingTargets[2].click()
+    } else if (evt.key === "4") {
+      this.ratingTargets[3].click()
     }
   }
 

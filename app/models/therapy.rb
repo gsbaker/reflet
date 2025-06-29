@@ -38,6 +38,10 @@ class Therapy < ApplicationRecord
     notes.order(date: :desc).group_by { |note| note.date.strftime("%B") }
   end
 
+  def completed_assignments_by_month
+    assignments.completed.order(completed_at: :desc).group_by { |assignment| assignment.completed_at.strftime("%B") }
+  end
+
   def mark_completed
     update completed_at: DateTime.current
   end

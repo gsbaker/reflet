@@ -36,6 +36,12 @@ input[type="file"] {
   border-radius: 10px;
   padding: 10px;
   background-color: white;
+
+  &:hover {
+    cursor: pointer;
+    outline: 2px solid var(--highlight);
+    border-color: var(--bg-color);
+  }
 }
 
 input::file-selector-button {
@@ -44,5 +50,9 @@ input::file-selector-button {
   padding: 5px 15px;
   border: none;
   border-radius: 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 

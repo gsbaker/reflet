@@ -1,10 +1,13 @@
-<%= turbo_frame_tag "needs-record", class: "vstack" do %>
+<%= turbo_frame_tag "needs-record" do %>
   <% if @needs_record.completed? %>
     <%= render "completed" %>
   <% else %>
     <h1><%= @needs_record %></h1>
-    <div class="card">
+    <p class="large-text">At this moment in your life, how often do you think this need is met?</p>
+    <div class="card container-small">
+      <div class="text-center">
       <h2><%= @rating.need %></h2>
+      </div>
       <%= render "need_ratings/form" %>
     </div>
   <% end %>

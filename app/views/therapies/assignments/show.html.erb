@@ -1,0 +1,80 @@
+<h1>Assignment</h1>
+
+<% if @assignment.completed? %>
+  <div class="vstack">
+    <div class="card">
+      <h2><%= @questionnaire.title %></h2>
+      <p><strong>Assigned on:</strong> <%= @assignment.created_at.strftime("%B %d, %Y") %><br>
+      <strong>Status:</strong> Completed on <%= @assignment.completed_at.strftime("%B %d, %Y") %></p>
+    </div>
+
+    <div class="card">
+      <h2>Results</h2>
+      <table>
+        <thead>
+          <th>Score</th>
+          <th>Interpretation</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @assignment.score %></td>
+            <td><%= @questionnaire.score_in_words(@assignment.score) %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @questionnaire.gad7? %>
+        <p>The following cut-offs correlate with level of anxiety severity:</p>
+        <ul>
+          <li>Score 0-4: Minimal Anxiety</li>
+          <li>Score 5-9: Mild Anxiety</li>
+          <li>Score 10-14: Moderate Anxiety</li>
+          <li>Score greater than 15: Severe Anxiety</li>
+        </ul>
+      <% elsif @questionnaire.phq9? %>
+        <p>The following cut-offs correlate with level of depression severity:</p>
+        <ul>
+          <li>Score 0-4: Minimal Depression</li>
+          <li>Score 5-9: Mild Depression</li>
+          <li>Score 10-14: Moderate Depression</li>
+          <li>Score greater than 15: Severe Depression</li>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="card">
+      <h2>Responses</h2>
+      <p><%= @questionnaire.description %></p>
+        <table>
+          <thead>
+          <tr>
+            <th>Question</th>
+            <th>Response</th>
+            <th>Score</th>
+          </tr>
+          </thead>
+          <tbody>
+            <% @assignment.responses.each do |response| %>
+              <tr>
+                <td><%= response.question.title %></td>
+                <td><%= response.question.response_options[response.score.to_s] %></td>
+                <td><%= response.score %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+<% else %>
+  <div class="card">
+    <h2><%= @questionnaire.title %></h2>
+    <p><strong>Assigned on:</strong> <%= @assignment.created_at.strftime("%B %d, %Y") %><br>
+    <strong>Status:</strong> In progress</p>
+    <%= button_to(
+      "Cancel assignment",
+      therapy_assignment_path(@therapy, @assignment),
+      method: :delete,
+      data: { turbo_confirm: "Are you sure you want to cancel this assignment?" },
+      class: "btn btn--destructive"
+    ) %>
+  </div>
+<% end %>

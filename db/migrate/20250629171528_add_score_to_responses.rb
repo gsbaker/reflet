@@ -1,0 +1,5 @@
+class AddScoreToResponses < ActiveRecord::Migration[8.0]
+  def change
+    add_column :responses, :score, :integer, default: 0
+  end
+end

@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
     Current.user = nil
     reset_session
   end
+
+  def redirect_non_therapists
+    redirect_to root_path unless current_user.therapist?
+  end
 end

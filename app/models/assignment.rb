@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+#
 class Assignment < ApplicationRecord
   belongs_to :therapy
   has_one :assignee, through: :therapy, source: :client
@@ -18,10 +20,7 @@ class Assignment < ApplicationRecord
   scope :completed, -> { where.not(completed_at: nil) }
 
   after_create :schedule_recurring_assignment, unless: -> { no_repeat? }
-
-  after_initialize do
-    self.cadence ||= :no_repeat
-  end
+  after_create { self.cadence = :no_repeat }
 
   def to_s
     assignable.title
@@ -52,6 +51,10 @@ class Assignment < ApplicationRecord
     return unless completed? && completed_at.nil?
 
     update(completed_at: DateTime.current)
+  end
+
+  def score
+    responses.sum(:score)
   end
 
   private

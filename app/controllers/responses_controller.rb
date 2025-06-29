@@ -14,6 +14,6 @@ class ResponsesController < ApplicationController
   private
 
   def response_params
-    params.require(:response).permit(:question_id, :assignment_id, :content)
+    params.require(:response).permit(:question_id, :assignment_id, :content, :score)
   end
 end

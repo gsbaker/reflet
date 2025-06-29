@@ -13,35 +13,40 @@
   </div>
 </div>
 
-<% if @assignments.open.any? %>
-  <h3>Open</h3>
+<div class="vstack">
+<% if @open_assignments.any? %>
   <div class="card">
-    <% @assignments.open.each do |assignment| %>
-      <%= link_to assignment_path(assignment) do %>
+    <h2>Open</h2>
+    <% @open_assignments.each do |assignment| %>
+      <p>
+        <%= link_to(
+          "#{assignment.assignable.title} (assigned on #{assignment.created_at.strftime("%B %d, %Y")})",
+          therapy_assignment_path(@therapy, assignment)
+        ) %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @completed_assignments_by_month.any? %>
+  <div class="card">
+    <h2>Completed</h2>
+    <% @completed_assignments_by_month.each do |month, assignments| %>
+      <h3><%= month %></h3>
+      <% assignments.each do |assignment| %>
         <p>
-        <strong>Title:</strong> <%= assignment.assignable.title %><br>
-        <strong>Assigned:</strong> <%= assignment.created_at.strftime("%B %d, %Y") %>
+          <%= link_to(
+            "#{assignment.assignable.title} (completed on #{assignment.completed_at.strftime("%B %d, %Y")})",
+            therapy_assignment_path(@therapy, assignment)
+          ) %>
         </p>
       <% end %>
     <% end %>
   </div>
 <% end %>
+</div>
 
-<% if @assignments.completed.any? %>
-  <h3>Completed</h3>
-  <div class="card">
-    <% @assignments.completed.each do |assignment| %>
-      <%= link_to assignment_path(assignment) do %>
-        <p>
-        <strong>Title:</strong> <%= assignment.assignable.title %><br>
-        <strong>Completed:</strong> <%= assignment.completed_at.strftime("%B %d, %Y") %>
-        </p>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
-
-<% if @assignments.empty? %>
+<% if [@open_assignments, @completed_assignments_by_month].all?(&:empty?) %>
   <div class="card hstack hstack--card">
     <div>
     <h2>No assignments yet!</h2>

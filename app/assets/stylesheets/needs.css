@@ -56,6 +56,7 @@
   border: 0.5px solid lightgrey;
   padding: 5px;
   width: auto;
+  margin: 0 auto;
 }
 
 .rating-submit-helper {
