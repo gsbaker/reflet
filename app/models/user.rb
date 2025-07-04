@@ -23,6 +23,8 @@ class User < ApplicationRecord
     attachable.variant :thumb, resize_to_fill: [600, 600]
   end
 
+  after_create :notify_admins
+
   def to_s
     name
   end
@@ -40,4 +42,11 @@ class User < ApplicationRecord
   end
 
   alias_method :client?, :individual?
+
+  def notify_admins
+    AdminMailer
+      .with(user: self)
+      .new_user_notification
+      .deliver_later
+  end
 end
