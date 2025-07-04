@@ -6,8 +6,20 @@ individual:
   password_digest: <%= password_digest %>
   type: "Individual"
 
+other_individual:
+  name: "Nevah Fine"
+  email: "nevah.fine@reflet.io"
+  password_digest: <%= password_digest %>
+  type: "Individual"
+
 therapist:
   name: "Couchy Talkerson"
   email: "therapist@reflet.io"
+  password_digest: <%= password_digest %>
+  type: "Therapist"
+
+other_therapist:
+  name: "Mindy Calmstein"
+  email: "mindy.calmstein@reflet.io"
   password_digest: <%= password_digest %>
   type: "Therapist"
