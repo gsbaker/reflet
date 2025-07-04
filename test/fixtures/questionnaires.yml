@@ -1,0 +1,5 @@
+questionnaire:
+  title: "Some Questionnaire"
+  description: "Just a test questionnaire"
+  slug: "test"
+  abbreviation: "test"

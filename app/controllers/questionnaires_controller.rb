@@ -1,7 +1,6 @@
 class QuestionnairesController < ApplicationController
-  include Therapists::Restrictable
-
   before_action :authenticate_user!
+  before_action :redirect_non_therapists
   before_action :set_questionnaire, only: [:show, :assign]
 
   def show

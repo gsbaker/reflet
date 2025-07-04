@@ -1,9 +1,13 @@
+<% password_digest = BCrypt::Password.create("secret123456") %>
+
 individual:
-  name: "Jane Doe"
-  email: "jane.doe@example.com"
+  name: "Client McDemo"
+  email: "client@reflet.io"
+  password_digest: <%= password_digest %>
   type: "Individual"
 
 therapist:
-  name: "Dr. Harmony Granger"
-  email: "drgranger@example.com"
+  name: "Couchy Talkerson"
+  email: "therapist@reflet.io"
+  password_digest: <%= password_digest %>
   type: "Therapist"
