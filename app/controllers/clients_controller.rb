@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
-  include Therapists::Restrictable
-
+  before_action :redirect_non_therapists
   before_action :authenticate_user!
 
   def index

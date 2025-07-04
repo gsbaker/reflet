@@ -38,12 +38,16 @@
 <% end %>
 
 <% if current_user.therapies.none? && @sent_invitations.none? %>
-  <div class="card">
-    <h2>Time to Add Your First Client!</h2>
-    <%= image_tag "illustrations/clients.svg", alt: "Illustration of clients", class: "illustration" %>
-    <p>This page is where you'll connect with, manage, and support all your clients.</p>
-    <p>Once you add them, you'll gain access to features designed to make your practice run smoothly.</p>
-    <p>Ready to get started? Your first client is just a few steps away from being added!</p>
+  <div class="card hstack hstack--card">
+    <div>
+      <h2>Time to Add Your First Client!</h2>
+      <p>This page is where you'll connect with, manage, and support all your clients.</p>
+      <p>Once you add them, you'll gain access to features designed to make your practice run smoothly.</p>
+      <p>Ready to get started? Your first client is just a few steps away from being added!</p>
+    </div>
+    <div>
+      <%= image_tag "illustrations/clients.svg", alt: "Illustration of clients", class: "illustration" %>
+    </div>
   </div>
 <% end %>
 
