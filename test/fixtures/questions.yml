@@ -1,0 +1,4 @@
+question:
+  questionnaire: questionnaire
+  title: "What is the capital of France?"
+  response_options: "{ '1': 'Paris', '2': 'London', '3': 'Berlin', '4': 'Madrid' }"

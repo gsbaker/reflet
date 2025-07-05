@@ -1,6 +1,8 @@
 <h1>Editing invitation</h1>
 
-<%= render "form", invitation: @invitation %>
+<%= form_with model: @invitation do |f| %>
+  <%= render "form", invitation: @invitation, f: %>
+<% end %>
 
 <br>
 

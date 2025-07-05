@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :therapists, controller: :users
   resources :individuals, controller: :users
 
-  resources :invitations do
+  resources :invitations, except: %i[ edit update ] do
     member do
       patch :accept
       patch :decline
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :needs_records
 
-  resources :needs
+  resources :needs, only: %i[index show]
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :clients
-  resources :resources, only: %i[index update]
+  resources :resources, only: %i[index]
 
   resources :questionnaires, only: %i[show], param: :slug do
     member do
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   resources :assignments
   resources :responses, only: %i[create update]
 
-  resources :therapies do
+  resources :therapies, except: %i[ destroy ] do
     member do
       patch :mark_completed
       patch :mark_active

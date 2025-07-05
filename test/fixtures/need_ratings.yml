@@ -1,0 +1,4 @@
+need_rating:
+  needs_record: needs_record
+  need: need
+  status: "sometimes"

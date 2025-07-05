@@ -1,0 +1,4 @@
+needs_record:
+  title: "Test Needs Record"
+  individual: individual
+  status: "in_progress"

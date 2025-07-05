@@ -2,7 +2,8 @@ require "test_helper"
 
 class ThoughtRecordsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @thought_record = thought_records(:one)
+    @thought_record = thought_records(:thought_record)
+    sign_in @individual
   end
 
   test "should get index" do
@@ -17,7 +18,7 @@ class ThoughtRecordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create thought_record" do
     assert_difference("ThoughtRecord.count") do
-      post thought_records_url, params: { thought_record: { alternative_feelings: @thought_record.alternative_feelings, alternative_thoughts: @thought_record.alternative_thoughts } }
+      post thought_records_url, params: { thought_record: { title: "Feeling Low", content: "Just a test!" } }
     end
 
     assert_redirected_to thought_record_url(ThoughtRecord.last)
@@ -34,7 +35,7 @@ class ThoughtRecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update thought_record" do
-    patch thought_record_url(@thought_record), params: { thought_record: { alternative_feelings: @thought_record.alternative_feelings, alternative_thoughts: @thought_record.alternative_thoughts } }
+    patch thought_record_url(@thought_record), params: { thought_record: { title: "Updated Title", content: "Just a test!" } }
     assert_redirected_to thought_record_url(@thought_record)
   end
 

@@ -15,10 +15,6 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new
   end
 
-  # GET /invitations/1/edit
-  def edit
-  end
-
   # POST /invitations or /invitations.json
   def create
     invitee_from_email = User.find_by_email(invitation_params[:email])
