@@ -12,5 +12,12 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     include SessionTestHelper
+
+    setup do
+      @therapist = users(:therapist)
+      @other_therapist = users(:other_therapist)
+      @individual = users(:individual)
+      @other_individual = users(:other_individual)
+    end
   end
 end
