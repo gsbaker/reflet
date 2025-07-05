@@ -1,0 +1,4 @@
+received_sent_invitation:
+  invitee: invited_client
+  inviter: therapist
+  status: "sent"

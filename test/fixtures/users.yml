@@ -12,6 +12,18 @@ other_individual:
   password_digest: <%= password_digest %>
   type: "Individual"
 
+non_client:
+  name: "Non Client"
+  email: "non.client@reflet.io"
+  password_digest: <%= password_digest %>
+  type: "Individual"
+
+invited_client:
+  name: "Invited Client"
+  email: "invited.client@reflet.io"
+  password_digest: <%= password_digest %>
+  type: "Individual"
+
 therapist:
   name: "Couchy Talkerson"
   email: "therapist@reflet.io"

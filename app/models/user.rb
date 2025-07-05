@@ -41,7 +41,9 @@ class User < ApplicationRecord
     is_a?(Individual)
   end
 
-  alias_method :client?, :individual?
+  def client?
+    individual? && therapies.any?
+  end
 
   def notify_admins
     AdminMailer
