@@ -8,36 +8,41 @@ class ThoughtRecordsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit thought_records_url
-    assert_selector "h1", text: "Thought records"
+    assert_selector "h1", text: "Thought Records"
   end
 
   test "should create thought record" do
     visit thought_records_url
-    click_on "New thought record"
+    click_on "Create a thought record"
 
-    fill_in "Alternative feelings", with: @thought_record.alternative_feelings
-    fill_in "Alternative thoughts", with: @thought_record.alternative_thoughts
-    click_on "Create Thought record"
+    fill_in "thought_record_title", with: "Feeling low"
+    fill_in_rich_text_area "thought_record_content", with: "I feel low because I failed an exam."
+
+    click_on "Create thought record"
 
     assert_text "Thought record was successfully created"
-    click_on "Back"
+    assert_selector "h1", text: "Feeling low"
   end
 
-  test "should update Thought record" do
+  test "should update thought record" do
     visit thought_record_url(@thought_record)
-    click_on "Edit this thought record", match: :first
+    click_on "Edit", match: :first
 
-    fill_in "Alternative feelings", with: @thought_record.alternative_feelings
-    fill_in "Alternative thoughts", with: @thought_record.alternative_thoughts
-    click_on "Update Thought record"
+    fill_in "thought_record_title", with: "Updated thought record"
+    fill_in_rich_text_area "thought_record_content", with: "Updated content for the thought record."
+
+    click_on "Update thought record"
 
     assert_text "Thought record was successfully updated"
-    click_on "Back"
+    assert_selector "h1", text: "Updated thought record"
   end
 
   test "should destroy Thought record" do
     visit thought_record_url(@thought_record)
-    click_on "Destroy this thought record", match: :first
+
+    accept_confirm do
+      click_on "Delete", match: :first
+    end
 
     assert_text "Thought record was successfully destroyed"
   end

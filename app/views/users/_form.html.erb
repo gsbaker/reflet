@@ -25,9 +25,9 @@
       </div>
       <div>
         <%= f.file_field :avatar %>
-        <legend class="text-secondary text-small">For best results, upload a square image at least 300x300 pixels.</legend>
       </div>
     </div>
+    <legend class="text-secondary text-small">For best results, upload a square image at least 300x300 pixels.</legend>
   </div>
 
   <div class="text-center vstack">
@@ -35,7 +35,7 @@
       <%= f.submit "Save changes", class: "btn btn--block" %>
     </div>
     <div>
-      <%= link_to "Sign out", session_path, class: "btn btn--destructive btn--block", data: { turbo_method: :delete } %>
+      <%= link_to "Sign out", session_path, class: "btn btn--destructive btn--block", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to sign out?" } %>
     </div>
   </div>
 </div>

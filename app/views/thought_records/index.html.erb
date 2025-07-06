@@ -14,12 +14,14 @@
   <% end %>
 </div>
 <% else %>
-  <div class="card">
-    <%= image_tag "illustrations/thoughts.svg", alt: "Illustration of a woman thinking hard.", class: "illustration" %>
-    <h2>Need to Clear Your Mind?</h2>
-    <p>Whether it's a fleeting worry or a persistent concern, documenting your thoughts helps you gain perspective and emotional control.</p>
-    <p>Each Thought Record becomes a stepping stone towards greater self-awareness and emotional freedom.</p>
-    <p>For those working with a therapist, sharing your Thought Records can transform your sessions. It provides your therapist with a real-time window into your cognitive processes, fostering richer discussions and more effective strategies for your growth.</p>
-    <p>Take control of your narrative.</p>
+  <div class="card hstack hstack--card">
+    <div>
+      <h2>Need to Clear Your Mind?</h2>
+      <p>Whether it's a fleeting worry or a persistent concern, documenting your thoughts helps you gain perspective and emotional control.</p>
+      <p>For those working with a therapist, sharing your Thought Records can transform your sessions. It provides your therapist with a real-time window into your cognitive processes, fostering richer discussions and more effective strategies for your growth.</p>
+    </div>
+    <div>
+      <%= image_tag "illustrations/thoughts.svg", alt: "Illustration of a woman thinking hard.", class: "illustration" %>
+    </div>
   </div>
 <% end %>

@@ -16,7 +16,13 @@
           <% end %>
         <% end %>
         <%= link_to "Edit", edit_thought_record_path(@thought_record), class: "btn btn--secondary" %>
-        <%= button_to "Delete", @thought_record, method: :delete, class: "btn btn--destructive" %>
+        <%= button_to(
+          "Delete",
+          @thought_record,
+          method: :delete,
+          class: "btn btn--destructive",
+          data: { turbo_confirm: "Are you sure you want to delete this thought record?" }
+        ) %>
       </div>
     </div>
   </div>

@@ -8,6 +8,6 @@ module SystemTestHelper
     fill_in "password", with: password
 
     click_on "sign_in"
-    assert_selector "h1", text: "Clients"
+    assert_selector ".avatar--small"
   end
 end
