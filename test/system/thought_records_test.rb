@@ -2,7 +2,8 @@ require "application_system_test_case"
 
 class ThoughtRecordsTest < ApplicationSystemTestCase
   setup do
-    @thought_record = thought_records(:one)
+    @thought_record = thought_records(:thought_record)
+    sign_in "client@reflet.io"
   end
 
   test "visiting the index" do
