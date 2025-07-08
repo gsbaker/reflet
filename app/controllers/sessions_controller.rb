@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  include Logoutable
+
   before_action :authenticate_user, only: [:create]
 
   def new

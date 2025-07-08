@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
+  include Logoutable
+
   def new
-    logout if user_signed_in?
     @user = User.new
 
     load_invitation_defaults if params[:invitation_id].present?
