@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
-george = User.find_or_initialize_by type: "Individual", name: "George Baker", email: "george@reflet.io"
-kate = User.find_or_initialize_by type: "Therapist", name: "Kate Anderson", email: "kate@reflet.io"
+client = User.find_or_initialize_by type: "Individual", name: "Client McDemo", email: "client@reflet.io"
+client.avatar = File.open(Rails.root.join("db/seeds/client.jpg"))
+therapist = User.find_or_initialize_by type: "Therapist", name: "Couchy Talkerson", email: "therapist@reflet.io"
+therapist.avatar = File.open(Rails.root.join("db/seeds/therapist.jpg"))
+individual = User.find_or_initialize_by type: "Individual", name: "Individual Demo", email: "individual@reflet.io"
 
-users = [george, kate]
+users = [client, therapist, individual]
 
 users.each do |user|
   user.password = "password"
@@ -11,4 +14,4 @@ users.each do |user|
   user.save!
 end
 
-Therapy.find_or_create_by!(client: george, therapist: kate)
+Therapy.find_or_create_by!(client:, therapist:)
