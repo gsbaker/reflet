@@ -6,7 +6,6 @@
   </div>
 <% end %>
 
-<div class="vstack">
 <div>
   <%= f.label :title %>
   <%= f.text_field :title, required: true %>
@@ -16,9 +15,5 @@
   <%= f.date_field :date, required: true %>
 </div>
 <div>
-  <%= f.rich_text_area :content, class: "note-rich-text-area", required: true %>
-</div>
-<div>
-  <%= f.submit "Save", class: "btn" %>
-</div>
+  <%= f.rich_text_area :content, required: true %>
 </div>
